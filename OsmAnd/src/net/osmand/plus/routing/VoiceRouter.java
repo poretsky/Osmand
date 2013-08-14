@@ -214,7 +214,7 @@ public class VoiceRouter {
 			return;
 		}
 		long ms = System.currentTimeMillis();
-		if (alarm.getTime() == AlarmInfo.SPEED_LIMIT) {
+		if (alarm.getType() == AlarmInfo.SPEED_LIMIT) {
 
 			if (waitAnnouncedSpeedLimit == 0) {
 				// wait 10 seconds before announcement
@@ -234,8 +234,7 @@ public class VoiceRouter {
 					}
 				}
 			}
-			
-			
+
 		} else if (alarm.getType() == AlarmInfo.SPEED_CAMERA) {
 			if (router.getSettings().SPEAK_SPEED_CAMERA.get() && ms - lastAnnouncedSpeedCamera > 100 * 1000) {
 				CommandBuilder p = getNewCommandPlayerToPlay();
@@ -253,7 +252,6 @@ public class VoiceRouter {
 				}
 			}
 		}
-
 	}
 	
 	/**
@@ -417,15 +415,16 @@ public class VoiceRouter {
 	}
 	
 	public String getSpeakableStreetName(RouteDirectionInfo i) {
+		String res = "";
 		if(i == null || !router.getSettings().SPEAK_STREET_NAMES.get()){
-			return "";
+			return res;
 		}
 		if(!Algorithms.isEmpty(i.getRef())) {
-			return i.getRef();
+			res = i.getRef();
 		} else if(!Algorithms.isEmpty(i.getStreetName())) {
-			return i.getStreetName();
+			res = i.getStreetName();
 		}
-		return "";
+		return res.replace('-', ' ');
 	}
 
 	private void playPrepareTurn(RouteDirectionInfo next, int dist) {

@@ -611,7 +611,7 @@
     <string name="recording_is_recorded">صدا/تصویر در حال ضبط میباشد. برای متوقف کردن آن ویجت AV را بزنید.</string>
     <string name="recording_playing">صدایی از ضبط مورد نظر درحال پخش میباشد.\n%1$s</string>
     <string name="recording_delete_confirm">آیا میخواهید این مورد ضبط شده را پاک کنید؟</string>
-    <string name="recording_description">ضبط %1$s%2$ s از %3$s</string>
+    <string name="recording_description">ضبط %1$s%2$s از %3$s</string>
     <string name="osmand_srtm_short_description_80_chars">افزونه OsmAnd برای منحنی های همتراز آفلاین</string>
     <string name="use_magnetic_sensor_descr">استفاده از حسگر مغناطیسی به جای سنسور جهت یابی برای استفاده در قطب نما</string>
     <string name="show_poi_over_map">نشان دادن POI</string>
@@ -1325,7 +1325,7 @@ OsmAnd منبع باز است و فعالانه در حال توسعه است. �
 		\n\t دسترسی
 		\n\t رفع اشکالات
 	</string>
-	<string name="accessibility_extensions_descr">افزودنه دسترسی برای نسخه های قدیمی آندروید</string>
+	<string name="accessibility_extensions_descr">افزونه دسترسی برای نسخه های قدیمی آندروید</string>
 	<string name="accessibility_extensions">افزونه دسترسی</string>
 	<string name="accessibility_mode">حالت دسترسی</string>
 	<string name="accessibility_mode_descr">روشن کردن ویژگی های دسترسی</string>
