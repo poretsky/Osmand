@@ -405,12 +405,6 @@ public class MapUtils {
 	}	
 
 	
-	public static double squareDist31TileMetric(int x1, int y1, int x2, int y2) {
-		// translate into meters 
-		double dy = convert31YToMeters(y1, y2);
-		double dx = convert31XToMeters(x1, x2);
-		return dx * dx + dy * dy;
-	}
 	public static double convert31YToMeters(float y1, float y2) {
 		// translate into meters 
 		return (y1 - y2) * 0.01863d;
@@ -423,12 +417,12 @@ public class MapUtils {
    
 	
 	public static QuadPoint getProjectionPoint31(int px, int py, int st31x, int st31y,int end31x, int end31y) {
-		double mDist = squareRootDist31(end31x, end31y, st31x,
-				st31y);
-		int prx = end31x;
-		int pry = end31y;
 		double projection = calculateProjection31TileMetric(st31x, st31y, end31x,
 				end31y, px, py);
+		double mDist = squareRootDist31(end31x, end31y, st31x,
+				st31y);
+		int pry = end31y;
+		int prx = end31x;
 		if (projection < 0) {
 			prx = st31x;
 			pry = st31y;
@@ -451,6 +445,13 @@ public class MapUtils {
 		double dx = MapUtils.convert31XToMeters(x1, x2);
 		return Math.sqrt(dx * dx + dy * dy);
 //		return measuredDist(x1, y1, x2, y2);
+	}
+	
+	public static double squareDist31TileMetric(int x1, int y1, int x2, int y2) {
+		// translate into meters 
+		double dy = convert31YToMeters(y1, y2);
+		double dx = convert31XToMeters(x1, x2);
+		return dx * dx + dy * dy;
 	}
 	
 	public static double calculateProjection31TileMetric(int xA, int yA, int xB, int yB, int xC, int yC) {

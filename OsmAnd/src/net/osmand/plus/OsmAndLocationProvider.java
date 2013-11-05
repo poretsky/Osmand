@@ -9,11 +9,12 @@ import java.util.List;
 import net.osmand.GeoidAltitudeCorrection;
 import net.osmand.PlatformUtil;
 import net.osmand.access.NavigationInfo;
-import net.osmand.binary.BinaryMapDataObject;
 import net.osmand.binary.RouteDataObject;
 import net.osmand.data.LatLon;
+import net.osmand.data.QuadPoint;
 import net.osmand.plus.OsmandSettings.OsmandPreference;
 import net.osmand.plus.routing.RoutingHelper;
+import net.osmand.router.RouteSegmentResult;
 import net.osmand.util.MapUtils;
 import android.content.Context;
 import android.hardware.GeomagneticField;
@@ -42,8 +43,11 @@ public class OsmAndLocationProvider implements SensorEventListener {
 	}
 
 	private static final int INTERVAL_TO_CLEAR_SET_LOCATION = 30 * 1000;
-	private static final int LOST_LOCATION_MSG_ID = 10;
+	private static final int LOST_LOCATION_MSG_ID = OsmAndConstants.UI_HANDLER_LOCATION_SERVICE + 1;
+	private static final int START_SIMULATE_LOCATION_MSG_ID = OsmAndConstants.UI_HANDLER_LOCATION_SERVICE + 2;
+	private static final int RUN_SIMULATE_LOCATION_MSG_ID = OsmAndConstants.UI_HANDLER_LOCATION_SERVICE + 3;
 	private static final long LOST_LOCATION_CHECK_DELAY = 18000;
+	private static final long START_LOCATION_SIMULATION_DELAY = 3000;
 
 	private static final float ACCURACY_FOR_GPX_AND_ROUTING = 50;
 
@@ -53,6 +57,7 @@ public class OsmAndLocationProvider implements SensorEventListener {
 
 	private long lastTimeGPSLocationFixed = 0;
 	private boolean gpsSignalLost;
+	private SimulationProvider simulatePosition = null;
 
 	private boolean sensorRegistered = false;
 	private float[] mGravs = new float[3];
@@ -97,32 +102,108 @@ public class OsmAndLocationProvider implements SensorEventListener {
 	private OsmandPreference<Boolean> USE_MAGNETIC_FIELD_SENSOR_COMPASS;
 	private OsmandPreference<Boolean> USE_FILTER_FOR_COMPASS;
 	
+	private static double squareDist(int x1, int y1, int x2, int y2) {
+		// translate into meters 
+		double dy = MapUtils.convert31YToMeters(y1, y2);
+		double dx = MapUtils. convert31XToMeters(x1, x2);
+		return dx * dx + dy * dy;
+	}
 	
-	private class SimulationSegment {
-		private List<BinaryMapDataObject> simulateRoads = new ArrayList<BinaryMapDataObject>();
-		private float currentSimulationLength = 0;
-		private long simulationStarted = 0;
-		private float simulationSpeedMS = 0;
+	public class SimulationProvider {
+		private int currentRoad;
+		private int currentSegment;
+		private QuadPoint currentPoint;
+		private net.osmand.Location startLocation;
+		private List<RouteSegmentResult> roads;
 		
 		
-		public void startSimulation(List<BinaryMapDataObject> roads, 
-				Location currentLocation) {
-			simulationStarted = currentLocation.getTime();
-			simulationSpeedMS = currentLocation.getSpeed();
-			double orthDistance = 10000;
-			int currentRoad = 0;
-			int currentSegment = 0;
+		public void startSimulation(List<RouteSegmentResult> roads, 
+				net.osmand.Location currentLocation) {
+			this.roads = roads;
+			startLocation = new net.osmand.Location(currentLocation);
+			long ms = System.currentTimeMillis();
+			if(ms - startLocation.getTime() > 5000 ||
+					ms < startLocation.getTime()) {
+				startLocation.setTime(ms);
+			}
+			currentRoad = -1;
+			int px = MapUtils.get31TileNumberX(currentLocation.getLongitude());
+			int py = MapUtils.get31TileNumberY(currentLocation.getLatitude());
+			double dist = 1000;
 			for(int i = 0; i < roads.size(); i++) {
-				BinaryMapDataObject road = roads.get(i);
-				for(int j = 1; j < road.getPointsLength(); j++) {
-					
+				RouteSegmentResult road = roads.get(i);
+				boolean plus = road.getStartPointIndex() < road.getEndPointIndex();
+				for(int j = road.getStartPointIndex() + 1; j <= road.getEndPointIndex(); ) {
+					RouteDataObject obj = road.getObject();
+					QuadPoint proj = MapUtils.getProjectionPoint31(px, py, obj.getPoint31XTile(j-1), obj.getPoint31YTile(j-1), 
+							obj.getPoint31XTile(j), obj.getPoint31YTile(j));
+					double dd = squareDist((int)proj.x, (int)proj.y, px, py);
+					if (dd < dist) {
+						dist = dd;
+						currentRoad = i;
+						currentSegment = j;
+						currentPoint = proj;
+					}
+					j += plus ? 1 : -1;
 				}
 			}
+		}
+		
+		private float proceedMeters(float meters, net.osmand.Location l) {
+			for(int i = currentRoad; i < roads.size(); i++) {
+				RouteSegmentResult road = roads.get(i);
+				boolean firstRoad = i == currentRoad;
+				boolean plus = road.getStartPointIndex() < road.getEndPointIndex();
+				for(int j = firstRoad ? currentSegment : road.getStartPointIndex() + 1; j <= road.getEndPointIndex(); ) {
+					RouteDataObject obj = road.getObject();
+					int st31x = obj.getPoint31XTile(j-1);
+					int st31y = obj.getPoint31YTile(j-1);
+					int end31x = obj.getPoint31XTile(j);
+					int end31y = obj.getPoint31YTile(j);
+					boolean last = i == roads.size() - 1 && j == road.getEndPointIndex();
+					boolean first = firstRoad && j == currentSegment;
+					if(first) {
+						st31x = (int) currentPoint.x;
+						st31y = (int) currentPoint.y;
+					}
+					double dd = MapUtils.squareRootDist31(st31x, st31y, end31x, end31y);
+					if(meters > dd && !last){
+						meters -= dd;
+					} else {
+						int prx = (int) (st31x + (end31x - st31x) * (meters / dd));
+						int pry = (int) (st31y + (end31y - st31y) * (meters / dd));
+						l.setLongitude(MapUtils.get31LongitudeX(prx));
+						l.setLatitude(MapUtils.get31LatitudeY(pry));
+						return (float) Math.max(meters - dd, 0);
+					}
+					j += plus ? 1 : -1;
+				}
+			}
+			return -1;
+		}
+		
+		/**
+		 * @return null if it is not available of far from boundaries
+		 */
+		public net.osmand.Location getSimulatedLocation() {
+			if(!isSimulatedDataAvailable()) {
+				return null;
+			}
 			
+			net.osmand.Location loc = new net.osmand.Location("OsmAnd");
+			loc.setSpeed(startLocation.getSpeed());
+			loc.setAltitude(startLocation.getAltitude());
+			loc.setTime(System.currentTimeMillis());
+			float meters = (System.currentTimeMillis() - startLocation.getTime()) / startLocation.getSpeed();
+			float proc = proceedMeters(meters, loc);
+			if(proc < 0 || proc >= 100){
+				return null;
+			}
+			return loc;
 		}
 		
 		public boolean isSimulatedDataAvailable() {
-			return simulationStarted > 0 && simulationSpeedMS > 0;
+			return startLocation != null && startLocation.getSpeed() > 0 && currentRoad >= 0;
 		}
 	}
 	
@@ -448,13 +529,6 @@ public class OsmAndLocationProvider implements SensorEventListener {
 		public void onLocationChanged(Location location) {
 			if (location != null) {
 				lastTimeGPSLocationFixed = location.getTime();
-				if(gpsSignalLost) {
-					gpsSignalLost = false;
-					final RoutingHelper routingHelper = app.getRoutingHelper();
-					if (routingHelper.isFollowingMode() && routingHelper.getLeftDistance() > 0) {
-						routingHelper.getVoiceRouter().gpsLocationRecover();
-					}
-				}
 			}
 			if(!locationSimulation.isRouteAnimating()) {
 				setLocation(convertLocation(location, app));
@@ -562,7 +636,7 @@ public class OsmAndLocationProvider implements SensorEventListener {
 	}
 	
 	
-	private void scheduleCheckIfGpsLost(net.osmand.Location location) {
+	private void scheduleCheckIfGpsLost(final net.osmand.Location location) {
 		final RoutingHelper routingHelper = app.getRoutingHelper();
 		if (location != null) {
 			final long fixTime = location.getTime();
@@ -582,8 +656,51 @@ public class OsmAndLocationProvider implements SensorEventListener {
 					setLocation(null);
 				}
 			}, LOST_LOCATION_CHECK_DELAY);
+			if (routingHelper.isFollowingMode() && routingHelper.getLeftDistance() > 0 && simulatePosition == null) {
+				app.runMessageInUIThreadAndCancelPrevious(START_SIMULATE_LOCATION_MSG_ID, new Runnable() {
+
+					@Override
+					public void run() {
+						net.osmand.Location lastKnown = getLastKnownLocation();
+						if (lastKnown != null && lastKnown.getTime() > fixTime) {
+							// false positive case, still strange how we got here with removeMessages
+							return;
+						}
+						List<RouteSegmentResult> tunnel = routingHelper.getUpcomingTunnel(1000);
+						if(tunnel != null) {
+							simulatePosition = new SimulationProvider();
+							simulatePosition.startSimulation(tunnel, location);
+							simulatePositionImpl();
+						}
+					}
+				}, START_LOCATION_SIMULATION_DELAY);
+			}
 		}
 	}
+	
+	public void simulatePosition() {
+		app.runMessageInUIThreadAndCancelPrevious(RUN_SIMULATE_LOCATION_MSG_ID, new Runnable() {
+
+			@Override
+			public void run() {
+				simulatePositionImpl();
+			}
+		}, 1000);
+	}
+	
+	private void simulatePositionImpl() {
+		if(simulatePosition != null){
+			net.osmand.Location loc = simulatePosition.getSimulatedLocation();
+			if(loc != null){
+				setLocation(loc);
+				simulatePosition();
+			}  else {
+				simulatePosition = null;
+			}
+		}
+	}
+	
+	
 	public void setLocationFromService(net.osmand.Location location, boolean continuous) {
 		// if continuous notify about lost location
 		if (continuous) {
@@ -604,6 +721,16 @@ public class OsmAndLocationProvider implements SensorEventListener {
 	private void setLocation(net.osmand.Location location) {
 		if(location == null){
 			updateGPSInfo(null);
+		}
+		if(location != null) {
+			simulatePosition = null;
+			if(gpsSignalLost) {
+				gpsSignalLost = false;
+				final RoutingHelper routingHelper = app.getRoutingHelper();
+				if (routingHelper.isFollowingMode() && routingHelper.getLeftDistance() > 0) {
+					routingHelper.getVoiceRouter().gpsLocationRecover();
+				}
+			}
 		}
 		enhanceLocation(location);
 		scheduleCheckIfGpsLost(location);

@@ -9,6 +9,7 @@ import net.londatiga.android.ActionItem;
 import net.londatiga.android.QuickAction;
 import net.osmand.data.RotatedTileBox;
 import net.osmand.plus.ApplicationMode;
+import net.osmand.plus.OsmAndConstants;
 import net.osmand.plus.OsmAndFormatter;
 import net.osmand.plus.OsmandSettings;
 import net.osmand.plus.OsmandSettings.CommonPreference;
@@ -41,8 +42,10 @@ import android.widget.SeekBar;
 
 public class MapControlsLayer extends OsmandMapLayer {
 
-	private static final int SHOW_ZOOM_LEVEL_MSG_ID = 3;
-	private static final int SHOW_ZOOM_LEVEL_DELAY = 4000;
+	private static final int SHOW_ZOOM_LEVEL_MSG_ID = OsmAndConstants.UI_HANDLER_MAP_CONTROLS + 1;
+	private static final int SHOW_ZOOM_BUTTON_MSG_ID = OsmAndConstants.UI_HANDLER_MAP_CONTROLS + 2;
+	private static final int SHOW_ZOOM_LEVEL_DELAY = 1000;
+	private static final int SHOW_ZOOM_LEVEL_BUTTON_DELAY = 1500;
 	
 
 	private OsmandMapTileView view;
@@ -50,6 +53,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 	private Handler showUIHandler;
 	
 	private boolean showZoomLevel = false;
+	private boolean showZoomLevelButton = false;
 	private int shadowColor = Color.WHITE;
 	
 	
@@ -122,9 +126,11 @@ public class MapControlsLayer extends OsmandMapLayer {
 		
 		if(view.isZooming()){
 			showZoomLevel = true;
+			showZoomLevelButton = false;
 			showUIHandler.removeMessages(SHOW_ZOOM_LEVEL_MSG_ID);
+			showUIHandler.removeMessages(SHOW_ZOOM_BUTTON_MSG_ID);
 		} else {
-			if(showZoomLevel){
+			if(showZoomLevel && view.getSettings().SHOW_RULER.get()){
 				hideZoomLevelInTime();
 			}
 		}
@@ -139,7 +145,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		}
 		boolean drawZoomLevel = showZoomLevel || !view.getSettings().SHOW_RULER.get();
 		if (drawZoomLevel) {
-			drawZoomLevel(canvas, tileBox, view.isZooming());
+			drawZoomLevel(canvas, tileBox, !showZoomLevelButton);
 		} else {
 			drawRuler(canvas, tileBox);
 		}
@@ -204,7 +210,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		mQuickAction.show();
 	}
 	
-	
+
 	private void drawZoomLevel(Canvas canvas, RotatedTileBox tb, boolean drawZoomLevel) {
 		if (zoomShadow.getBounds().width() == 0) {
 			zoomShadow.setBounds(zoomInButton.getLeft() - 2, zoomInButton.getTop() - (int) (18 * scaleCoefficient),
@@ -237,18 +243,39 @@ public class MapControlsLayer extends OsmandMapLayer {
 	}
 	
 	private void hideZoomLevelInTime(){
-		if (!showUIHandler.hasMessages(SHOW_ZOOM_LEVEL_MSG_ID)) {
-			Message msg = Message.obtain(showUIHandler, new Runnable() {
-				@Override
-				public void run() {
-					showZoomLevel = false;
-					view.refreshMap();
-				}
-
-			});
-			msg.what = SHOW_ZOOM_LEVEL_MSG_ID;
-			showUIHandler.sendMessageDelayed(msg, SHOW_ZOOM_LEVEL_DELAY);
+		if (!showUIHandler.hasMessages(SHOW_ZOOM_LEVEL_MSG_ID) &&
+				!showUIHandler.hasMessages(SHOW_ZOOM_BUTTON_MSG_ID)) {
+			sendMessageToShowZoomLevel();
 		}
+	}
+
+
+	private void sendMessageToShowZoomLevel() {
+		Message msg = Message.obtain(showUIHandler, new Runnable() {
+			@Override
+			public void run() {
+				showZoomLevelButton = true;
+				sendMessageToShowZoomButton();
+				view.refreshMap();
+			}
+
+		});
+		msg.what = SHOW_ZOOM_LEVEL_MSG_ID;
+		showUIHandler.sendMessageDelayed(msg, SHOW_ZOOM_LEVEL_DELAY);
+	}
+	
+	private void sendMessageToShowZoomButton() {
+		Message msg = Message.obtain(showUIHandler, new Runnable() {
+			@Override
+			public void run() {
+				showZoomLevelButton = false;
+				showZoomLevel = false;
+				view.refreshMap();
+			}
+
+		});
+		msg.what = SHOW_ZOOM_BUTTON_MSG_ID;
+		showUIHandler.sendMessageDelayed(msg, SHOW_ZOOM_LEVEL_BUTTON_DELAY);
 	}
 
 
@@ -308,7 +335,7 @@ public class MapControlsLayer extends OsmandMapLayer {
 		Context ctx = view.getContext();
 		ImageView bottomShadow = new ImageView(ctx);
 		bottomShadow.setBackgroundResource(R.drawable.bottom_shadow);
-		android.widget.FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT,
+		android.widget.FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT,
 					Gravity.BOTTOM);
 		params.setMargins(0, 0, 0, 0);
 		parent.addView(bottomShadow, params);
