@@ -59,9 +59,21 @@ public class NominatimPoiFilter extends PoiUIFilter {
 		return false;
 	}
 	
+	// do nothing test jackdaw lane, oxford"
+	@Override
+	public AmenityNameFilter getNameFilter(String filter) {
+		return new AmenityNameFilter() {
+
+			@Override
+			public boolean accept(Amenity a) {
+				return true;
+			}
+		};
+	}
+	
 	@Override
 	protected List<Amenity> searchAmenitiesInternal(double lat, double lon, double topLatitude,
-			double bottomLatitude, double leftLongitude, double rightLongitude, ResultMatcher<Amenity> matcher) {
+			double bottomLatitude, double leftLongitude, double rightLongitude, int zoom, ResultMatcher<Amenity> matcher) {
 		final int deviceApiVersion = android.os.Build.VERSION.SDK_INT;
 		String NOMINATIM_API;
 		if (deviceApiVersion >= android.os.Build.VERSION_CODES.GINGERBREAD) {

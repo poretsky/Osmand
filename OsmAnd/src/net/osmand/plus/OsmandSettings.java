@@ -14,7 +14,6 @@ import android.os.Environment;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-
 import net.osmand.IndexConstants;
 import net.osmand.StateChangedListener;
 import net.osmand.ValueHolder;
@@ -517,6 +516,59 @@ public class OsmandSettings {
 		}
 
 	}
+	
+	public class ListStringPreference extends StringPreference {
+
+		private String delimiter;
+
+		private ListStringPreference(String id, String defaultValue, String delimiter) {
+			super(id, defaultValue);
+			this.delimiter = delimiter;
+		}
+		
+		public boolean addValue(String res) {
+			String vl = get();
+			if (vl == null || vl.isEmpty()) {
+				vl = res + delimiter;
+			} else {
+				vl = vl + res + delimiter;
+			}
+			set(vl);
+			return true;
+		}
+		
+		public void clearAll() {
+			set("");
+		}
+		
+		public boolean containsValue(String res) {
+			String vl = get();
+			String r = res + delimiter;
+			return vl.startsWith(r) || vl.indexOf(delimiter + r) >= 0;
+		}
+		
+		public boolean removeValue(String res) {
+			String vl = get();
+			String r = res + delimiter;
+			if(vl != null) {
+				if(vl.startsWith(r)) {
+					vl = vl.substring(r.length());
+					set(vl);
+					return true;
+				} else {
+					int it = vl.indexOf(delimiter + r);
+					if(it >= 0) {
+						vl = vl.substring(0, it + delimiter.length()) + vl.substring(it + delimiter.length() + r.length());
+					}
+					set(vl);
+					return true;
+				}
+			}
+			return false;
+		}
+
+
+	}
 
 	private class EnumIntPreference<E extends Enum<E>> extends CommonPreference<E> {
 
@@ -843,17 +895,21 @@ public class OsmandSettings {
 	// this value string is synchronized with settings_pref.xml preference name
 	public final OsmandPreference<String> USER_NAME = new StringPreference("user_name", "").makeGlobal();
 
+	public static final String BILLING_USER_DONATION_WORLD_PARAMETER = "";
+	public static final String BILLING_USER_DONATION_NONE_PARAMETER = "none";
+
 	public final OsmandPreference<String> BILLING_USER_ID = new StringPreference("billing_user_id", "").makeGlobal();
 	public final OsmandPreference<String> BILLING_USER_NAME = new StringPreference("billing_user_name", "").makeGlobal();
 	public final OsmandPreference<String> BILLING_USER_EMAIL = new StringPreference("billing_user_email", "").makeGlobal();
 	public final OsmandPreference<String> BILLING_USER_COUNTRY = new StringPreference("billing_user_country", "").makeGlobal();
-	public final OsmandPreference<String> BILLING_USER_COUNTRY_DOWNLOAD_NAME = new StringPreference("billing_user_country_download_name", "").makeGlobal();
+	public final OsmandPreference<String> BILLING_USER_COUNTRY_DOWNLOAD_NAME = new StringPreference("billing_user_country_download_name", BILLING_USER_DONATION_NONE_PARAMETER).makeGlobal();
 	public final OsmandPreference<Boolean> BILLING_HIDE_USER_NAME = new BooleanPreference("billing_hide_user_name", false).makeGlobal();
 	public final OsmandPreference<Boolean> BILLING_PURCHASE_TOKEN_SENT = new BooleanPreference("billing_purchase_token_sent", false).makeGlobal();
 	public final OsmandPreference<Boolean> LIVE_UPDATES_PURCHASED = new BooleanPreference("billing_live_updates_purchased", false).makeGlobal();
 
 	public final OsmandPreference<Integer> DISCOUNT_ID = new IntPreference("discount_id", 0).makeGlobal();
 	public final OsmandPreference<Integer> DISCOUNT_SHOW_NUMBER_OF_STARTS = new IntPreference("number_of_starts_on_discount_show", 0).makeGlobal();
+	public final OsmandPreference<Integer> DISCOUNT_TOTAL_SHOW = new IntPreference("discount_total_show", 0).makeGlobal();
 	public final OsmandPreference<Long> DISCOUNT_SHOW_DATETIME_MS = new LongPreference("show_discount_datetime_ms", 0).makeGlobal();
 
 	// this value string is synchronized with settings_pref.xml preference name
@@ -1030,6 +1086,8 @@ public class OsmandSettings {
 
 	public final OsmandPreference<String> OSMO_GROUPS = new StringPreference("osmo_groups", "{}").makeGlobal();
 
+	public final OsmandPreference<Boolean> NO_DISCOUNT_INFO = new BooleanPreference("no_discount_info", false).makeGlobal();
+	
 	// this value string is synchronized with settings_pref.xml preference name
 	public final OsmandPreference<Boolean> DEBUG_RENDERING_INFO = new BooleanPreference("debug_rendering", false).makeGlobal();
 
@@ -1609,6 +1667,10 @@ public class OsmandSettings {
 	private MapMarkersStorage mapMarkersStorage = new MapMarkersStorage();
 	private MapMarkersHistoryStorage mapMarkersHistoryStorage = new MapMarkersHistoryStorage();
 
+	private static final String IMPASSABLE_ROAD_POINTS = "impassable_road_points";
+	private static final String IMPASSABLE_ROADS_DESCRIPTIONS = "impassable_roads_descriptions";
+	private ImpassableRoadsStorage mImpassableRoadsStorage = new ImpassableRoadsStorage();
+
 	public void backupPointToStart() {
 		settingsAPI.edit(globalPreferences)
 				.putFloat(START_POINT_LAT_BACKUP, settingsAPI.getFloat(globalPreferences, START_POINT_LAT, 0))
@@ -2041,6 +2103,13 @@ public class OsmandSettings {
 		}
 	}
 
+	private class ImpassableRoadsStorage extends MapPointsStorage {
+		public ImpassableRoadsStorage() {
+			pointsKey = IMPASSABLE_ROAD_POINTS;
+			descriptionsKey = IMPASSABLE_ROADS_DESCRIPTIONS;
+		}
+	}
+
 	private abstract class MapPointsStorage {
 
 		protected String pointsKey;
@@ -2119,6 +2188,19 @@ public class OsmandSettings {
 			}
 		}
 
+		public boolean deletePoint(LatLon latLon) {
+			List<LatLon> ps = getPoints();
+			List<String> ds = getPointDescriptions(ps.size());
+			int index = ps.indexOf(latLon);
+			if (index != -1) {
+				ps.remove(index);
+				ds.remove(index);
+				return savePoints(ps, ds);
+			} else {
+				return false;
+			}
+		}
+
 		public boolean savePoints(List<LatLon> ps, List<String> ds) {
 			StringBuilder sb = new StringBuilder();
 			for (int i = 0; i < ps.size(); i++) {
@@ -2142,6 +2224,18 @@ public class OsmandSettings {
 					.putString(pointsKey, sb.toString())
 					.putString(descriptionsKey, tb.toString())
 					.commit();
+		}
+
+		public boolean movePoint(LatLon latLonEx, LatLon latLonNew) {
+			List<LatLon> ps = getPoints();
+			List<String> ds = getPointDescriptions(ps.size());
+			int i = ps.indexOf(latLonEx);
+			if (i != -1) {
+				ps.set(i, latLonNew);
+				return savePoints(ps, ds);
+			} else {
+				return false;
+			}
 		}
 	}
 
@@ -2292,6 +2386,24 @@ public class OsmandSettings {
 		return settingsAPI.edit(globalPreferences).putInt(POINT_NAVIGATE_ROUTE, NAVIGATE).commit();
 	}
 
+	public List<LatLon> getImpassableRoadPoints() {
+		return mImpassableRoadsStorage.getPoints();
+	}
+	public boolean addImpassableRoad(double latitude, double longitude) {
+		return mImpassableRoadsStorage.insertPoint(latitude, longitude, null, 0);
+	}
+
+	public boolean removeImpassableRoad(int index) {
+		return mImpassableRoadsStorage.deletePoint(index);
+	}
+
+	public boolean removeImpassableRoad(LatLon latLon) {
+		return mImpassableRoadsStorage.deletePoint(latLon);
+	}
+
+	public boolean moveImpassableRoad(LatLon latLonEx, LatLon latLonNew) {
+		return mImpassableRoadsStorage.movePoint(latLonEx, latLonNew);
+	}
 
 	/**
 	 * the location of a parked car
@@ -2554,6 +2666,9 @@ public class OsmandSettings {
 	public final OsmandPreference<Boolean> FOLLOW_THE_ROUTE = new BooleanPreference("follow_to_route", false).makeGlobal();
 	public final OsmandPreference<String> FOLLOW_THE_GPX_ROUTE = new StringPreference("follow_gpx", null).makeGlobal();
 
+	public final ListStringPreference TRANSPORT_DEFAULT_SETTINGS =
+			(ListStringPreference) new ListStringPreference("transport_default_settings", "transportStops", ",").makeProfile();
+	
 	public final OsmandPreference<Boolean> SHOW_ARRIVAL_TIME_OTHERWISE_EXPECTED_TIME =
 			new BooleanPreference("show_arrival_time", true).makeGlobal();
 
@@ -2771,6 +2886,7 @@ public class OsmandSettings {
 	public enum MetricsConstants {
 		KILOMETERS_AND_METERS(R.string.si_km_m, "km-m"),
 		MILES_AND_FOOTS(R.string.si_mi_foots, "mi-f"),
+		MILES_AND_METERS(R.string.si_mi_meters, "mi-m"),
 		NAUTICAL_MILES(R.string.si_nm, "nm"),
 		MILES_AND_YARDS(R.string.si_mi_yard, "mi-y");
 
@@ -2818,7 +2934,7 @@ public class OsmandSettings {
 		EUROPE_ASIA(R.string.driving_region_europe_asia, MetricsConstants.KILOMETERS_AND_METERS, false, false),
 		US(R.string.driving_region_us, MetricsConstants.MILES_AND_FOOTS, false, true),
 		CANADA(R.string.driving_region_canada, MetricsConstants.KILOMETERS_AND_METERS, false, true),
-		UK_AND_OTHERS(R.string.driving_region_uk, MetricsConstants.MILES_AND_FOOTS, true, false),
+		UK_AND_OTHERS(R.string.driving_region_uk, MetricsConstants.MILES_AND_METERS, true, false),
 		JAPAN(R.string.driving_region_japan, MetricsConstants.KILOMETERS_AND_METERS, true, false);
 
 		public final boolean leftHandDriving;

@@ -2,7 +2,6 @@ package net.osmand.plus;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -15,10 +14,8 @@ import net.osmand.binary.BinaryMapRouteReaderAdapter.RouteRegion;
 import net.osmand.binary.GeocodingUtilities;
 import net.osmand.binary.GeocodingUtilities.GeocodingResult;
 import net.osmand.binary.RouteDataObject;
-import net.osmand.plus.resources.RegionAddressRepository;
 import net.osmand.plus.resources.ResourceManager.BinaryMapReaderResource;
 import net.osmand.plus.resources.ResourceManager.BinaryMapReaderResourceType;
-import net.osmand.plus.resources.ResourceManager.ResourceListener;
 import net.osmand.router.GeneralRouter.GeneralRouterProfile;
 import net.osmand.router.RoutePlannerFrontEnd;
 import net.osmand.router.RoutingConfiguration;
@@ -41,6 +38,11 @@ public class CurrentPositionHelper {
 		this.app = app;
 	}
 	
+	
+	public Location getLastAskedLocation() {
+		return lastAskedLocation;
+	}
+	
 	public boolean getRouteSegment(Location loc, ResultMatcher<RouteDataObject> result) {
 		return scheduleRouteSegmentFind(loc, false, null, result);
 	}
@@ -55,7 +57,7 @@ public class CurrentPositionHelper {
 		if (loc == null || loc.getAccuracy() > 50) {
 			return null;
 		}
-		if(last != null && last.distanceTo(loc) < 20) {
+		if(last != null && last.distanceTo(loc) < 10) {
 			return r;
 		}
 		if (r == null) {
@@ -63,7 +65,7 @@ public class CurrentPositionHelper {
 			return null;
 		}
 		double d = getOrthogonalDistance(r, loc);
-		if (d > 25) {
+		if (d > 15) {
 			scheduleRouteSegmentFind(loc, true, null, null);
 		}
 		if (d < 70) {
@@ -89,7 +91,6 @@ public class CurrentPositionHelper {
 					return null;
 				}
 			}.execute((Void) null);
-
 			res = true;
 		}
 		return res;
@@ -249,7 +250,7 @@ public class CurrentPositionHelper {
 		});
 	}
 
-	private static double getOrthogonalDistance(RouteDataObject r, Location loc){
+	public static double getOrthogonalDistance(RouteDataObject r, Location loc){
 		double d = 1000;
 		if (r.getPointsLength() > 0) {
 			double pLt = MapUtils.get31LatitudeY(r.getPoint31YTile(0));

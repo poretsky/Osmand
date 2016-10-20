@@ -117,7 +117,7 @@
   <string name="layer_hillshade">Erliebe-itzalak geruza</string>
   <string name="map_widget_gps_info">GPS informazioa</string>
   
-  <string name="access_arrival_time">Iritsiera denbora</string>
+  <string name="access_arrival_time">Iritsiera ordua</string>
   <string name="item_checked">aukeratua</string>
   <string name="item_unchecked">ez aukeratua</string>
   <string name="shared_string_map">Mapa</string>
@@ -135,7 +135,7 @@
   <string name="stop_routing_confirm">Ziur al zaude nabigazioa gelditu nahi duzula?</string>
   <string name="clear_dest_confirm">Ziur zaude zure helmuga (eta erdibideko helburuak) garbitu nahi dituzula?</string>
   <string name="precise_routing_mode_descr">Gaitu errorerik gabeko ibilbide zehatza kalkulatzeko. Distantzia motzetara dago mugatua eta motela da.</string>
-  <string name="precise_routing_mode">Bideratze zehatza (alpha)</string>
+  <string name="precise_routing_mode">Ibilbide kalkulu zehatza (alpha)</string>
   <string name="recording_context_menu_show">Erakutsi</string>
   <string name="recording_photo_description">"%1$s  %2$s argazkia"</string>
   <string name="av_def_action_picture">Argazkia atera</string>
@@ -261,7 +261,7 @@ Datu globalak (iparraldean 70 gradutan eta hegoaldean 70 gradutan) STRM (Shuttle
   <string name="poi_filter_for_tourists">Turistentzako</string>
   <string name="poi_filter_fuel">Gasolina</string>
   <string name="show_warnings_title">Erakutsi alarmak…</string>
-  <string name="show_warnings_descr">Trafiko abisuak konfiguratu (abiadura mugak, geldialdi behartuak, abiadura aldaketak), radar abisuak eta erraien informazioa</string>
+  <string name="show_warnings_descr">Konfiguratu trafiko abisuak (abiadura mugak, geldialdi behartuak, abiadura aldaketak), radar abisuak eta erraien informazioa</string>
   <string name="use_compass_navigation_descr">Erabili iparrorratza bestelako norabiderik antzematen ez denean</string>
   <string name="use_compass_navigation">Iparrorratza erabili</string>
   <string name="avoid_motorway">Saihestu autobideak</string>
@@ -775,7 +775,7 @@ Honek {1} MB behar ditu behin betiko.
   <string name="native_library_not_supported">Gailu honek ez du liburutegi natiboa jasaten.</string>
   <string name="init_native_library">Liburutegi natiboa hasieratzen…</string>
   <string name="choose_auto_follow_route">Auto-zentratu mapa ikuspegia</string>
-  <string name="choose_auto_follow_route_descr">Denbora mapa ikuspegia uneko kokapenarekin sinkronizatu harte </string>
+  <string name="choose_auto_follow_route_descr">Mapa ikuspegia uneko kokapenarekin sinkronizatu arteko denbora</string>
   
   <string name="auto_follow_route_navigation">Auto-zentratu nabigazioa bakarrik</string>
   <string name="auto_follow_route_navigation_descr">Bakarrik nabigatzean auto-zentratu maparen ikuspegia.</string>
@@ -816,7 +816,7 @@ Honek {1} MB behar ditu behin betiko.
   
   <string name="search_position_map_view">Uneko maparen zentroa</string>
   <string name="select_search_position">Jatorria:</string>
-  <string name="context_menu_item_search">Honen ondoan bilatu</string>
+  <string name="context_menu_item_search">Bilatu honen inguruan</string>
   
   <string name="shared_string_save_as_gpx">Gorde GPX lorratz gisa</string>
   <string name="route_successfully_saved_at">Ibilbidea \'%1$s\' bezala ongi gorde da.</string>
@@ -838,7 +838,7 @@ Honek {1} MB behar ditu behin betiko.
   <string name="favourites_edit_dialog_name">Izena</string>
   <string name="favourites_edit_dialog_category">Kategoria</string>
   <string name="shared_string_no_thanks">Ez, milesker</string>
-  <string name="basemap_missing">Oinarrizko munduko mapa (mundu guztia estaliz zoom maila txikietan) falta da. Mesedez kontsideratu World_basemap_x.obf deskargatzea ikuspegi guztia eduki ahal izateko.</string>
+  <string name="basemap_missing">Oinarrizko munduko mapa (mundu guztia estaliz zoom maila txikietan) falta da. Mesedez kontsideratu World_basemap_x.obf deskargatzea ikuspegi globala eduki ahal izateko.</string>
   <string name="vector_data_missing">Datu lokalak (lineaz kanpokoak) ez daude SD txartelean. Lineaz kanpoko mapak erabili nahi badituzu, jaitsi beharko zenituzke.</string>
   <string name="local_index_gpx_info_show">\n\nZanpatuta mantendu aukerentzat</string>
   
@@ -1015,7 +1015,7 @@ Honek {1} MB behar ditu behin betiko.
   <string name="shared_string_select_all">Guztia hautatu</string>
   <string name="shared_string_refresh">Birkargatu</string>
   <string name="fast_route_mode">Ibilbiderik azkarrena</string>
-  <string name="fast_route_mode_descr">"Gaitu ibilbiderik azkarrena kalkulatzeko edo ezgaitu ibilbiderik laburrena kalkulatzeko "</string>
+  <string name="fast_route_mode_descr">"Gaitu ibilbiderik azkarrena kalkulatzeko edo ezgaitu ibilbide erregai-efizientea kalkulatzeko "</string>
   <string name="tiles_to_download_estimated_size">{0} zoomean deskargatu {1} tesela ({2} MB)</string>
   <string name="shared_string_download_map">Mapa deskargatu</string>
   <string name="select_max_zoom_preload_area">Aukeratu aurrekargatzeko gehienezko zooma</string>
@@ -1082,8 +1082,8 @@ Honek {1} MB behar ditu behin betiko.
   <string name="context_menu_item_search_poi">POIa bilatu</string>
   <string name="use_trackball_descr">Trackball-a erabili mapa mugitzeko</string>
   <string name="use_trackball">Trackball-a erabili</string>
-  <string name="background_service_wait_int_descr">Ezarri itxarote denbora maximoa kokapenaren bigarren planoko finkaketarentzat</string>
-  <string name="background_service_wait_int">Finkapenarentzat denbora maximoa</string>
+  <string name="background_service_wait_int_descr">Ezarri gehieneko itxarote denbora kokapenaren bigarren planoko irakurketa bakoitzarentzat</string>
+  <string name="background_service_wait_int">Kokapen irakurketarako gehieneko itxarote denbora</string>
   
   <string name="where_am_i">Non nago?</string>
   <string name="process_navigation_service">OsmAndren nabigazio zerbitzua</string>
@@ -1173,7 +1173,7 @@ Honek {1} MB behar ditu behin betiko.
   <string name="search_online_address">Sareko bilaketa</string>
   <string name="max_level_download_tile">Sareko zoom maximoa</string>
   <string name="max_level_download_tile_descr">Aukeratu sareko tesela mapentzat deskargatzeko zoom maila maximoa</string>
-  <string name="route_general_information">Distantzia guztira %1$s, bidai-denbora %2$d h %3$d m.</string>
+  <string name="route_general_information">Distantzia guztira %1$s, bidai-denbora %2$d h %3$d min.</string>
   <string name="router_service_descr">Aukeratu sareko edo lineaz kanpoko nabigazio zerbitzu bat</string>
   <string name="router_service">Nabigazio zerbitzua</string>
   <string name="sd_dir_not_accessible">SD txarteleko datuen karpeta ez dago erabilgarri!</string>
@@ -1405,12 +1405,12 @@ Honek {1} MB behar ditu behin betiko.
     <string name="copying_osmand_files">OsmAnd fitxategiak kopiatzen…</string>
     <string name="app_mode_truck">Kamioia</string>
     <string name="guidance_preferences_descr">Nabigazio hobespenak</string>
-    <string name="routing_preferences_descr">Ibilbide hobespenak</string>
+    <string name="routing_preferences_descr">Nabigazioaren hobespenak</string>
     <string name="speech_rate_descr">TTS ahotsaren abiadura zehaztu</string>
     <string name="speech_rate">Ahots abiadura</string>
     
-    <string name="routing_attr_short_way_name">Ibilbide laburra</string>
-	<string name="routing_attr_short_way_description">Ibilbide laburra erabili</string>
+    
+	
 	<string name="rendering_attr_coloredBuildings_name">Koloreztatu eraikinak motaren arabera</string>
     <string name="osmo_invite">Gonbidatu…</string>
     <string name="osmo_leave_confirmation_msg">%1$s taldea utzi nahi duzu?</string>
@@ -1830,7 +1830,7 @@ Honek {1} MB behar ditu behin betiko.
     <string name="storage_directory">Mapen biltegiratzea</string>
     <string name="shared_string_copy">Kopiatu</string>
     <string name="filter_poi_hint">Iragazi izenez</string>
-    <string name="search_poi_category_hint">Idatzi denak bilatzeko</string>
+    <string name="search_poi_category_hint">Idatzi denetarik bilatzeko</string>
     <string name="shared_string_is_open">Ireki</string>
     <string name="agps_info">A-GPS informazioa</string>
     <string name="shared_string_manage">Kudeatu</string>
@@ -1949,7 +1949,7 @@ Honek {1} MB behar ditu behin betiko.
     <string name="fav_point_dublicate_message">Zehaztutako gogoko izena erabiltzen ari zara jada, bikoizketa saihesteko %1$s izena eman zaio.</string>
     <string name="routing_attr_avoid_stairs_name">Saihestu eskailerak</string>
     <string name="routing_attr_avoid_stairs_description">Saihestu eskailerak</string>
-    <string name="routing_attr_avoid_borders_name">Saihestu mugak gurutzatzea</string>
+    <string name="routing_attr_avoid_borders_name">Saihestu herrialde-mugak gurutzatzea</string>
     <string name="routing_attr_avoid_borders_description">Saihestu beste herrialdera muga gurutzatzea</string>
     <string name="access_shared_string_navigate_up">Nabigatu gorantz</string>
     <string name="osmo_group_information_desc">" - Taldea sortzean eman izen bat eta bete deskripzioa\n - Aplikaziotik mota sinplekoak sortzen dira, irakurri gehiago webgunean https://osmo.mobi/g/new
@@ -2021,9 +2021,9 @@ Orain, {2} MB daude eskuragarri.</string>
     <string name="traffic_warning_speed_camera">Radarra</string>
     <string name="coords_format">Koordenatuen formatua</string>
     <string name="coords_format_descr">Koordenatu geografikoen formatua</string>
-  	<string name="app_mode_bus">Bus</string>
+  	<string name="app_mode_bus">Autobus</string>
  	<string name="app_mode_train">Trena</string>
-    <string name="current_track">Uneko pista</string>
+    <string name="current_track">Uneko arrastroa</string>
     <string name="map_widget_battery">Bateriaren maila</string>
     <string name="change_markers_position">Aldatu markatzailearen posizioa</string>
     <string name="move_marker_bottom_sheet_title">Mugitu mapa markatzailearen posizioa aldatzeko</string>
@@ -2384,7 +2384,7 @@ Erregistro berria burutu nahi duzu?</string>
     <string name="lang_hu_formal">Hungariera (formala)</string>
     <string name="lang_kn">Kannadara</string>
     <string name="routing_attr_height_name">Altuera muga</string>
-    <string name="disable_complex_routing_descr">"Desgaitu 2 faseetako ibilbide kalkulua  kotxe bidezko nabigaziorako"</string>
+    <string name="disable_complex_routing_descr">Desgaitu 2 faseetako ibilbide kalkulua kotxe bidezko nabigaziorako</string>
     <string name="app_modes_choose_descr">Hautatu aplikazioan ikusgai egongo diren erabilera profilak</string>
     <string name="map_widget_map_rendering">Mapen errendatzea</string>
     <string name="local_osm_changes_delete_all_confirm">%1$d OSM aldaketa ezabatuko dituzu. Ziur zaude?</string>
@@ -2455,7 +2455,7 @@ mapak eta nabigazioa</string>
     <string name="free_downloads_used">Erabilitako doako deskargak</string>
     <string name="free_downloads_used_description">Erabilitako doako deskargak bistaratzen ditu</string>
 
-    <string name="application_dir_description">Aukeratu mapen fitxategiak non gorde nahi dituzun.</string>
+    <string name="application_dir_description">Aukeratu mapen fitxategiak eta bestelako datuak non gorde nahi dituzun.</string>
 
     <string name="enter_country_name">Sartu zure herrialdearen izena</string>
     <string name="new_version">Bertsio berria</string>
@@ -2540,4 +2540,35 @@ Site: http://osmand.net
 
 OsmAnd aplikazioarekin laguntza behar baduzu, jarri kontaktuan gure laguntza taldearekin: support@osmand.net. 
  "</string>
+    <string name="rendering_attr_hideOverground_name">Lur gaineko objektuak</string>
+
+    <string name="no_update_info_desc">Ez egiaztatu bertsio berrien inguruko edo OsmAndekin erlazioa duten deskontuen eguneraketarik</string>
+    <string name="no_update_info">Ez erakutsi eguneraketarik</string>
+    <string name="update_all_maps_now">Mapa guztiak eguneratu nahi dituzu orain?</string>
+    <string name="clear_tile_data">Garbitu tesela guztiak</string>
+    <string name="routing_attr_short_way_name">Bide erregai-efizientea</string>
+    <string name="routing_attr_short_way_description">Erabili bide erregai-efizientea (normalean laburragoa)</string>
+    <string name="replace_favorite_confirmation">Ziur %1$s gogokoa ordezkatu nahi duzula?</string>
+    <string name="shared_string_change">Aldatu</string>
+    <string name="get_started">Hasi</string>
+    <string name="skip_map_downloading">Saltatu mapen deskarga</string>
+    <string name="skip_map_downloading_desc">"Ez duzu lineaz kanpoko maparik instalatuta. Zerrendako mapa bat deskargatzea erabaki dezakezu edo geroago egin menuko  %1$s aukeran."</string>
+    <string name="search_another_country">Bilatu beste eskualde bat</string>
+    <string name="search_map">Mapa bilatzen…</string>
+    <string name="first_usage_wizard_desc">Baimendu OsmAnd aplikazioari zure kokalekua zehaztea eta eskualderako mapa egokia deskargatzea iradokitzea.</string>
+    <string name="location_not_found">Ez da kokapena aurkitu</string>
+    <string name="no_inet_connection">Ez dago internet konexiorik</string>
+    <string name="no_inet_connection_desc_map">Mapak deskargatzeko beharrezkoa da.</string>
+    <string name="search_location">Kokalekua bilatzen…</string>
+    <string name="storage_free_space">Espazio librea</string>
+    <string name="storage_place_description">OsmAnd datuen biltegiratzea (mapak, lorratzak, eta abar): %1$s.</string>
+    <string name="give_permission">Eman baimena</string>
+    <string name="allow_access_location">Eman kokapena atzitzeko baimena</string>
+    <string name="first_usage_greeting">Jaso jarraibideak eta aurkitu toki berriak internet konexiorik gabe</string>
+    <string name="search_my_location">Bilatu nire kokalekua</string>
+    <string name="get_for">Eskuratu %1$sren truke</string>
+    <string name="get_for_month">Eskuratu hilean %1$sen truke</string>
+    <string name="osm_live_banner_desc">Eskuratu mapen deskarga mugagabea eta eguneraketak hilean behin baino sarriago: orduro, egunero edo astero.</string>
+    <string name="osmand_plus_banner_desc">OsmAnd bertsio osoa mapen deskarga mugagabearekin eta hileroko mapen eguneraketa.</string>
+    <string name="si_mi_meters">Miliak/metroak</string>
     </resources>

@@ -179,11 +179,13 @@ public class AppInitializer implements IProgress {
 		return startPrefs.getInt(NUMBER_OF_STARTS, 1);
 	}
 
-	public long getFirstInstalled() {
+	public long getFirstInstalledDays() {
 		if(startPrefs == null) {
 			return 0;
 		}
-		return startPrefs.getLong(FIRST_INSTALLED, 0);
+		long nd = startPrefs.getLong(FIRST_INSTALLED, 0);
+		
+		return (System.currentTimeMillis() - nd) / (1000l * 24l * 60l * 60l);
 	}
 
 	public void resetFirstTimeRun() {
@@ -347,8 +349,8 @@ public class AppInitializer implements IProgress {
 		app.routingHelper = startupInit(new RoutingHelper(app), RoutingHelper.class);
 		app.resourceManager = startupInit(new ResourceManager(app), ResourceManager.class);
 		app.daynightHelper = startupInit(new DayNightHelper(app), DayNightHelper.class);
-		app.avoidSpecificRoads = startupInit(new AvoidSpecificRoads(app), AvoidSpecificRoads.class);
 		app.locationProvider = startupInit(new OsmAndLocationProvider(app), OsmAndLocationProvider.class);
+		app.avoidSpecificRoads = startupInit(new AvoidSpecificRoads(app), AvoidSpecificRoads.class);
 		app.savingTrackHelper = startupInit(new SavingTrackHelper(app), SavingTrackHelper.class);
 		app.notificationHelper = startupInit(new NotificationHelper(app), NotificationHelper.class);
 		app.liveMonitoringHelper = startupInit(new LiveMonitoringHelper(app), LiveMonitoringHelper.class);

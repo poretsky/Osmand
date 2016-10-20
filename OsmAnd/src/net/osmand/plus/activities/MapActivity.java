@@ -22,6 +22,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -36,7 +38,6 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import net.osmand.Location;
 import net.osmand.PlatformUtil;
 import net.osmand.StateChangedListener;
@@ -54,9 +55,9 @@ import net.osmand.plus.AppInitializer;
 import net.osmand.plus.AppInitializer.AppInitializeListener;
 import net.osmand.plus.AppInitializer.InitEvents;
 import net.osmand.plus.ApplicationMode;
-import net.osmand.plus.FirstUsageFragment;
 import net.osmand.plus.MapMarkersHelper.MapMarker;
 import net.osmand.plus.MapMarkersHelper.MapMarkerChangedListener;
+import net.osmand.plus.OnDismissDialogFragmentListener;
 import net.osmand.plus.OsmAndConstants;
 import net.osmand.plus.OsmandApplication;
 import net.osmand.plus.OsmandPlugin;
@@ -64,6 +65,7 @@ import net.osmand.plus.OsmandSettings;
 import net.osmand.plus.R;
 import net.osmand.plus.TargetPointsHelper;
 import net.osmand.plus.TargetPointsHelper.TargetPoint;
+import net.osmand.plus.Version;
 import net.osmand.plus.activities.search.SearchActivity;
 import net.osmand.plus.base.FailSafeFuntions;
 import net.osmand.plus.base.MapViewTrackingUtilities;
@@ -74,6 +76,8 @@ import net.osmand.plus.dialogs.WhatsNewDialogFragment;
 import net.osmand.plus.download.DownloadActivity;
 import net.osmand.plus.download.DownloadIndexesThread.DownloadEvents;
 import net.osmand.plus.download.ui.DataStoragePlaceDialogFragment;
+import net.osmand.plus.firstusage.FirstUsageWelcomeFragment;
+import net.osmand.plus.firstusage.FirstUsageWizardFragment;
 import net.osmand.plus.helpers.AndroidUiHelper;
 import net.osmand.plus.helpers.DiscountHelper;
 import net.osmand.plus.helpers.ExternalApiHelper;
@@ -99,7 +103,7 @@ import net.osmand.plus.views.OsmandMapLayer;
 import net.osmand.plus.views.OsmandMapTileView;
 import net.osmand.plus.views.corenative.NativeCoreContext;
 import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarController;
-import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarController.TopToolbarControllerType;
+import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarControllerType;
 import net.osmand.render.RenderingRulesStorage;
 import net.osmand.util.Algorithms;
 
@@ -111,17 +115,21 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MapActivity extends OsmandActionBarActivity implements DownloadEvents,
-		ActivityCompat.OnRequestPermissionsResultCallback, IRouteInformationListener,
-		MapMarkerChangedListener {
+		OnRequestPermissionsResultCallback, IRouteInformationListener,
+		MapMarkerChangedListener, OnDismissDialogFragmentListener {
 	public static final String INTENT_KEY_PARENT_MAP_ACTIVITY = "intent_parent_map_activity_key";
 
 	private static final int SHOW_POSITION_MSG_ID = OsmAndConstants.UI_HANDLER_MAP_VIEW + 1;
 	private static final int LONG_KEYPRESS_MSG_ID = OsmAndConstants.UI_HANDLER_MAP_VIEW + 2;
 	private static final int LONG_KEYPRESS_DELAY = 500;
+	private static final int ZOOM_LABEL_DISPLAY = 16;
+	private static final int MIN_ZOOM_LABEL_DISPLAY = 12;
 
 	private static final Log LOG = PlatformUtil.getLog(MapActivity.class);
 
@@ -171,7 +179,6 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 	private boolean permissionGranted;
 
 	private boolean mIsDestroyed = false;
-	private boolean topToolbarActive = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -272,12 +279,6 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 		}
 		mapView.refreshMap(true);
 
-		if (getMyApplication().getAppInitializer().isFirstTime() && FirstUsageFragment.SHOW) {
-			FirstUsageFragment.SHOW = false;
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.fragmentContainer, new FirstUsageFragment(),
-							FirstUsageFragment.TAG).commit();
-		}
 		mapActions.updateDrawerMenu();
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -620,6 +621,24 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 			}
 		}
 		enableDrawer();
+
+		if (((app.getAppInitializer().isFirstTime() && Version.isDeveloperVersion(app))
+				|| !app.getResourceManager().isAnyMapIstalled()) && FirstUsageWelcomeFragment.SHOW) {
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.fragmentContainer, new FirstUsageWelcomeFragment(),
+							FirstUsageWelcomeFragment.TAG).commitAllowingStateLoss();
+		}
+		FirstUsageWelcomeFragment.SHOW = false;
+	}
+
+	@Override
+	public void onDismissDialogFragment(DialogFragment dialogFragment) {
+		if (dialogFragment instanceof DataStoragePlaceDialogFragment) {
+			FirstUsageWizardFragment wizardFragment = getFirstUsageWizardFragment();
+			if (wizardFragment != null) {
+				wizardFragment.updateStorageView();
+			}
+		}
 	}
 
 	public boolean isActivityDestroyed() {
@@ -733,7 +752,6 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 			}
 			// remember if map should come back to isMapLinkedToLocation=true
 			mapViewTrackingUtilities.setMapLinkedToLocation(false);
-
 			if (mapLabelToShow != null && !mapLabelToShow.contextMenuDisabled()) {
 				mapContextMenu.setMapCenter(latLonToShow);
 				mapContextMenu.setMapPosition(mapView.getMapPosition());
@@ -748,7 +766,8 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 				tb.setPixelDimensions(tbw, tbh);
 
 				tb.setLatLonCenter(latLonToShow.getLatitude(), latLonToShow.getLongitude());
-				while (!tb.containsLatLon(prevCenter.getLatitude(), prevCenter.getLongitude()) && tb.getZoom() > 10) {
+				tb.setZoom(ZOOM_LABEL_DISPLAY);
+				while (!tb.containsLatLon(prevCenter.getLatitude(), prevCenter.getLongitude()) && tb.getZoom() > MIN_ZOOM_LABEL_DISPLAY) {
 					tb.setZoom(tb.getZoom() - 1);
 				}
 				//mapContextMenu.setMapZoom(settings.getMapZoomToShow());
@@ -1246,9 +1265,22 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 		}
 	}
 
+	public FirstUsageWizardFragment getFirstUsageWizardFragment() {
+		FirstUsageWizardFragment wizardFragment = (FirstUsageWizardFragment) getSupportFragmentManager().findFragmentByTag(FirstUsageWizardFragment.TAG);
+		if (wizardFragment != null && !wizardFragment.isDetached()) {
+			return wizardFragment;
+		} else {
+			return null;
+		}
+	}
+
 	// DownloadEvents
 	@Override
 	public void newDownloadIndexes() {
+		FirstUsageWizardFragment wizardFragment = getFirstUsageWizardFragment();
+		if (wizardFragment != null) {
+			wizardFragment.newDownloadIndexes();
+		}
 		WeakReference<MapContextMenuFragment> fragmentRef = getContextMenu().findMenuFragment();
 		if (fragmentRef != null) {
 			fragmentRef.get().newDownloadIndexes();
@@ -1258,6 +1290,10 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 
 	@Override
 	public void downloadInProgress() {
+		FirstUsageWizardFragment wizardFragment = getFirstUsageWizardFragment();
+		if (wizardFragment != null) {
+			wizardFragment.downloadInProgress();
+		}
 		WeakReference<MapContextMenuFragment> fragmentRef = getContextMenu().findMenuFragment();
 		if (fragmentRef != null) {
 			fragmentRef.get().downloadInProgress();
@@ -1266,6 +1302,10 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 
 	@Override
 	public void downloadHasFinished() {
+		FirstUsageWizardFragment wizardFragment = getFirstUsageWizardFragment();
+		if (wizardFragment != null) {
+			wizardFragment.downloadHasFinished();
+		}
 		WeakReference<MapContextMenuFragment> fragmentRef = getContextMenu().findMenuFragment();
 		if (fragmentRef != null) {
 			fragmentRef.get().downloadHasFinished();
@@ -1274,7 +1314,7 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 	}
 
 	@Override
-	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull final int[] grantResults) {
 		OsmandPlugin.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
 		MapControlsLayer mcl = mapView.getLayerByClass(MapControlsLayer.class);
@@ -1287,6 +1327,29 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 				&& Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permissions[0])) {
 			permissionAsked = true;
 			permissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+		} else if (requestCode == FirstUsageWizardFragment.FIRST_USAGE_REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION
+				&& grantResults.length > 0 && permissions.length > 0
+				&& Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permissions[0])) {
+
+			new Timer().schedule(new TimerTask() {
+				@Override
+				public void run() {
+					FirstUsageWizardFragment wizardFragment = getFirstUsageWizardFragment();
+					if (wizardFragment != null) {
+						wizardFragment.processStoragePermission(grantResults[0] == PackageManager.PERMISSION_GRANTED);
+					}
+				}
+			}, 1);
+		} else if (requestCode == FirstUsageWizardFragment.FIRST_USAGE_LOCATION_PERMISSION) {
+			new Timer().schedule(new TimerTask() {
+				@Override
+				public void run() {
+					FirstUsageWizardFragment wizardFragment = getFirstUsageWizardFragment();
+					if (wizardFragment != null) {
+						wizardFragment.processLocationPermission(grantResults[0] == PackageManager.PERMISSION_GRANTED);
+					}
+				}
+			}, 1);
 		}
 
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -1423,13 +1486,11 @@ public class MapActivity extends OsmandActionBarActivity implements DownloadEven
 	public void showTopToolbar(TopToolbarController controller) {
 		MapInfoLayer mapInfoLayer = getMapLayers().getMapInfoLayer();
 		mapInfoLayer.addTopToolbarController(controller);
-		this.topToolbarActive = mapInfoLayer.hasTopToolbar();
 	}
 
 	public void hideTopToolbar(TopToolbarController controller) {
 		MapInfoLayer mapInfoLayer = getMapLayers().getMapInfoLayer();
 		mapInfoLayer.removeTopToolbarController(controller);
-		this.topToolbarActive = mapInfoLayer.hasTopToolbar();
 	}
 
 	public enum ShowQuickSearchMode {

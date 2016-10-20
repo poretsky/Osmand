@@ -9,6 +9,41 @@
          3. All your modified/created strings are in the top of the file (to make easier find what\'s translated).
     PLEASE: Have a look at http://code.google.com/p/osmand/wiki/UIConsistency, it may really improve your and our work  :-)  Thx - Hardy
     -->
+    <string name="osm_live_payment_desc">Subscription fee will be charged each month. You can always cancel your subscription on Google Play.</string>
+    <string name="donation_to_osm">Donation to OpenStreetMap community</string>
+    <string name="donation_to_osm_desc">Part of your donation will be sent to OSM users who submit changes to the OpenStreetMaps. Cost of the subscription remains the same.</string>
+    <string name="osm_live_subscription_desc">Subscription enables hourly, daily, weekly updates and unlimited downloads for all maps around the world.</string>
+    <string name="get_it">Get it</string>
+    <string name="get_for">Get for %1$s</string>
+    <string name="get_for_month">Get for %1$s month</string>
+    <string name="osm_live_banner_desc">Get unlimited map downloads and updates more than once a month: hourly, daily or weekly.</string>
+    <string name="osmand_plus_banner_desc">Full version of OsmAnd with unlimited map downloads and monthly map updates.</string>
+    <string name="si_mi_meters">Miles/meters</string>
+    <string name="skip_map_downloading">Skip downloading maps</string>
+    <string name="skip_map_downloading_desc">You have no offline map installed. You may choose a map from the list or download maps later via Menu - %1$s.</string>
+    <string name="search_another_country">Select another region</string>
+    <string name="search_map">Searching map…</string>
+    <string name="first_usage_wizard_desc">Let OsmAnd determine your location and suggest maps to download for that region.</string>
+    <string name="location_not_found">Location not found</string>
+    <string name="no_inet_connection">No internet connection</string>
+    <string name="no_inet_connection_desc_map">Required to download maps.</string>
+    <string name="search_location">Searching location…</string>
+    <string name="storage_free_space">Free space</string>
+    <string name="storage_place_description">OsmAnd\'s data storage (for maps, tracks, etc.): %1$s.</string>
+    <string name="give_permission">Give permission</string>
+    <string name="allow_access_location">Allow access to location</string>
+    <string name="first_usage_greeting">Get directions and discover new places without internet connection</string>
+    <string name="search_my_location">Search my location</string>
+    <string name="no_update_info_desc">Don\'t check any updates about new versions, discounts related to OsmAnd</string>
+    <string name="no_update_info">Don\'t show updates</string>
+    <string name="update_all_maps_now">Do you want to update all maps now?</string>
+    <string name="clear_tile_data">Clear all tiles</string>
+    <string name="routing_attr_short_way_name">Fuel-efficient way</string>
+    <string name="routing_attr_short_way_description">Use fuel-efficient way (usually shorter)</string>
+    <string name="replace_favorite_confirmation">Are you sure you want to replace favorite %1$s?</string>
+    <string name="rendering_attr_hideOverground_name">Overground objects</string>
+    <string name="shared_string_change">Change</string>
+    <string name="get_started">Get started</string>
     <string name="route_stops_before">%1$s stops before</string>
     <string name="coords_search">Coordinates search</string>
     <string name="advanced_coords_search">Advanced coordinates search</string>
@@ -151,7 +186,7 @@
     <string name="osm_live_ask_for_purchase">Please purchase OSM Live subscription first</string>
 
     <string name="osm_live_header">This subscription enables hourly updates for all maps around the world.
-        Most of the income goes back to the OSM community and is paid for each OSM contribution. 
+        Part of the income goes back to the OSM community and is paid for each OSM contribution. 
         If you love OsmAnd and OSM and want to support them, this is the perfect way to do it.</string>
     
     <string name="select_map_marker">Select map marker</string>
@@ -970,8 +1005,8 @@
     <string name="route_info">Route information</string>
     <string name="routing_attr_prefer_motorway_name">Prefer motorways</string>
     <string name="routing_attr_prefer_motorway_description">Prefer motorways</string>
-    <string name="routing_attr_short_way_name">Shortest way</string>
-    <string name="routing_attr_short_way_description">Use shortest way</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Avoid toll roads</string>
     <string name="routing_attr_avoid_toll_description">Avoid toll roads</string>
     <string name="routing_attr_avoid_unpaved_name">Avoid unpaved roads</string>
@@ -1947,7 +1982,7 @@ If you need help with OsmAnd application, please contact our support team: suppo
     <string name="items_were_selected">{0} item(s) selected</string>
     <string name="filter_existing_indexes">Downloaded</string>
     <string name="fast_route_mode">Fastest route</string>
-    <string name="fast_route_mode_descr">Enable to calculate fastest route or disable for shortest route </string>
+    <string name="fast_route_mode_descr">Enable to calculate fastest route or disable for fuel-saving route </string>
     <string name="tiles_to_download_estimated_size">At zoom {0} download {1} tiles ({2} MB)</string>
     <string name="shared_string_download_map">Download map</string>
     <string name="select_max_zoom_preload_area">Select maximum zoom to preload</string>
@@ -2091,7 +2126,7 @@ If you need help with OsmAnd application, please contact our support team: suppo
     <string name="search_online_address">Online search</string>
     <string name="max_level_download_tile">Max. online zoom</string>
     <string name="max_level_download_tile_descr">Choose maximum zoom level to download for online map tiles</string>
-    <string name="route_general_information">Total distance %1$s, traveling time %2$d h %3$d m.</string>
+    <string name="route_general_information">Total distance %1$s, traveling time %2$d h %3$d min.</string>
     <string name="router_service_descr">Choose an online or offline navigation service</string>
     <string name="router_service">Navigation service</string>
     <string name="sd_dir_not_accessible">The data storage folder on the SD card is not accessible!</string>
@@ -2304,7 +2339,7 @@ If you need help with OsmAnd application, please contact our support team: suppo
     <string name="free_downloads_used">Free downloads used</string>
     <string name="free_downloads_used_description">Displays the used free downloads</string>
 
-    <string name="application_dir_description">Choose where you want to save map files.</string>
+    <string name="application_dir_description">Choose where you want to store maps and other data files.</string>
 
     <string name="enter_country_name">Enter country name</string>
     <string name="new_version">New version</string>

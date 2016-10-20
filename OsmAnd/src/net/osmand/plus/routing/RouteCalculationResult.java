@@ -255,7 +255,7 @@ public class RouteCalculationResult {
 					RouteSegmentResult next = list.get(lind);
 					info.setRef(next.getObject().getRef());
 					info.setStreetName(next.getObject().getName(ctx.getSettings().MAP_PREFERRED_LOCALE.get()));
-					info.setDestinationName(next.getObject().getDestinationName(ctx.getSettings().MAP_PREFERRED_LOCALE.get()));
+					info.setDestinationName(next.getObject().getDestinationName(ctx.getSettings().MAP_PREFERRED_LOCALE.get(), next.isForwardDirection()));
 				}
 
 		                String description = toString(turn, ctx) + " " + RoutingHelper.formatStreetName(info.getStreetName(),
@@ -302,7 +302,7 @@ public class RouteCalculationResult {
 		int[] listDistance = new int[locations.size()];
 		listDistance[locations.size() - 1] = 0;
 		for (int i = locations.size() - 1; i > 0; i--) {
-			listDistance[i - 1] = (int) locations.get(i - 1).distanceTo(locations.get(i));
+			listDistance[i - 1] = (int) Math.round(locations.get(i - 1).distanceTo(locations.get(i)));
 			listDistance[i - 1] += listDistance[i];
 		}
 		
@@ -499,6 +499,7 @@ public class RouteCalculationResult {
 					RouteDirectionInfo prev = directions.get(i - 1);
 					prev.setAverageSpeed((prev.distance + r.distance)
 							/ (prev.distance / prev.getAverageSpeed() + r.distance / r.getAverageSpeed()));
+					prev.setDistance(prev.distance + r.distance);
 					directions.remove(i);
 				} else {
 					i++;
@@ -512,7 +513,7 @@ public class RouteCalculationResult {
 	 * PREPARATION
 	 * Check points for duplicates (it is very bad for routing) - cloudmade could return it
 	 */
-	private void checkForDuplicatePoints(List<Location> locations, List<RouteDirectionInfo> directions) {
+	public static void checkForDuplicatePoints(List<Location> locations, List<RouteDirectionInfo> directions) {
 		// 
 		for (int i = 0; i < locations.size() - 1;) {
 			if (locations.get(i).distanceTo(locations.get(i + 1)) == 0) {
@@ -553,6 +554,7 @@ public class RouteCalculationResult {
 				// info.setDescriptionRoute(ctx.getString( R.string.route_head));//; //$NON-NLS-1$
 				directions.add(0, info);
 			}
+			checkForDuplicatePoints(locations, directions);
 		}
 		RouteDirectionInfo lastDirInf = directions.size() > 0 ? directions.get(directions.size() - 1) : null;
 		if((lastDirInf == null || lastDirInf.routePointOffset < locations.size() - 1) && locations.size() - 1 > 0) {
@@ -567,7 +569,8 @@ public class RouteCalculationResult {
 			if(Math.abs(diff) > 10) {
 				type = diff > 0 ? TurnType.KL : TurnType.KR; 
 			}
-			RouteDirectionInfo info = new RouteDirectionInfo(1, TurnType.valueOf(type, false));
+			// Wrong AvgSpeed for the last turn can cause significantly wrong total travel time if calculated route ends on a GPX route segment (then last turn is where GPX is joined again)
+			RouteDirectionInfo info = new RouteDirectionInfo(lastDirInf != null ? lastDirInf.getAverageSpeed() : 1, TurnType.valueOf(type, false));
 			info.distance = 0;
 			info.afterLeftTime = 0;
 			info.routePointOffset = locations.size() - 1;			
@@ -583,7 +586,7 @@ public class RouteCalculationResult {
 		if (listDistance.length > 0) {
 			listDistance[locations.size() - 1] = 0;
 			for (int i = locations.size() - 1; i > 0; i--) {
-				listDistance[i - 1] = (int) locations.get(i - 1).distanceTo(locations.get(i));
+				listDistance[i - 1] = (int) Math.round(locations.get(i - 1).distanceTo(locations.get(i)));
 				listDistance[i - 1] += listDistance[i];
 			}
 		}
@@ -725,7 +728,7 @@ public class RouteCalculationResult {
 	}
 	
 	public Location getLocationFromRouteDirection(RouteDirectionInfo i){
-		if(i.routePointOffset < locations.size()){
+		if(i != null && locations != null && i.routePointOffset < locations.size()){
 			return locations.get(i.routePointOffset);
 		}
 		return null;
@@ -814,9 +817,11 @@ public class RouteCalculationResult {
 				cacheAgreggatedDirections = new ArrayList<RouteDirectionInfo>();
 				RouteDirectionInfo p = null;
 				for(RouteDirectionInfo i : list) {
-					if(p == null || !i.getTurnType().isSkipToSpeak() ||
-							(!Algorithms.objectEquals(p.getRef(), i.getRef()) &&
-									!Algorithms.objectEquals(p.getStreetName(), i.getStreetName()))) {
+//					if(p == null || !i.getTurnType().isSkipToSpeak() ||
+//							(!Algorithms.objectEquals(p.getRef(), i.getRef()) &&
+//									!Algorithms.objectEquals(p.getStreetName(), i.getStreetName()))) {
+					if(p == null || 
+							(i.getTurnType() != null && !i.getTurnType().isSkipToSpeak())) {
 						p = new RouteDirectionInfo(i.getAverageSpeed(), i.getTurnType());
 						p.routePointOffset = i.routePointOffset;
 						p.routeEndPointOffset = i.routeEndPointOffset;

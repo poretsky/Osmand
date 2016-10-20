@@ -57,7 +57,7 @@
     <string name="local_index_upload_gpx_description">Wyślij ślady GPX do społeczności OSM. Pomoże to ulepszyć mapę.</string>
     <string name="local_index_items_uploaded">Wysłano %1$d z %2$d.</string>
     <string name="local_index_mi_upload_gpx">Wyślij do OSM</string>
-    <string name="show_more_map_detail">Pokaż więcej szczegółów na mapie</string>
+    <string name="show_more_map_detail">Wyświetl więcej szczegółów na mapie</string>
     <string name="show_more_map_detail_descr">Wyświetla więcej szczegółów na mapie wektorowej na niższych stopniach przybliżenia</string>
     <string name="favourites_delete_multiple_succesful">Usunięto ulubiony punkt.</string>
     <string name="favorite_delete_multiple">Usunąć %1$d ulubiony punkt i %2$d grupę ulubionych?</string>
@@ -66,14 +66,14 @@
     <string name="favorite_places_category">Miejsca</string>
     <string name="shared_string_others">Inne</string>
     <string name="shared_string_no_thanks">Niepotrzebne</string>
-    <string name="basemap_missing">Podstawowa mapa świata jest niezainstalowana. Pobierz plik World_basemap_x.obf.</string>
+    <string name="basemap_missing">Podstawowa mapa świata jest niezainstalowana. Pobierz plik World_basemap_x.obf aby mieć widok całego świata.</string>
     <string name="vector_data_missing">Brak danych (\'offline\') w urządzeniu na karcie SD. Proszę zwrócić uwagę pobierając ją, aby używać map w trybie offline.</string>
     <string name="local_index_gpx_info_show">\n\nProszę nacisnąć i przytrzymać, aby wyświetlić opcje</string>
 
 
     <string name="local_index_installed">Wersja lokalna</string>
     <string name="local_index_items_backuped">Zarchiwizowano %1$d z %2$d.</string>
-    <string name="local_index_items_deleted">Skasowano %1$d z %2$d.</string>
+    <string name="local_index_items_deleted">Usunięto %1$d z %2$d.</string>
     <string name="local_index_items_restored">Przywrócono %1$d z %2$d.</string>
     <string name="local_index_no_items_to_do">Brak elementów %1$s</string>
     <string name="local_index_action_do">Zostanie %1$s %2$s elementów. Kontynuować?</string>
@@ -248,7 +248,7 @@
     <string name="osmand_service">Tryb działania w tle</string>
     <string name="osmand_service_descr">Działanie aplikacji, gdy ekran jest wygaszony</string>
     <string name="fast_route_mode">Najszybsza trasa</string>
-    <string name="fast_route_mode_descr">"Wyznacza najszybszą trasę zamiast najkrótszej "</string>
+    <string name="fast_route_mode_descr">"Wyznacza najszybszą trasę zamiast paliwo-oszczędnej "</string>
     <string name="tiles_to_download_estimated_size">Do pobrania {1} kafelków na poziomie {0} ({2} MB)</string>
     <string name="shared_string_download_map">Pobierz mapę</string>
     <string name="select_max_zoom_preload_area">Proszę wybrać maksymalne przybliżenie do pobrania</string>
@@ -333,13 +333,13 @@
     <string name="background_service_int">Częstość wybudzania GPS</string>
     <string name="background_service_provider_descr">Wybierz dostawcę lokalizacji dla trybu działania w tle</string>
     <string name="background_service_provider">Sposób lokalizacji</string>
-    <string name="background_router_service_descr">Uruchom usługę śledzącą Twoją pozycję w tle podczas kiedy ekran jest wyłączony</string>
+    <string name="background_router_service_descr">Uruchamia usługę śledzenia położenia w tle podczas kiedy ekran jest wyłączony</string>
     <string name="background_router_service">Uruchom OsmAnd w tle</string>
     <string name="off_router_service_no_gps_available">Usługa nawigacji w tle wymaga wybrania dostawcy lokacji zanim zostanie włączona.</string>
     <string name="routing_settings_descr">Określa opcje nawigacji</string>
     <string name="routing_settings">Nawigacja</string>
     <string name="hide_poi_filter">Ukryj filtr</string>
-    <string name="show_poi_filter">Pokaż filtr</string>
+    <string name="show_poi_filter">Wyświetl filtr</string>
     <string name="search_poi_filter">Filtr</string>
     <string name="menu_mute_off">Wyłącz dźwięk</string>
     <string name="menu_mute_on">Włącz dźwięk</string>
@@ -387,7 +387,7 @@
     <string name="transport_route_distance">Długość rozkładu jazdy</string>
     <string name="transport">Transport publiczny</string>
     <string name="shared_string_ok">Zatwierdź</string>
-    <string name="show_transport_over_map_description">Pokaż na mapie przystanki transportu publicznego</string>
+    <string name="show_transport_over_map_description">Wyświetla na mapie przystanki transportu publicznego</string>
     <string name="show_transport_over_map">Pokaż przystanki</string>
     <string name="hello">Program do nawigacji satelitarnej OsmAnd</string>
     <string name="update_poi_success">Uaktualniono dane UM (wczytano {0})</string>
@@ -415,7 +415,7 @@
     <string name="search_online_address">Wyszukiwanie online</string>
     <string name="max_level_download_tile">Maks. zoom online</string>
     <string name="max_level_download_tile_descr">Wybierz maksymalny poziom przybliżenia mapy dla pobierania kafelków map online</string>
-    <string name="route_general_information">Całkowity dystans %1$s, czas podróży %2$d godz %3$d min.</string>
+    <string name="route_general_information">Całkowity dystans %1$s, czas podróży %2$d h %3$d min.</string>
     <string name="router_service_descr">Wybiera usługę nawigacyjną online lub offline</string>
     <string name="router_service">Usługa nawigacyjna</string>
     <string name="sd_dir_not_accessible">Katalog przechowywania danych na karcie SD jest niedostępny!</string>
@@ -701,7 +701,7 @@ Mapy kafelkowe można uzyskać bezpośrednio z zasobów sieciowych, jak i przygo
     <string name="left">W lewo</string>
     <string name="front_left">W lewo w przód</string>
     <string name="oclock">punkt</string>
-    <string name="towards">wobec</string>
+    <string name="towards">w kierunku</string>
     <string name="accuracy">Dokładność</string>
     <string name="altitude">Wysokość</string>
     <string name="no_info">Brak informacji</string>
@@ -741,7 +741,7 @@ Mapy kafelkowe można uzyskać bezpośrednio z zasobów sieciowych, jak i przygo
 
     <string name="free_version_message">Ta darmowa wersja OsmAnd jest ograniczona do %1$s pobrań i nie obsługuje artykułów Wikipedii w trybie offline.</string>
     <string name="free_version_title">Wersja darmowa</string>
-    <string name="poi_context_menu_showdescription">Pokaż opis UM</string>
+    <string name="poi_context_menu_showdescription">Wyświetla opis użytecznego miejsca</string>
     <string name="index_name_north_america">Ameryka Północna</string>
     <string name="index_name_us">Ameryka Północna - Stany Zjednoczone</string>
     <string name="index_name_central_america">Ameryka Środkowa</string>
@@ -948,7 +948,9 @@ OsmAnd jest otwarto-źródłowym programem do nawigacji z dostępem do szerokiej
     <string name="poi_filter_accomodation">Zakwaterowanie</string>
     <string name="poi_filter_restaurants">Restauracje</string>
     <string name="poi_filter_sightseeing">Zwiedzanie</string>
-    <string name="osmand_plus_long_description_1000_chars">" OsmAnd+ (OSM Automatyczne Nawigowanie Do celu) OsmAnd jest programem open source do nawigacji z dostępem do szerokiej gamy globalnych map OpenStreetMap (OSM). Wszystkie dane map (wektorowe lub kafelkowe) mogą być przechowywane na karcie pamięci telefonu w użycia offline. OsmAnd oferuje również funkcjonalność routingu w trybie offline i online zawierającą zapowiedzi głosowe. Niektóre z podstawowych funkcji: - Funkcjonalnowanie w trybie offline (przechowuje pobrane mapy wektorowych lub kafelkowe w pamięci urządzenia) - Dostępne kompaktowe mapy w trybie offlinie dla całego świata - Pobieranie map kraju lub regionu bezpośrednio z aplikacji - Możliwość nakładania kilku warstw map, takich jak GPX lub tras nawigacji, ciekawe miejsc, ulubionych, linii konturu, przystanków komunikacji miejskiej, dodatkowe mapy z konfigurowalną przejrzystością - Wyszukiwanie Offline adresów i miejsc (POI) - Wyznaczanie w trybie Offline tras na krótkich dystansach (eksperymentalne) - Tryby samochodowy, rowerowy i pieszy z: - opcjonalnym automatycznym przełączaniem widoku dzień/noc - opcjonalnie skalowanie map w zależności od prędkości - opcjonalne wyrównanie map według kompasu lub kierunku ruchu - opcjonalne wyświetlanie wskazywanie pasów, ograniczeń prędkości, nagrane i syntezowane komunikaty głosowe. "</string>
+    <string name="osmand_plus_long_description_1000_chars">"
+ OsmAnd+ (OSM Automatyczne Nawigowanie Do celu) OsmAnd jest programem open source do nawigacji z dostępem do szerokiej gamy globalnych map OpenStreetMap (OSM). Wszystkie dane map (wektorowe lub kafelkowe) mogą być przechowywane na karcie pamięci telefonu w użycia offline. OsmAnd oferuje również funkcjonalność routingu w trybie offline i online zawierającą zapowiedzi głosowe. Niektóre z podstawowych funkcji: - Funkcjonalnowanie w trybie offline (przechowuje pobrane mapy wektorowych lub kafelkowe w pamięci urządzenia) - Dostępne kompaktowe mapy w trybie offlinie dla całego świata - Pobieranie map kraju lub regionu bezpośrednio z aplikacji - Możliwość nakładania kilku warstw map, takich jak GPX lub tras nawigacji, ciekawe miejsc, ulubionych, linii konturu, przystanków komunikacji miejskiej, dodatkowe mapy z konfigurowalną przejrzystością - Wyszukiwanie Offline adresów i miejsc (POI) - Wyznaczanie w trybie Offline tras na średnich dystansach - Tryby samochodowy, rowerowy i pieszy z: - opcjonalnym automatycznym przełączaniem widoku dzień/noc - opcjonalnie skalowanie map w zależności od prędkości - opcjonalne wyrównanie map według kompasu lub kierunku ruchu - opcjonalne wyświetlanie wskazywanie pasów, ograniczeń prędkości, nagrane i syntezowane komunikaty głosowe.
+ "</string>
     <string name="select_navigation_mode">Wybierz tryb poruszania się</string>
 
 
@@ -1304,8 +1306,8 @@ Afganistan, Afryka Południowa, Albania, Algieria, Andora, Angola, Anguilla, Ant
     <string name="shared_string_remember_my_choice">Zapamiętanie wyboru</string>
 
     <string name="animate_routing_route_not_calculated">Proszę najpierw przeliczyć trasę</string>
-    <string name="animate_routing_route">"Zasymuluj używając wyznaczonej trasy "</string>
-    <string name="animate_routing_gpx">Pokaż używając śladu GPX</string>
+    <string name="animate_routing_route">"Użycie wyznaczonej trasy "</string>
+    <string name="animate_routing_gpx">Użycie śladu GPX</string>
 
     <string name="local_osm_changes_delete_all_confirm">Usunąć %1$d zmian OSM?</string>
     <string name="shared_string_delete_all">Usuń wszystko</string>
@@ -1339,8 +1341,8 @@ Afganistan, Afryka Południowa, Albania, Algieria, Andora, Angola, Anguilla, Ant
 \n Uwaga 2: W nowej lokalizacji nie będzie możliwe współdzielenie tych samych plików pomiędzy OsmAnd i OsmAnd+.</string>
     <string name="routing_attr_prefer_motorway_name">Preferowanie autostrad</string>
     <string name="routing_attr_prefer_motorway_description">Preferowanie autostrad</string>
-    <string name="routing_attr_short_way_name">Najkrótsza droga</string>
-    <string name="routing_attr_short_way_description">Używa najkrótszej drogi</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Omijanie płatnych dróg</string>
     <string name="routing_attr_avoid_toll_description">Omijanie płatnych dróg</string>
     <string name="routing_attr_avoid_unpaved_name">Omijanie nieutwardzonych dróg</string>
@@ -1752,7 +1754,7 @@ Nagrane ślady można udostępnić znajomym lub wykorzystać na rzecz rowoju map
     <string name="download_tab_downloads">Do pobrania</string>
     <string name="download_tab_updates">Aktualizacje</string>
     <string name="rendering_attr_roadStyle_name">Styl dróg</string>
-    <string name="rendering_value_default_name">Domyślna</string>
+    <string name="rendering_value_default_name">Domyślnie</string>
     <string name="rendering_value_orange_name">Pomarańczowy</string>
     <string name="rendering_value_germanRoadAtlas_name">Niemiecki atlas drogowy</string>
     <string name="rendering_value_americanRoadAtlas_name">Amerykański atlas drogowy</string>
@@ -1914,7 +1916,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="storage_directory_external">Pamięć zewnętrzna</string>
     <string name="storage_directory_default">Pamięć wewnętrzna</string>
     <string name="shared_string_copy">Skopiuj</string>
-    <string name="rendering_value__name">Domyślna</string>
+    <string name="rendering_value__name">Domyślnie</string>
     <string name="rendering_value_highContrastRoads_name">Wysoki kontrast dróg</string>
     <string name="index_name_netherlands">Europa - Holandia</string>
     <string name="storage_directory_manual">Określony ręcznie</string>
@@ -1932,7 +1934,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="shared_string_logoff">Wyloguj się</string>
     <string name="osmo_share_my_location">Udostępnianie położenia</string>
     <string name="rendering_value_walkingRoutesOSMC_name">Kolorowanie wg zasad OSMC</string>
-    <string name="rendering_value_disabled_name">Wyłączony</string>
+    <string name="rendering_value_disabled_name">Wyłączenie</string>
     <string name="rendering_value_walkingRoutesScopeOSMC_name">Kolorowanie wg przeznaczenia trasy</string>
     <string name="osm_edit_context_menu_delete">Usuń edycje OSM</string>
     <string name="lang_th">Tajski</string>
@@ -1949,7 +1951,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="read_full_article">Czytaj cały artykuł (online)</string>
     <string name="shared_string_wikipedia">Wikipedia</string>
     <string name="local_indexes_cat_wiki">Wikipedia</string>
-    <string name="shared_string_show_details">Pokaż szczegóły</string>
+    <string name="shared_string_show_details">Wyświetl szczegóły</string>
     <string name="local_recordings_delete_all_confirm">Usunąć %1$d notatek?</string>
     <string name="download_wikipedia_maps">Wikipedia</string>
     <string name="light_theme">Jasny</string>
@@ -1971,7 +1973,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="lang_os">Osetyjski</string>
     <string name="lang_es_ar">Hiszpański (Argentyna)</string>
     <string name="lang_nb">Norweski (Bokmål)</string>
-    <string name="disable_recording_once_app_killed">Zapobiegaj automatycznemu rejestrowaniu</string>
+    <string name="disable_recording_once_app_killed">Zapobieganie automatycznemu rejestrowaniu</string>
     <string name="lang_te">Telugu (Indyjski)</string>
     <string name="lang_ceb">Cebuano</string>
     <string name="lang_new">Newarski</string>
@@ -2013,8 +2015,8 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="error_message_pattern">Błąd: {0}</string>
     <string name="av_locations">Położenia</string>
     <string name="plugin_settings">Wtyczki</string>
-    <string name="routing_attr_avoid_shuttle_train_name">Omijanie pociągów wahadłowych</string>
-    <string name="routing_attr_avoid_shuttle_train_description">Omijanie pociągów wahadłowych transportujących auta</string>
+    <string name="routing_attr_avoid_shuttle_train_name">Omijanie miejsc spowolnienia ruchu</string>
+    <string name="routing_attr_avoid_shuttle_train_description">Omijanie miejsc spowolnienia ruchu</string>
     <string name="traffic_warning_hazard">Zagrożenie</string>
     <string name="we_really_care_about_your_opinion">Zależy nam na opinii na temat programu i jest dla nas ważne, aby ją poznać.</string>
     <string name="dahboard_options_dialog_title">Opcje kokpitu</string>
@@ -2097,7 +2099,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="downloads">Pobierz</string>
     <string name="favorite_category_add_new_title">Dodaj nową kategorię</string>
     <string name="favorite_category_name">Nazwa kategorii</string>
-    <string name="favorite_category_dublicate_message">Określona nazwa kategorii już istnieje. Proszę wybrać inną.</string>
+    <string name="favorite_category_dublicate_message">Określona nazwa kategorii już istnieje. Proszę użyć innej nazwy.</string>
     <string name="share_menu_location">Udostępnij położenie</string>
     <string name="shared_string_send">Wyślij</string>
     <string name="file_size_in_mb">%.1f MB</string>
@@ -2108,7 +2110,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="shared_string_qr_code">Kod QR</string>
     <string name="enter_country_name">Proszę wybrać kraj</string>
     <string name="map_downloaded_descr">Pobrano mapę %1$s. Proszę powrócić do mapy, aby rozpocząć jej używanie.</string>
-    <string name="world_map_download_descr">Brak podstawowej mapy świata (pokrywającej cały glob w małych przybliżeniach) lub jest ona przestarzała. Proszę rozważyć pobranie mapy podstawowej, aby uzyskać kompletne środowisko.</string>
+    <string name="world_map_download_descr">Brak podstawowej mapy świata (pokrywającej cały glob w małych przybliżeniach) lub jest ona przestarzała. Proszę rozważyć pobranie mapy podstawowej, aby mieć widok na cały świat.</string>
     <string name="map_downloaded">Pobrano mapę</string>
     <string name="go_to_map">Powróć do mapy</string>
     <string name="simulate_initial_startup">Zasymuluj pierwsze uruchomienie programu</string>
@@ -2254,7 +2256,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="n_items_removed">pozycji usuniętych</string>
     <string name="shared_string_undo_all">COFNIJ WSZYSTKO</string>
     <string name="shared_string_type">Typ</string>
-    <string name="starting_point">Położenie początkowe</string>
+    <string name="starting_point">Początek trasy</string>
     <string name="rec_split_storage_size">Wielkość pamięci</string>
     <string name="live_updates">Bieżące aktualizacje</string>
     <string name="hourly">Co godzinę</string>
@@ -2308,7 +2310,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="add_time_span">Dodaj przedział czasowy</string>
     <string name="road_blocked">Droga zablokowana</string>
     <string name="switch_start_finish">Odwróć kolejność</string>
-    <string name="rendering_attr_hideIcons_name">Ikony Użytecznych Miejsc</string>
+    <string name="rendering_attr_hideIcons_name">Ikony użytecznych miejsc</string>
     <string name="rec_split">Podział rejestratora</string>
     <string name="rec_split_title">Użyj podziału rejestratora</string>
     <string name="rec_split_desc">Przenieś pliki gdy wykorzystana przestrzeń przekracza rozmiar pamięci nośnika</string>
@@ -2370,7 +2372,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="osm_live_ask_for_purchase">Należy najpierw zakupić subskrypcję OSM Live</string>
 
     <string name="osm_live_header">Ten abonament umożliwia cogodzinną aktualizację dla map z całego świata.
- Większa część dochodów powraca do społeczności OSM i jest wypłacana za każdy wkład OSM.
+ Większa część dochodów powraca do społeczności OSM i jest wypłacana za każdą edycję OSM.
  Jeśli lubisz OsmAnd i OSM i chcesz je wspierać, jest to doskonały sposób, aby to zrobić.</string>
     
     <string name="file_name_containes_illegal_char">Nazwa pliku zawiera niedozwolony znak</string>
@@ -2449,7 +2451,7 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
  • Ulepszona nawigacja - podpowiedzi głosowe i wskazówki dot. pasów ruchu
 
 
- • Ulepszenia w warstwie transportu publicznego
+ • Ulepszenia w warstwie transportu publicznego i wyświetlanie kursów
 
 
  • Dodano nowe tłumaczenia i wsparcie dla dialektów
@@ -2466,4 +2468,15 @@ Włączenie tego widoku zmienia styl mapy na „Zima i narty”, ukazujący tere
     <string name="coords_search">Wyszukiwanie współrzędnych</string>
     <string name="advanced_coords_search">Zaawansowane wyszukiwanie współrzędnych</string>
     <string name="route_stops_before">Za %1$s przystanków</string>
+    <string name="rendering_attr_hideOverground_name">Nadziemne obiekty</string>
+
+    <string name="shared_string_change">Zmień</string>
+    <string name="get_started">Rozpocznij</string>
+    <string name="routing_attr_short_way_name">Paliwo-oszczędna trasa</string>
+    <string name="routing_attr_short_way_description">Oblicza paliwo-oszczędną trasę (zwykle najkrótszą)</string>
+    <string name="replace_favorite_confirmation">Czy chcesz zastąpić ulubiony punkt %1$s?</string>
+    <string name="skip_map_downloading">Przejdź Pobieranie map</string>
+    <string name="first_usage_greeting">Wskazówki dojazdu i odkrywać nowe miejsca bez połączenia z Internetem</string>
+    <string name="search_another_country">Wybierz inny region</string>
+    <string name="skip_map_downloading_desc">Trzeba nie zainstalowano map w trybie offline. Można wybrać mapę z listy lub pobrać mapy później poprzez menu - %1$s.</string>
     </resources>

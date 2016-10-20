@@ -1224,8 +1224,8 @@ Mémoire proportionnelle %4$s Mo (limite Android %5$s Mo, Dalvik %6$s Mo).</stri
     <string name="app_mode_truck">Camion</string>
     <string name="routing_attr_prefer_motorway_name">Privilégier les autoroutes</string>
     <string name="routing_attr_prefer_motorway_description">Privilégier les autoroutes</string>
-    <string name="routing_attr_short_way_name">Itinéraire le plus court</string>
-    <string name="routing_attr_short_way_description">Emprunter l\'itinéraire le plus court</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Éviter les routes à péage</string>
     <string name="routing_attr_avoid_toll_description">Éviter les péages</string>
     <string name="routing_attr_avoid_unpaved_name">Éviter les voies non revêtues</string>
@@ -2255,8 +2255,59 @@ Actuellement {2} Mo sont disponibles.</string>
     <string name="back_to_search">Retour à la recherche</string>
     <string name="confirmation_to_delete_history_items">Souhaitez-vous supprimer les éléments d\'historique sélectionnés ?</string>
     <string name="show_something_on_map">Afficher %1$s sur la carte</string>
-    <string name="route_stops_before">%1$s arrêts précédents</string>
+    <string name="route_stops_before">%1$s arrêts avant</string>
     <string name="coords_search">Recherche de coordonnées</string>
     <string name="advanced_coords_search">Recherche avancée de coordonnées</string>
     <string name="dist_away_from_my_location">Recherche %1$s autour</string>
+    <string name="release_2_4">"
+ • Nouveau moteur de recherche performant à texte libre
+
+
+ • Intégration avec les systèmes audio voiture et haut-parleur par Bluetooth
+
+
+ • Instructions de guidage, annonces vocales, et indications de voies directionnelles améliorées, 
+
+
+ • Amélioration du calque de transport en commun et affichage de l\'itinéraire
+
+
+ • Ajout de paramètres locaux et support de paramètres régionaux
+
+
+ • Autres améliorations et corrections de bogues
+
+
+ Et plus encore…
+ "</string>
+    <string name="update_all_maps_now">Souhaitez-vous mettre à jour toutes les cartes maintenant ?</string>
+    <string name="clear_tile_data">Supprimer toutes les tuiles</string>
+    <string name="replace_favorite_confirmation">Êtes-vous sûr de vouloir remplacer le favori %1$s ?</string>
+    <string name="shared_string_change">Modifier</string>
+    <string name="get_started">Démarrer</string>
+    <string name="routing_attr_short_way_name">Trajet économe en carburant</string>
+    <string name="routing_attr_short_way_description">Suivre un trajet économe en carburant (trajet habituellement plus court)</string>
+    <string name="no_update_info_desc">Ne pas vérifier les mises à jour ni les offres promotionnelles OsmAnd</string>
+    <string name="no_update_info">Ne pas afficher les mises à jour</string>
+    <string name="skip_map_downloading">Ignorer le téléchargement des cartes</string>
+    <string name="skip_map_downloading_desc">"Aucune carte hors-ligne n\'est installée. Vous pouvez  sélectionner un carte dans la liste ou télécharger une carte ultérieurement depuis le menu - %1$s."</string>
+    <string name="search_another_country">Rechercher un autre pays</string>
+    <string name="search_map">Recherche de la carte…</string>
+    <string name="first_usage_wizard_desc">Laissez OsmAnd déterminer votre position et vous suggérer les cartes de la région.</string>
+    <string name="location_not_found">Position non trouvée</string>
+    <string name="no_inet_connection">Aucune connexion Internet</string>
+    <string name="no_inet_connection_desc_map">Nécessaire pour télécharger des cartes.</string>
+    <string name="search_location">Recherche de la position…</string>
+    <string name="storage_free_space">Espace disponible</string>
+    <string name="give_permission">Autoriser</string>
+    <string name="allow_access_location">Autoriser l\'accès à la position</string>
+    <string name="search_my_location">Rechercher ma position</string>
+    <string name="storage_place_description">Espace utilisé par OsmAnd (pour les cartes, les traces, etc.) : %1$s.</string>
+    <string name="first_usage_greeting">Être guidé, découvrir de nouveaux lieux sans connexion Internet</string>
+    <string name="get_for">Obtenir pour %1$s</string>
+    <string name="get_for_month">Obtenir pour %1$s mois</string>
+    <string name="si_mi_meters">Miles / Mètres</string>
+    <string name="get_it">Obtenir</string>
+    <string name="osm_live_banner_desc">Obtenez le téléchargement illimité de cartes et des mises à jour plus régulières (chaque semaine, chaque jour, chaque heure; au lieu de chaque mois).</string>
+    <string name="osmand_plus_banner_desc">Version OsmAnd complète avec téléchargement illimité des cartes et mises à jour mensuelles des cartes.</string>
     </resources>

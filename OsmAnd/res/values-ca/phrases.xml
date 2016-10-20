@@ -51,7 +51,7 @@
 	<string name="poi_hifi">Equips d\'alta fidelitat</string>
 	<string name="poi_hunting">Equipament de caça</string>
 	<string name="poi_mobile_phone">Botiga de telèfons mòbils</string>
-	<string name="poi_motorcycle">Botiga de motocicletes</string>
+	<string name="poi_motorcycle">Botiga de motos</string>
 	<string name="poi_musical_instrument">Instruments musicals</string>
 	<string name="poi_newsagent">Premsa</string>
 	<string name="poi_second_hand">Botiga de segona mà</string>
@@ -79,7 +79,7 @@
 	<string name="poi_pet">Botiga d\'animals</string>
 	<string name="poi_radiotechnics">Radiotècnia</string>
 	<string name="poi_sports">Material esportiu</string>
-	<string name="poi_ticket">Taquilla</string>
+	<string name="poi_ticket">Despatx de bitllets</string>
 	<string name="poi_seamark_harbour">Port</string>
 	<string name="poi_fog_signal">Botzina de boira</string>
 	<string name="poi_cosmetics">Cosmètica</string>
@@ -121,8 +121,8 @@
 	<string name="poi_public_transport_platform">Parada de transport públic</string>
 	<string name="poi_bus_station">Estació d\'autobusos</string>
 	<string name="poi_railway_station">Estació de tren</string>
-	<string name="poi_railway_platform">Andana</string>
-	<string name="poi_halt">Parada de tren (obsolet)</string>
+	<string name="poi_railway_platform">Andana de tren</string>
+	<string name="poi_halt">Parada de tren</string>
 	<string name="poi_subway_entrance">Entrada de metro</string>
 	<string name="poi_subway_station">Estació de metro</string>
 	<string name="poi_taxi">Parada de taxis</string>
@@ -138,7 +138,7 @@
 
 	<string name="poi_houseware">Complements per la llar</string>
 	<string name="poi_stationery">Papereria</string>
-	<string name="poi_tableware">Botiga de vaixelles</string>
+	<string name="poi_tableware">Parament de la taula</string>
 	<string name="poi_toys">Botiga de joguines</string>
 	<string name="poi_trade">Materials de construcció</string>
 	<string name="poi_variety_store">Botiga de descompte</string>
@@ -305,7 +305,7 @@
 	<string name="poi_bedding">Matalasseria</string>
 	<string name="poi_gas">Gas liquat</string>
 	<string name="poi_department_store">Gran magatzem</string>
-	<string name="poi_car_parts">Recanvis d\'automòbil</string>
+	<string name="poi_car_parts">Recanvis de cotxe</string>
 	<string name="poi_fire_water_pond">Punt d\'aigua per incendis</string>
 	<string name="poi_grit_bin">Reserva de sal</string>
 	<string name="poi_emergency_access_point">Punt d\'accés d\'emergència</string>
@@ -477,7 +477,7 @@
 	<string name="poi_bag">Maletes i bosses</string>
 	<string name="poi_outdoor">Botiga d\'esports a l\'aire lliure</string>
 	<string name="poi_ship_chandler">Accessoris per a vaixells</string>
-	<string name="poi_car">Botiga d\'automòbils</string>
+	<string name="poi_car">Venda de cotxes</string>
 	<string name="poi_atv">Botiga de quads</string>
 	<string name="poi_allotments">Horts familiars</string>
 	<string name="poi_forest">Bosc amb manteniment humà</string>
@@ -521,7 +521,7 @@
 	<string name="poi_historic_monastery">Monestir històric</string>
 	<string name="poi_wayside_cross">Creu de terme</string>
 	<string name="poi_wayside_shrine">Peto d\'ànimes</string>
-	<string name="poi_information">Informació turística</string>
+	<string name="poi_information">Informació</string>
 	<string name="poi_clock">Rellotge</string>
 	<string name="poi_travel_agent">Agència de viatges</string>
 	<string name="poi_viewpoint">Mirador</string>
@@ -596,7 +596,7 @@
 	<string name="poi_arts_centre">Centre artístic</string>
 	<string name="poi_casino">Casino</string>
 	<string name="poi_community_centre">Centre comunitari</string>
-	<string name="poi_social_centre">Entitat social</string>
+	<string name="poi_social_centre">Centre social</string>
 	<string name="poi_beach_resort">Centre de vacances costaner</string>
 	<string name="poi_dog_park">Parc per gossos</string>
 	<string name="poi_leisure_fishing">Àrea de pesca</string>
@@ -2252,4 +2252,25 @@
 	<string name="poi_home_visit_yes">Visites a domicili: sí</string>
 	<string name="poi_home_visit_no">Visites a domicili: no</string>
 
+	<string name="poi_traffic_calming_island">Illot de tràfic</string>
+	<string name="poi_min_age">Edat mínima</string>
+
+	<string name="poi_organic_yes">Menjar orgànic: sí</string>
+	<string name="poi_organic_no">Menjar orgànic: no</string>
+	<string name="poi_organic_only">Només menjar orgànic</string>
+
+	<string name="poi_diplomatic_consulate">Consolat</string>
+	<string name="poi_diplomatic_consulate_general">Consolat general</string>
+	<string name="poi_diplomatic_honorary_consulate">Consolat honorari</string>
+	<string name="poi_diplomatic_permanent_mission">Missió permanent</string>
+	<string name="poi_diplomatic_delegation">Delegació</string>
+	<string name="poi_diplomatic_ambassadors_residence">Residència de l\'ambaixador</string>
+	<string name="poi_diplomatic_high_commission">Alt Comissionat</string>
+
+	<string name="poi_water_tank">Dipòsit d\'aigua</string>
+
+	<string name="poi_length">Llargada</string>
+
+<string name="poi_seamark_dyke">Indicació de dic</string>
+	<string name="poi_content_oil">Contingut: petroli</string>
 	</resources>

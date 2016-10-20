@@ -580,7 +580,7 @@
 	<string name="poi_podiatrist">Piedisto</string>
 	<string name="poi_psychotherapist">Psikoterapiisto</string>
 	<string name="poi_healthcare_rehabilitation">Rekapabligo</string>
-	<string name="poi_speech_therapist">Parolkuracisto</string>
+	<string name="poi_speech_therapist">Ortofonisto</string>
 	<string name="poi_healthcare_yes">Medicinejo</string>
 	<string name="poi_paediatrics">Infanmedicino</string>
 
@@ -1594,13 +1594,13 @@
 	<string name="poi_delivery_no">Sen hejmliverado</string>
 	<string name="poi_delivery_only">Nur hejmliverado</string>
 
-	<string name="poi_outdoor_seating_yes">Eksteraj seĝoj</string>
-	<string name="poi_outdoor_seating_no">Sen eksteraj seĝoj</string>
-	<string name="poi_outdoor_seating_terrace">Eksteraj seĝoj: altano</string>
-	<string name="poi_outdoor_seating_sidewalk">Eksteraj seĝoj: ĉe irejo</string>
-	<string name="poi_outdoor_seating_pedestrian_zone">Eksteraj seĝoj: ĉe irejego</string>
-	<string name="poi_outdoor_seating_garden">Eksteraj seĝoj: ĝardeno</string>
-	<string name="poi_outdoor_seating_patio">Eksteraj seĝoj: korto</string>
+	<string name="poi_outdoor_seating_yes">Seĝoj ekstere</string>
+	<string name="poi_outdoor_seating_no">Neniuj seĝoj ekstere</string>
+	<string name="poi_outdoor_seating_terrace">Seĝoj ekstere: en altano</string>
+	<string name="poi_outdoor_seating_sidewalk">Seĝoj ekstere: sur trotuaro</string>
+	<string name="poi_outdoor_seating_pedestrian_zone">Seĝoj ekstere: sur irejo</string>
+	<string name="poi_outdoor_seating_garden">Seĝoj ekstere: en ĝardeno</string>
+	<string name="poi_outdoor_seating_patio">Seĝoj ekstere: en korto</string>
 
 	<string name="poi_cocktails_yes">Kokteloj</string>
 
@@ -2957,4 +2957,54 @@
 	<string name="poi_health_specialty_osteopathy_yes">Specialisto: osteopatiisto (alternativa medicino)</string>
 	<string name="poi_health_specialty_anaesthetics_yes">Specialisto: sensentigisto (anestezologiisto)</string>
 	<string name="poi_health_specialty_pulmonology_yes">Specialisto: pulmisto (pneŭmonologiisto)</string>
+	<string name="poi_health_specialty_dental_oral_maxillo_facial_surgery_yes">Specialisto: makzelvizaĝa ĥirurgiisto</string>
+	<string name="poi_health_specialty_maternity_yes">Specialisto: gravedecisto</string>
+	<string name="poi_health_specialty_emergency_medicine_yes">Specialisto: isto de post-akcidenta kaj vivsava medicino</string>
+	<string name="poi_health_specialty_emergency_medicine_no">Sen specialisto pri post-akcidenta kaj vivsava medicino</string>
+	<string name="poi_health_specialty_plastic_surgery_yes">Specialisto: plastia ĥirurgiisto</string>
+	<string name="poi_health_specialty_orthodontics_yes">Specialisto: dent-ĝustigisto (ortodenciisto)</string>
+	<string name="poi_health_specialty_physiotherapy_yes">Specialisto: fizioterapiisto</string>
+	<string name="poi_health_specialty_biochemistry_yes">Specialisto: bioĥemiisto</string>
+	<string name="poi_health_specialty_occupational_yes">Specialisto: okup-terapiisto</string>
+	<string name="poi_health_specialty_child_psychiatry_yes">Specialisto: psikiatriisto de infanoj</string>
+	<string name="poi_health_specialty_physiatry_yes">Specialisto: isto de fizika medicino kaj rekapabligo (rehabilito)</string>
+	<string name="poi_health_specialty_maxillofacial_surgery_yes">Specialisto: makzelvizaĝa ĥirurgiisto</string>
+	<string name="poi_health_specialty_diagnostic_radiology_yes">Specialisto: isto de medicina bildigo</string>
+	<string name="poi_health_specialty_gastroenterology_yes">Specialisto: isto de digesta sistemo (gastroenterologiisto)</string>
+	<string name="poi_health_specialty_dentistry_yes">Specialisto: dentisto</string>
+	<string name="poi_health_specialty_nephrology_yes">Specialisto: ren-kuracisto (nefrologiisto)</string>
+	<string name="poi_health_specialty_neurosurgery_yes">Specialisto: nervo-ĥirurgiisto</string>
+	<string name="poi_health_specialty_neuropsychiatry_yes">Specialisto: nervo-psikiatriisto (neŭropsikiatriisto)</string>
+	<string name="poi_health_specialty_endocrinology_yes">Specialisto: hormon-kuracisto (endokrinologiisto)</string>
+	<string name="poi_health_specialty_nuclear_medicine_yes">Specialisto: per-radioaktivizotop-kuracisto (nuklea medicino)</string>
+	<string name="poi_health_specialty_pathology_yes">Specialisto: anatomo-patologiisto</string>
+	<string name="poi_health_specialty_oncology_yes">Specialisto: tumor-medicinisto (onkologiisto)</string>
+	<string name="poi_health_specialty_tropical_medicine_yes">Specialisto: isto de tropika medicino</string>
+	<string name="poi_health_specialty_tropical_medicine_no">Sen specialisto de tropika medicino</string>
+	<string name="poi_health_specialty_obstetrics_postnatal_yes">Specialisto: isto de post-naskaj virinoj (obstetriko)</string>
+	<string name="poi_health_specialty_obstetrics_postnatal_no">Sen specialisto de post-naskaj virinoj</string>
+	<string name="poi_health_specialty_obstetrics_antenatal_yes">Specialisto: isto de gravedeco kaj akuŝo (obstetriko)</string>
+	<string name="poi_health_specialty_obstetrics_antenatal_no">Sen specialisto de gravedeco kaj akuŝo</string>
+	<string name="poi_health_specialty_social_paediatrics_yes">Specialisto: soci-infan-kuracisto (pediatrio socia)</string>
+	<string name="poi_health_specialty_social_paediatrics_no">Sen specialisto de socia pediatrio</string>
+	<string name="poi_health_specialty_obstetrics_caesarean_section_yes">Specialisto: isto de operacio cezara (obstetriko)</string>
+	<string name="poi_health_specialty_obstetrics_caesarean_section_no">Sen specialisto de operacio cezara</string>
+	<string name="poi_health_specialty_addiction_medicine_yes">Specialisto: drog-dependenc-kuracisto</string>
+	<string name="poi_health_specialty_optometry_yes">Specialisto: okulisto (optometriisto)</string>
+	<string name="poi_health_specialty_clinical_pathology_yes">Specialisto: isto laboratoria medicino (klinik-patologio)</string>
+	<string name="poi_health_specialty_speech_therapy_yes">Specialisto: ortofonisto (logopediisto)</string>
+	<string name="poi_health_specialty_manual_therapy_yes">Specialisto: per-man-terapiisto</string>
+	<string name="poi_health_specialty_sports_medicine_yes">Specialisto: isto de sporta medicino</string>
+	<string name="poi_health_specialty_podology_yes">Specialisto: piedisto</string>
+	<string name="poi_health_specialty_adult_psychiatry_yes">Specialisto: psikiatriisto de plenkreskuloj</string>
+	<string name="poi_health_specialty_acupuncture_yes">Specialisto: akupunkturisto</string>
+	<string name="poi_health_specialty_homeopathy_yes">Specialisto: homeopatiisto</string>
+	<string name="poi_health_specialty_traditional_chinese_medicine_yes">Specialisto: isto de tradicia ĉina medicino</string>
+	<string name="poi_health_specialty_reiki_yes">Specialisto: isto de rejkio (japana alternativa medicino)</string>
+	<string name="poi_health_specialty_herbalism_yes">Specialisto: herbo-kuracisto</string>
+	<string name="poi_health_specialty_chiropractic_yes">Specialisto: ĥiropraktikisto (alternativa medicino)</string>
+	<string name="poi_health_specialty_naturopathy_yes">Specialisto: natur-kuracisto (naturopatiisto) (alternativa medicino)</string>
+	<string name="poi_health_specialty_depth_psychology_yes">Specialisto: profunda psikologiisto</string>
+	<string name="poi_health_specialty_behavior_yes">Specialisto: isto de konduta terapio</string>
+
 	</resources>

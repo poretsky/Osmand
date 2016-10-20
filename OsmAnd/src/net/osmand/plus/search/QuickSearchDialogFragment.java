@@ -37,7 +37,6 @@ import android.widget.TextView;
 import net.osmand.AndroidUtils;
 import net.osmand.Location;
 import net.osmand.ResultMatcher;
-import net.osmand.data.City;
 import net.osmand.data.LatLon;
 import net.osmand.data.PointDescription;
 import net.osmand.osm.AbstractPoiType;
@@ -60,6 +59,7 @@ import net.osmand.plus.helpers.SearchHistoryHelper.HistoryEntry;
 import net.osmand.plus.poi.PoiUIFilter;
 import net.osmand.plus.search.QuickSearchHelper.SearchHistoryAPI;
 import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarController;
+import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarControllerType;
 import net.osmand.search.SearchUICore;
 import net.osmand.search.SearchUICore.SearchResultCollection;
 import net.osmand.search.core.ObjectType;
@@ -219,9 +219,10 @@ public class QuickSearchDialogFragment extends DialogFragment implements OsmAndC
 				} else if (searchPhrase.isNoSelectedType() || searchPhrase.isLastWord(ObjectType.POI_TYPE)) {
 					PoiUIFilter filter;
 					if (searchPhrase.isNoSelectedType()) {
-						filter = new PoiUIFilter(null, app, "");
+						filter = app.getPoiFilters().getSearchByNamePOIFilter();
 						if (!Algorithms.isEmpty(searchPhrase.getUnknownSearchWord())) {
 							filter.setFilterByName(searchPhrase.getUnknownSearchWord());
+							filter.clearCurrentResults();
 						}
 					} else if (searchPhrase.getLastSelectedWord().getResult().object instanceof AbstractPoiType) {
 						if (searchPhrase.isNoSelectedType()) {
@@ -255,11 +256,7 @@ public class QuickSearchDialogFragment extends DialogFragment implements OsmAndC
 								searchResult.location.getLatitude(), searchResult.location.getLongitude(),
 								searchResult.preferredZoom, pointDescription, true, searchResult.object);
 
-						if (searchResult.object != null && searchResult.object instanceof City) {
-							hideToolbar();
-						} else {
-							showToolbar();
-						}
+						hideToolbar();
 						MapActivity.launchMapActivityMoveToTop(getActivity());
 						reloadHistory();
 						hide();
@@ -756,9 +753,11 @@ public class QuickSearchDialogFragment extends DialogFragment implements OsmAndC
 
 				@Override
 				public void onFinish(AppInitializer init) {
-					reloadCategoriesInternal();
-					if (!searching) {
-						hideProgressBar();
+					if (!paused) {
+						reloadCategoriesInternal();
+						if (!searching) {
+							hideProgressBar();
+						}
 					}
 				}
 			});
@@ -795,9 +794,11 @@ public class QuickSearchDialogFragment extends DialogFragment implements OsmAndC
 
 				@Override
 				public void onFinish(AppInitializer init) {
-					reloadHistoryInternal();
-					if (!searching) {
-						hideProgressBar();
+					if (!paused) {
+						reloadHistoryInternal();
+						if (!searching) {
+							hideProgressBar();
+						}
 					}
 				}
 			});
@@ -852,7 +853,9 @@ public class QuickSearchDialogFragment extends DialogFragment implements OsmAndC
 
 				@Override
 				public void onFinish(AppInitializer init) {
-					runCoreSearchInternal(text, updateResult, searchMore);
+					if (!paused) {
+						runCoreSearchInternal(text, updateResult, searchMore);
+					}
 				}
 			});
 		} else {

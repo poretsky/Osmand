@@ -4,7 +4,6 @@ import gnu.trove.map.hash.TLongObjectHashMap;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +18,7 @@ import org.apache.commons.logging.Log;
 
 public class BinaryRoutePlanner {
 
-	private static final int TEST_ID = 31370645;
+	private static final int TEST_ID = 77031244;
 	private static final boolean TEST_SPECIFIC = false;
 
 	private static final int REVERSE_WAY_RESTRICTION_ONLY = 1024;
@@ -33,12 +32,8 @@ public class BinaryRoutePlanner {
 
 
 	public static double squareRootDist(int x1, int y1, int x2, int y2) {
-		// translate into meters 
-
-		double dy = MapUtils.convert31YToMeters(y1, y2);
-		double dx = MapUtils.convert31XToMeters(x1, x2);
-		return Math.sqrt(dx * dx + dy * dy);
-//		return measuredDist(x1, y1, x2, y2);
+		return MapUtils.squareRootDist31(x1, y1, x2, y2);
+//		return MapUtils.measuredDist31(x1, y1, x2, y2);
 	}
 
 
@@ -88,7 +83,8 @@ public class BinaryRoutePlanner {
 		TLongObjectHashMap<RouteSegment> visitedDirectSegments = new TLongObjectHashMap<RouteSegment>();
 		TLongObjectHashMap<RouteSegment> visitedOppositeSegments = new TLongObjectHashMap<RouteSegment>();
 
-		initQueuesWithStartEnd(ctx, start, end, recalculationEnd, graphDirectSegments, graphReverseSegments);
+		initQueuesWithStartEnd(ctx, start, end, recalculationEnd, graphDirectSegments, graphReverseSegments, 
+				visitedDirectSegments, visitedOppositeSegments);
 
 		// Extract & analyze segment with min(f(x)) from queue while final segment is not found
 		boolean forwardSearch = true;
@@ -218,9 +214,9 @@ public class BinaryRoutePlanner {
 	public RouteSegment initRouteSegment(final RoutingContext ctx, RouteSegment segment, boolean positiveDirection) {
 		if (segment.getSegmentStart() == 0 && !positiveDirection && segment.getRoad().getPointsLength() > 0) {
 			segment = loadSameSegment(ctx, segment, 1);
-		//} else if (segment.getSegmentStart() == segment.getRoad().getPointsLength() - 1 && positiveDirection && segment.getSegmentStart() > 0) {
+//		} else if (segment.getSegmentStart() == segment.getRoad().getPointsLength() - 1 && positiveDirection && segment.getSegmentStart() > 0) {
 		// assymetric cause we calculate initial point differently (segmentStart means that point is between ]segmentStart-1, segmentStart]
-		} else if (segment.getSegmentStart() > 0 && positiveDirection && segment.getSegmentStart() > 0) {
+		} else if (segment.getSegmentStart() > 0 && positiveDirection) {
 			segment = loadSameSegment(ctx, segment, segment.getSegmentStart() - 1);
 		}
 		if (segment == null) {
@@ -246,7 +242,8 @@ public class BinaryRoutePlanner {
 
 
 	private void initQueuesWithStartEnd(final RoutingContext ctx, RouteSegment start, RouteSegment end,
-			RouteSegment recalculationEnd, PriorityQueue<RouteSegment> graphDirectSegments, PriorityQueue<RouteSegment> graphReverseSegments) {
+			RouteSegment recalculationEnd, PriorityQueue<RouteSegment> graphDirectSegments, PriorityQueue<RouteSegment> graphReverseSegments, 
+			TLongObjectHashMap<RouteSegment> visitedDirectSegments, TLongObjectHashMap<RouteSegment> visitedOppositeSegments) {
 		RouteSegment startPos = initRouteSegment(ctx, start, true);
 		RouteSegment startNeg = initRouteSegment(ctx, start, false);
 		RouteSegment endPos = initRouteSegment(ctx, end, true);
@@ -398,7 +395,7 @@ public class BinaryRoutePlanner {
             RouteSegment segment, TLongObjectHashMap<RouteSegment> oppositeSegments, boolean doNotAddIntersections) throws IOException {
 		final RouteDataObject road = segment.road;
 		boolean initDirectionAllowed = checkIfInitialMovementAllowedOnSegment(ctx, reverseWaySearch, visitedSegments, segment, road);
-		if (TEST_SPECIFIC && road.getId() == TEST_ID) {
+		if (TEST_SPECIFIC && road.getId() >> 6 == TEST_ID) {
 			printRoad(" ! " + +segment.distanceFromStart + " ", segment, reverseWaySearch);
 		}
 		boolean directionAllowed = initDirectionAllowed;
@@ -449,10 +446,9 @@ public class BinaryRoutePlanner {
 				directionAllowed = false;
 				continue;
 			}
-			obstaclesTime += obstacle;
-
 			boolean alreadyVisited = checkIfOppositeSegmentWasVisited(ctx, reverseWaySearch, graphSegments, segment, oppositeSegments,
 					segmentPoint, segmentDist, obstaclesTime);
+			obstaclesTime += obstacle;
 			if (alreadyVisited) {
 				directionAllowed = false;
 				continue;
@@ -728,12 +724,13 @@ public class BinaryRoutePlanner {
 				.getPoint31YTile(segmentPoint), targetEndX, targetEndY);
 		// Calculate possible ways to put into priority queue
 		RouteSegment next = inputNext;
-		boolean hasNext = nextIterator == null || nextIterator.hasNext();
+		boolean hasNext = nextIterator != null ? nextIterator.hasNext() : next != null;
 		while (hasNext) {
 			if (nextIterator != null) {
 				next = nextIterator.next();
 			}
-			if (next.getSegmentStart() == segmentPoint && next.getRoad().getId() == segment.getRoad().id) {
+			if (next.getSegmentStart() == segmentPoint && 
+					next.getRoad().getId() == segment.getRoad().id) {
 				// find segment itself  
 				// (and process it as other with small exception that we don't add to graph segments and process immediately)
 				itself = next.initRouteSegment(segment.isPositive());
@@ -781,8 +778,8 @@ public class BinaryRoutePlanner {
 					next.getRoad().getPointsLength() - 1 : 0,  
 					segment, segmentPoint);
 			distFromStart += obstaclesTime;
-			if (TEST_SPECIFIC && next.road.getId() == TEST_ID) {
-				printRoad(" !? distFromStart=" + +distFromStart + " from " + segment.getRoad().getId() +
+			if (TEST_SPECIFIC && next.road.getId() >> 6 == TEST_ID) {
+				printRoad(" !? distFromStart=" +distFromStart + " from " + segment.getRoad().getId() +
 						" dir=" + segment.getDirectionAssigned() +
 						" distToEnd=" + distanceToEnd +
 						" segmentPoint=" + segmentPoint + " -- ", next, true);
@@ -794,7 +791,7 @@ public class BinaryRoutePlanner {
 					next.distanceFromStart = distFromStart;
 					next.distanceToEnd = distanceToEnd;
 					if (TRACE_ROUTING) {
-						printRoad("  >>", next, null);
+						printRoad(" "+segmentPoint+">>" , next, null);
 					}
 					// put additional information to recover whole route after
 					next.setParentRoute(segment);

@@ -264,7 +264,7 @@ public class MainActivity extends Activity {
 					net.osmand.core.jni.LatLon latLon = Utilities.convert31ToLatLon(target31);
 					SearchSettings settings = searchUICore.getPhrase().getSettings().setOriginalLocation(
 							new LatLon(latLon.getLatitude(), latLon.getLongitude()));
-					settings = settings.setLang(LANGUAGE);
+					settings = settings.setLang(LANGUAGE, false);
 					searchUICore.updateSettings(settings);
 
 					adapter.setLocation(new LatLon(latLon.getLatitude(), latLon.getLongitude()));
@@ -341,7 +341,7 @@ public class MainActivity extends Activity {
 			}
 		}
 
-		searchUICore = new SearchUICore(app.getPoiTypes(), LANGUAGE);
+		searchUICore = new SearchUICore(app.getPoiTypes(), LANGUAGE, false);
 		searchUICore.getSearchSettings().setOfflineIndexes(Arrays.asList(files.toArray(new BinaryMapIndexReader[files.size()])));
 		searchUICore.init();
 

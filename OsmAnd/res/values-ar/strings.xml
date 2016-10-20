@@ -238,7 +238,7 @@
     <string name="distance_measurement_start_editing">بدء تحرير</string>
     <string name="distance_measurement_finish_editing">الانتهاء من تحرير</string>
     <string name="distance_measurement_finish_subtrack">بدء subtrack جديدة</string>
-    <string name="distance_measurement_clear_route">مسح جميع نقاط</string>
+    <string name="distance_measurement_clear_route">مسح جميع النقاط</string>
     
     <string name="distance_measurement_load_gpx">فتح القائمة GPX</string>
     <string name="other_location">أخرى</string>
@@ -1127,7 +1127,7 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
 	<string name="lang_uk">اﻷوكرانية</string>
 	<string name="index_name_canada">أميركا الشمالية - كندا</string>
     <string name="index_name_italy">أوروبا - إيطاليا</string>
-    <string name="routing_attr_short_way_name">أقصر طريق</string>
+    
 	<string name="copying_osmand_files">جاري نسخ ملفات بيانات OsmAnd…</string>
     <string name="guidance_preferences_descr">تفضيلات الملاحة</string>
     <string name="interrupt_music_descr">إقطع تشغيل الموسيقى عند ورود إعلان ما</string>
@@ -1175,7 +1175,7 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
 	<string name="index_name_gb">أوروبا - بريطانيا العظمى</string>
     <string name="route_preferences">تفضيلات الطريق</string>
     <string name="route_info">معلومات الطريق</string>
-    <string name="routing_attr_short_way_description">إستخدام أقصر طريق</string>
+    
 	<string name="routing_attr_avoid_toll_name">تجنب الطرق ذات الرسوم</string>
 	<string name="routing_attr_avoid_toll_description">إجتناب الطرق التي يجب دفع رسوم للمرور فيها</string>
 	<string name="routing_attr_avoid_unpaved_name">تجنب الطرق غير المعبّدة</string>
@@ -1739,9 +1739,9 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
     <string name="postcode">الرمز البريدي</string>
     <string name="shared_string_from">من</string>
     <string name="map_widget_search">بحث</string>
-	<string name="shared_string_is_open_24_7">مفتوح ٢٤\\٧</string>
+	<string name="shared_string_is_open_24_7">مفتوح 7/24</string>
     <string name="storage_directory_card">بطاقة الذاكرة</string>
-    <string name="coords_format_descr">تنسيق للإحداثيات الجغرافية</string>
+    <string name="coords_format_descr">نمط للإحداثيات الجغرافية</string>
   	<string name="app_mode_bus">حافلة</string>
  	<string name="app_mode_train">قطار</string>
     <string name="current_track">المسار الحالي</string>
@@ -1913,7 +1913,7 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
     <string name="downloads">التنزيلات</string>
     <string name="free_downloads_used_description">عرض التحميلات المجانية المستخدمة</string>
 
-    <string name="application_dir_description">اختر المكان الذي تريد فيه حفظ ملفات الخريطة.</string>
+    <string name="application_dir_description">اختر أين تريد حفظ الخرائط وملفات البيانات الآخرى.</string>
 
     <string name="enter_country_name">أدخل اسم البلد</string>
     <string name="new_version">الإصدار الجديد</string>
@@ -1964,7 +1964,7 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
     <string name="lang_tl">التاغالوغية</string>
     <string name="lang_nv">النافاجونية</string>
     <string name="map_widget_magnetic_bearing">تأثير مغناطيسي</string>
-    <string name="coords_format">تنسيق الاحداثيات</string>
+    <string name="coords_format">نمط الاحداثيات</string>
     <string name="night">ليل</string>
     <string name="osmo_plugin_description">"هذه الاضافة تتيح جزئيا وظيفة المراقبة لاوبن ستريت ماب، انظر https://osmo.mobi
 
@@ -2242,7 +2242,7 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
  • توافق نظام صوت السيارة / مكبر الصوت مع الهاتف عبر البلوتوث
 
 
- • تحسينات في مرشد الطراقات، الإعلانات الصوتية والدوران
+ • تحسينات في مرشد الطرقات، الإعلانات الصوتية والدوران
 
 
  • تحسين كل من واجهة النقل وتحديد طريق الوجهة
@@ -2258,13 +2258,13 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
  "</string>
     <string name="dist_away_from_my_location">ابحث %1$s بعيدا</string>
     <string name="show_on_map">اظهر على الخريطة</string>
-    <string name="share_history_subject">" تمت مشاركته من طرف OsmAnd"</string>
+    <string name="share_history_subject">" تمت مشاركته عبر OsmAnd"</string>
     <string name="route_general_information">المسافة الإجمالية %1$s، مدة السفر %2$d سا و %3$d د.</string>
     <string name="back_to_search">العودة إلى البحث</string>
     <string name="consider_turning_polygons_off">من المستحسن إيقاف عرض المضلعات.</string>
     <string name="access_from_map_description">يطلق زر القائمة لوحة التحكم و ليس القائمة بحد ذاتها</string>
     <string name="confirmation_to_delete_history_items">هل تريد حذف عناصر البحث المحددة؟</string>
-    <string name="access_direction_haptic_feedback">توجيه رد فعل الهزاز اللمسي</string>
+    <string name="access_direction_haptic_feedback">توجيه رد فعل الهزاز</string>
     <string name="please_specify_poi_type_only_from_list">يرجى تحديد نوع POI الصحيح أو تخطيه</string>
     <string name="show_on_start_description">\'إيقاف\' تطلق مباشرة واجهة الخريطة</string>
     <string name="release_2_2">" • واجهة مستخدم جديدة حساسة للضغط على المواقع في الخريطة والواجهان الأخرى\n • واجهة الخريطة تقلع الآن مباشرة إلا إذا \'اظهار لوحة القياس عند بدء التطبيق\' محددة\n • اعداد كيف وأي بطاقة يتم عرضها على لوحة القياس
@@ -2380,7 +2380,7 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
 
 خدمة الملاحة حولت مؤقتا إلى CloudMade على الانترنت.</string>
     <string name="build_installed">"إصدار {0} تثبيت بنجاح  ({1})."</string>
-    <string name="downloading_build">تحميل إصدار…</string>
+    <string name="downloading_build">جاري تنزيل الإصدار …</string>
     <string name="install_selected_build">هل تريد تثبيت التطبيق - {0} من {1} {2} مب ؟</string>
     <string name="loading_builds_failed">فشل في الحصول على قائمة إصدارات التطبيق</string>
     <string name="loading_builds">جاري تحميل إصدارات التطبيق…</string>
@@ -2389,7 +2389,7 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
     <string name="daynight_descr">اختيار قاعدة تحويل وضع نهار/ ليل</string>
     <string name="download_files_question">تحميل {0} ملف ({1} مب)؟</string>
     <string name="items_were_selected">{0} عنصر محدد</string>
-    <string name="fast_route_mode_descr">"تفعيل لحساب الطريق الأسرع أو تعطيل لحساب مسار أقصر "</string>
+    <string name="fast_route_mode_descr">"تفعيل لحساب الطريق الأسرع أو تعطيل لحساب مسار أقل استهلاكا للوقود "</string>
     <string name="continuous_rendering">أداء مستمر</string>
     <string name="continuous_rendering_descr">عرض أداء مستمر بدلا من صورة في المرة الواحدة</string>
     <string name="rendering_exception">حدث خطأ أثناء تقديم المساحة المحددة</string>
@@ -2524,4 +2524,35 @@ OsmAnd هو المصدر المفتوح و التي يجري تطويرها بن
 
 إذا كنت بحاجة إلى مساعدة فيما يخص التطبيق OsmAnd، يرجى الاتصال بفريق الدعم: support@osmand.net 
  "</string>
+    <string name="rendering_attr_hideOverground_name">أشياء فوق سطح الأرض</string>
+
+    <string name="shared_string_change">تغيير</string>
+    <string name="get_started">باشر</string>
+    <string name="routing_attr_short_way_name">طريق أقل استهلاكا للوقود</string>
+    <string name="routing_attr_short_way_description">استخدم طريق أقل استهلاكا للوقود (عادة أقصر)</string>
+    <string name="replace_favorite_confirmation">هل أنت متأكد من أنك تريد استبدال المفضلة %1$s؟</string>
+    <string name="clear_tile_data">مسح كافة البيانات الجزئية</string>
+    <string name="update_all_maps_now">هل تريد تحديث كافة الخرائط الآن؟</string>
+    <string name="no_update_info_desc">لا تعين أية تحديثات حول الإصدارات الجديدة، أو التخفيضات متعلقة بـ Osmand</string>
+    <string name="no_update_info">عدم إظهار التحديثات</string>
+    <string name="skip_map_downloading">تخطي تحميل الخرائط</string>
+    <string name="skip_map_downloading_desc">ليس لديك أي خريطة محلية مثبتة. يمكنك اختيار خريطة من اللائحة أو تحميل خرائط لاحقاً عبر القائمة - %1$s.</string>
+    <string name="search_another_country">حدد منطقة أخرى</string>
+    <string name="search_map">بحث في الخريطة…</string>
+    <string name="first_usage_wizard_desc">دع التطبيق يحدد موقعك ويقترح خرائط للتحميل لتلك المنطقة.</string>
+    <string name="location_not_found">لم يتم العثور على الموقع</string>
+    <string name="no_inet_connection">لا يوجد اتصال بالشبكة</string>
+    <string name="no_inet_connection_desc_map">مطلوبة لتحميل الخرائط.</string>
+    <string name="search_location">البحث عن الموقع…</string>
+    <string name="storage_free_space">مساحة حرة</string>
+    <string name="storage_place_description">مخزن بيانات التطبيق (للخرائط، المسارات، إلخ.): %1$s.</string>
+    <string name="give_permission">إعطاء الإذن</string>
+    <string name="allow_access_location">الإذن بالوصول إلى الموقع</string>
+    <string name="first_usage_greeting">أحصل على التوجيهات واكتشف أماكن جديدة دون اتصال بالإنترنت</string>
+    <string name="search_my_location">البحث في موقعي</string>
+    <string name="get_for">تحصل عليه بـ %1$s</string>
+    <string name="get_for_month">تحصل عليه لـ %1$s أشهر</string>
+    <string name="osm_live_banner_desc">تحصل على تحميل خرائط غير محدود وتحديثات أكثر من مرة في شهر: كل ساعة أو يوميا أو أسبوعيا.</string>
+    <string name="osmand_plus_banner_desc">نسخة كاملة من التطبيق مع تحميل غير محدود وتحديثات شهرية للخرائط .</string>
+    <string name="si_mi_meters">أميال/أمتار</string>
     </resources>

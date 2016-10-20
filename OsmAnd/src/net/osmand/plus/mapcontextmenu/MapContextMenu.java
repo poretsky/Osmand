@@ -1,15 +1,8 @@
 package net.osmand.plus.mapcontextmenu;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AlertDialog.Builder;
-import android.view.View;
-import android.widget.LinearLayout;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
+import java.util.List;
 
 import net.osmand.CallbackWithObject;
 import net.osmand.StateChangedListener;
@@ -46,14 +39,19 @@ import net.osmand.plus.mapcontextmenu.other.ShareMenu;
 import net.osmand.plus.routing.RoutingHelper;
 import net.osmand.plus.views.ContextMenuLayer;
 import net.osmand.plus.views.OsmandMapLayer;
-import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory;
 import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarController;
-import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarController.TopToolbarControllerType;
+import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarControllerType;
 import net.osmand.util.MapUtils;
-
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
-import java.util.List;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AlertDialog.Builder;
+import android.view.View;
+import android.widget.LinearLayout;
 
 public class MapContextMenu extends MenuTitleController implements StateChangedListener<ApplicationMode>,
 		MapMarkerChangedListener, TargetPointChangedListener {
@@ -642,58 +640,7 @@ public class MapContextMenu extends MenuTitleController implements StateChangedL
 	}
 
 	public void fabPressed() {
-		hide();
-		final TargetPointsHelper targets = mapActivity.getMyApplication().getTargetPointsHelper();
-		RoutingHelper routingHelper = mapActivity.getMyApplication().getRoutingHelper();
-		if (routingHelper.isFollowingMode() || routingHelper.isRoutePlanningMode()) {
-			DirectionsDialogs.addWaypointDialogAndLaunchMap(mapActivity, latLon.getLatitude(),
-					latLon.getLongitude(), getPointDescriptionForTarget());
-		} else if (targets.getIntermediatePoints().isEmpty()) {
-			boolean hasPointToStart = settings.restorePointToStart();
-			targets.navigateToPoint(latLon, true, -1, getPointDescriptionForTarget());
-			if (!hasPointToStart) {
-				mapActivity.getMapActions().enterRoutePlanningModeGivenGpx(null, null, null, true, true);
-			} else {
-				TargetPoint start = targets.getPointToStart();
-				if (start != null) {
-					mapActivity.getMapActions().enterRoutePlanningModeGivenGpx(null, start.point, start.getOriginalPointDescription(), true, true);
-				} else {
-					mapActivity.getMapActions().enterRoutePlanningModeGivenGpx(null, null, null, true, true);
-				}
-			}
-			close();
-		} else {
-			Builder bld = new AlertDialog.Builder(mapActivity);
-			bld.setTitle(R.string.new_directions_point_dialog);
-			final int[] defaultVls = new int[]{0};
-			bld.setSingleChoiceItems(new String[]{
-					mapActivity.getString(R.string.clear_intermediate_points),
-					mapActivity.getString(R.string.keep_intermediate_points)
-			}, 0, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					defaultVls[0] = which;
-				}
-			});
-			bld.setPositiveButton(R.string.shared_string_ok, new DialogInterface.OnClickListener() {
-
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					if (defaultVls[0] == 0) {
-						targets.removeAllWayPoints(false, true);
-						targets.navigateToPoint(latLon, true, -1, getPointDescriptionForTarget());
-						mapActivity.getMapActions().enterRoutePlanningModeGivenGpx(null, null, null, true, true);
-						close();
-					} else {
-						targets.navigateToPoint(latLon, true, -1, getPointDescriptionForTarget());
-						mapActivity.getMapActions().enterRoutePlanningModeGivenGpx(null, null, null, true, true);
-						close();
-					}
-				}
-			});
-			bld.setNegativeButton(R.string.shared_string_cancel, null);
-			bld.show();
-		}
+		mapActivity.getMapLayers().getMapControlsLayer().navigateFab();
 	}
 
 	public void buttonWaypointPressed() {
@@ -813,7 +760,7 @@ public class MapContextMenu extends MenuTitleController implements StateChangedL
 		return GpxUiHelper.selectSingleGPXFile(mapActivity, true, callbackWithObject);
 	}
 
-	private PointDescription getPointDescriptionForTarget() {
+	public PointDescription getPointDescriptionForTarget() {
 		if (pointDescription.isLocation()
 				&& pointDescription.getName().equals(PointDescription.getAddressNotFoundStr(mapActivity))) {
 			return new PointDescription(PointDescription.POINT_TYPE_LOCATION, "");

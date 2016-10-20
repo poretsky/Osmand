@@ -134,7 +134,9 @@
 
 
     <string name="download_files_not_enough_space">Nincs elég hely %1$s MB letöltéséhez (szabad %2$s).</string>
-    <string name="download_files_question_space">Biztosan letöltesz {0} fájlt? Ehhez {1} MB helyre van szükség. Jelenleg {2} MB érhető el.</string>
+    <string name="download_files_question_space">Biztosan letöltesz {0} fájlt?
+Ehhez {1} MB helyre van szükség.
+Jelenleg {2} MB érhető el.</string>
 
 
     <string name="use_transparent_map_theme">Átlátszó téma</string>
@@ -204,7 +206,7 @@
     <string name="favourites_edit_dialog_name">Név</string>
     <string name="favourites_edit_dialog_category">Kategória</string>
     <string name="shared_string_no_thanks">Nem szükséges</string>
-    <string name="basemap_missing">Hiányzik az alap világtérkép (alacsony nagyításon az egész Földet lefedi). A teljes környezethez le lehet tölteni a World_basemap.obf -et.</string>
+    <string name="basemap_missing">Hiányzik az alap világtérkép (alacsony nagyításon az egész Földet lefedi). A globális áttekinthetőséghez javasoljuk a World_basemap_x.obf letöltését.</string>
     <string name="vector_data_missing">Nincsenek offline használható adatok az SD kártyán. A térképek offline használathoz le kell töltened a kívánt területet.</string>
     <string name="local_index_gpx_info_show">\n\nHosszan megnyomva további lehetőségek</string>
 
@@ -751,7 +753,14 @@
     <string name="online_map_settings_descr">Internetes és tárolt raszteres térképek beállításai</string>
 
 
-    <string name="osmand_rastermaps_plugin_description">"Ezzel a bővítménnyel az online (úgynevezett csempés vagy raszteres) térképek több típusához is hozzáférhet az előre meghatározott OpenStreetMap csempéktől kezdve (mint például a Mapnik) a műholdképekig és a speciális célú rétegekig, úgymint időjárási térképek, éghajlati térképek, földtani térképek, domborzatnyékolási rétegek, stb.\n\nEzen térképek bármelyike használható az OsmAnd térkép képernyőjén megjelenítendő fő (alap) térképként, vagy egy másik alaptérkép borításaként vagy alátétjeként (mint például az OsmAnd normál kapcsolat nélküli térképei). Bármely alátét térkép jobban láthatóbbá tételének érdekében az OsmAnd vektoros térképeinek bizonyos elemei igény szerint könnyedén elrejthetők a „Térkép beállítása” menün keresztül.\n\nA csempés térképek internetes forrásokon keresztül szerezhetők be, vagy előkészíthetők kapcsolat nélküli használathoz (és kézzel átmásolva az OsmAnd adatmappájába) egy olyan SQLite adatbázisként, amelyet különféle harmadik féltől származó térkép-előkészítő eszközök állíthatnak elő. "</string>
+    <string name="osmand_rastermaps_plugin_description">"Ezzel a bővítménnyel az online (úgynevezett csempés vagy raszteres) térképek több típusához is hozzáférhet az előre meghatározott OpenStreetMap csempéktől kezdve (mint például a Mapnik) a műholdképekig és a speciális célú rétegekig, úgymint időjárási térképek, éghajlati térképek, földtani térképek, domborzatárnyékolási rétegek, stb.
+
+
+Ezen térképek bármelyike használható az OsmAnd térkép képernyőjén megjelenítendő fő (alap) térképként, vagy egy másik alaptérkép fedvényeként vagy alátétjeként (mint például az OsmAnd normál offline térképei). Bármely alátét térkép jobban láthatóbbá tételének érdekében az OsmAnd vektoros térképeinek bizonyos elemei igény szerint könnyedén elrejthetők a „Térkép beállítása” menün keresztül.
+
+
+A csempés térképek internetes forrásokon keresztül szerezhetők be, vagy előkészíthetők kapcsolat nélküli használathoz (és kézzel átmásolva az OsmAnd adatmappájába) egy olyan SQLite adatbázisként, amelyet különféle harmadik féltől származó térkép-előkészítő eszközök állíthatnak elő.
+ "</string>
     <string name="osmand_background_plugin_description">"Megjeleníti a háttér üzemmódban  (kikapcsolt képernyővel) való útvonalrögzítéshez és navigációhoz tartozó beállításokat. (A készülék bizonyos időközönként felébreszti a GPS-t.)"</string>
     <string name="osmand_accessibility_description">Ez a bővítmény elérhetővé teszi az eszköz akadálymentesítési lehetőségeit közvetlenül az OsmAnd programban. Ez megkönnyíti például a TTS hangok beszédsebességének állítását, az irányító gombok képernyő navigációjának beállítását, egy görgető használatát a nagyítás vezérléséhez, vagy szövegfelolvasó visszajelzés használatát, például a pozíció automatikus bejelentésénél.</string>
 
@@ -813,7 +822,9 @@
     <string name="osmand_parking_pm">du.</string>
     <string name="osmand_parking_am">de.</string>
     <string name="osmand_parking_position_name">Parkolóhely</string>
-    <string name="osmand_parking_plugin_description">A parkolási hely bővítmény könnyen megjegyezhetővé teszi, hogy hol parkoltál le az autóval, és mennyi parkolási idő van még hátra (ha a parkolás időben korlátozott).\nA parkolási hely és az idő is látható az OsmAnd vezérlőpultján, valamint a térkép képernyő felületi elemén. Értesítés adható hozzá az Android naptárhoz emlékeztetőként.</string>
+    <string name="osmand_parking_plugin_description">A parkolási hely bővítmény könnyen megjegyezhetővé teszi, hogy hol parkoltál le az autóval, és mennyi parkolási idő van még hátra (ha a parkolás időben korlátozott).
+
+A parkolási hely és az idő is látható az OsmAnd vezérlőpultján, valamint a térkép képernyő felületi elemén. Értesítés adható hozzá az Android naptárhoz emlékeztetőként.</string>
     <string name="osmand_parking_plugin_name">Parkolási hely</string>
     <string name="context_menu_item_add_parking_point">Megjelölés parkolási helyként</string>
     <string name="context_menu_item_delete_parking_point">Parkolásjelölő törlése</string>
@@ -822,7 +833,8 @@
 
     <string name="global_app_allocated_memory_descr">Lefoglalt memória %1$s MB (Android korlát %2$s MB, Dalvik %3$s MB).</string>
     <string name="global_app_allocated_memory">Lefoglalt memória</string>
-    <string name="native_app_allocated_memory_descr">Alkalmazás által lefoglalt összes natív memória %1$s MB (Dalvik %2$s MB, egyéb %3$s MB). Proporcionális memória %4$s MB (Android korlát %5$s MB, Dalvik %6$s MB).</string>
+    <string name="native_app_allocated_memory_descr">Alkalmazás által lefoglalt összes natív memória %1$s MB (Dalvik %2$s MB, egyéb %3$s MB).
+Proporcionális memória %4$s MB (Android korlát %5$s MB, Dalvik %6$s MB).</string>
     <string name="native_app_allocated_memory">Összes natív memória</string>
     <string name="select_animate_speedup">Útvonalszimuláció sebessége</string>
     <string name="osmand_parking_hours">Óra</string>
@@ -895,8 +907,52 @@
 
 
     <string name="osmand_short_description_80_chars">Globális mobil térkép és navigáció, offline és online OSM térképekkel</string>
-    <string name="osmand_long_description_1000_chars">" OsmAnd (OSM Automated Navigation Directions) Az OsmAnd egy nyílt forráskódú navigációs alkalmazás az OpenStreetMap (OSM) adatainak széleskörű használatával. Bármelyik térképadat (vektoros és raszteres térképek) tárolható a készülék memóriakártyáján offline használatra. Az OsmAnd továbbá lehetővé teszi az offline és online útvonaltervezést is, részletes hangutasításokkal. Néhány fontosabb funkció: - Teljesen offline működés (a letöltött vektoros és raszteres térképek az eszközön tárolódnak) - A kompakt, offline vektoros térképek az egész világhoz elérhetőek - Az ország vagy régió térképei letölthetők közvetlenül az alkalmazásból - Számos rávetíthető térképréteg, mint GPX-ek, navigációs útvonalak, POI-k (érdekes helyek), kedvencek, szintvonalak, tömegközlekedési megállók, további térképek beállítható átlátszósággal - Címek és helyek offline kereshetősége - Offline útvonaltervezés rövidebb távolságokra (kísérleti) - Autós, kerékpáros és gyalogos módok: - Opcionális automata nappali/éjszakai nézetváltással - Opcionális sebességfüggő nagyítással - Opcionális térképforgatással a mozgás vagy az iránytű alapján Az OsmAnd ingyenes változatának korlátozásai: - Korlátozott számú vektoros térképletöltés - Offline Wikipédia cikkek nem elérhetőek Az OsmAnd folyamatosan fejlesztés alatt áll és a projektünk nagyban függ a pénzügyi támogatásoktól, amiből finanszírozhatók a fejlesztések és az új funkciók tesztelése. Kérlek, fontold meg az OsmAnd+ megvásárlását, vagy egy-egy funkció támogatását az osmand.net oldalon "</string>
-    <string name="osmand_plus_long_description_1000_chars">" OsmAnd+ (OSM Automated Navigation Directions) Az OsmAnd+ egy nyílt forráskódú navigációs alkalmazás az OpenStreetMap (OSM) adatainak széleskörű használatával. Bármelyik térképadat (vektoros és raszteres térképek) tárolható a készülék memóriakártyáján offline használatra. Az OsmAnd továbbá lehetővé teszi az offline és online útvonaltervezést is, részletes hangutasításokkal. Az OsmAnd+ az alkalmazás fizetős változata, aminek megvásárlásával támogatod a projektet, az új funkciók fejlesztésének finanszírozását és megkapod a legújabb frissítéseket. Néhány fontosabb funkció: - Teljesen offline működés (a letöltött vektoros és raszteres térképek az eszközön tárolódnak) - A kompakt, offline vektoros térképek az egész világhoz elérhetőek - Az ország vagy régió térképei korlátlan számban letölthetők, közvetlenül az alkalmazásból - Offline Wikipédia szócikkek letöltése, ami hasznos segítség városnézéshez - Számos rávetíthető térképréteg, mint GPX-ek, navigációs útvonalak, POI-k (érdekes helyek), kedvencek, szintvonalak, tömegközlekedési megállók, további térképek beállítható átlátszósággal - Címek és helyek offline kereshetősége - Offline útvonaltervezés rövidebb távolságokra (kísérleti) - Autós, kerékpáros és gyalogos módok: - Opcionális automata nappali/éjszakai nézetváltással - Opcionális sebességfüggő nagyítással - Opcionális térképforgatással a mozgás vagy az iránytű alapján "</string>
+    <string name="osmand_long_description_1000_chars">"
+ OsmAnd (OSM Automated Navigation Directions)
+
+Az OsmAnd egy nyílt forráskódú navigációs alkalmazás az OpenStreetMap (OSM) adatainak széleskörű használatával. Bármelyik térképadat (vektoros és raszteres térképek) tárolható a készülék memóriakártyáján offline használatra. Az OsmAnd továbbá lehetővé teszi az offline és online útvonaltervezést is, részletes hangutasításokkal.
+
+Néhány fontosabb funkció:
+- Teljesen offline működés (a letöltött vektoros és raszteres térképek az eszközön tárolódnak)
+- A kompakt, offline vektoros térképek az egész világhoz elérhetőek
+- Az ország vagy régió térképei letölthetők közvetlenül az alkalmazásból
+- Számos rávetíthető térképréteg, mint GPX-ek, navigációs útvonalak, POI-k (érdekes helyek), kedvencek, szintvonalak, tömegközlekedési megállók, további térképek beállítható átlátszósággal
+- Címek és helyek offline kereshetősége
+- Offline útvonaltervezés rövidebb távolságokra (kísérleti)
+- Autós, kerékpáros és gyalogos módok:
+ - opcionális automata nappali/éjszakai nézetváltással
+ - opcionális sebességfüggő nagyítással
+ - opcionális térképforgatással a mozgás vagy az iránytű alapján
+ - opcionális sávasszisztens, sebességhatár kijelzés, felvett és gépi hangutasítás
+
+Az OsmAnd ingyenes változatának korlátozásai:
+- Korlátozott számú vektoros térképletöltés
+- Offline Wikipédia cikkek nem elérhetőek
+
+Az OsmAnd folyamatosan fejlesztés alatt áll és a projektünk nagyban függ a pénzügyi támogatásoktól, amiből finanszírozhatók a fejlesztések és az új funkciók tesztelése. Kérlek, fontold meg az OsmAnd+ megvásárlását, vagy egy-egy funkció támogatását az osmand.net oldalon.
+ "</string>
+    <string name="osmand_plus_long_description_1000_chars">"
+ OsmAnd+ (OSM Automated Navigation Directions)
+
+Az OsmAnd+ egy nyílt forráskódú navigációs alkalmazás az OpenStreetMap (OSM) adatainak széleskörű használatával. Bármelyik térképadat (vektoros és raszteres térképek) tárolható a készülék memóriakártyáján offline használatra. Az OsmAnd továbbá lehetővé teszi az offline és online útvonaltervezést is, részletes hangutasításokkal.
+
+Az OsmAnd+ az alkalmazás fizetős változata, aminek megvásárlásával támogatod a projektet, az új funkciók fejlesztésének finanszírozását és megkapod a legújabb frissítéseket.
+
+
+Néhány fontosabb funkció:
+- Teljesen offline működés (a letöltött vektoros és raszteres térképek az eszközön tárolódnak)
+- A kompakt, offline vektoros térképek az egész világhoz elérhetőek
+- Az ország vagy régió térképei letölthetők közvetlenül az alkalmazásból
+- Offline Wikipédia szócikkek letöltése, ami hasznos segítség városnézéshez
+- Számos rávetíthető térképréteg, mint GPX-ek, navigációs útvonalak, POI-k (érdekes helyek), kedvencek, szintvonalak, tömegközlekedési megállók, további térképek beállítható átlátszósággal
+- Címek és helyek offline kereshetősége
+- Offline útvonaltervezés közepes távolságokra
+- Autós, kerékpáros és gyalogos módok:
+ - opcionális automata nappali/éjszakai nézetváltással
+ - opcionális sebességfüggő nagyítással
+ - opcionális térképforgatással a mozgás vagy az iránytű alapján
+ - opcionális sávasszisztens, sebességhatár kijelzés, felvett és gépi hangutasítás
+ "</string>
     <string name="osmand_plus_short_description_80_chars">Globális mobil térkép és navigáció, offline és online OSM térképekkel</string>
     <string name="avoid_motorway">Autópályák elkerülése</string>
 
@@ -971,7 +1027,11 @@
     <string name="map_widget_audionotes">Hangjegyzetek</string>
     <string name="audionotes_plugin_name">Hang- és videojegyzetek</string>
 
-    <string name="srtm_plugin_description">"Ez a bővítmény egy szintvonal borítást és egy (domborzati) árnyékolás réteget biztosít, amelyek az OsmAnd normál térképein jelennek meg. Ezt a funkcionalitást nagyon fogják értékelni a sportolók, túrázók, nyomvonalrögzítők és mindenki, akiket a táj domborzati szerkezete érdekel.\n\nA globális adatok (az északi 70° és déli 70° szélesség között) az SRTM (Shuttle Radar Topography Mission) és az ASTER (Advanced Spaceborne Thermal Emission and Reflection Radiometer) mérésein alapulnak, amely a NASA Earsh Observing System zászlóshajójának, a Terra műholdnak a képalkotó berendezése. Az ASTER a NASA, a Japán Gazdasági, Kereskedelmi és Ipari Minisztérium (METI), valamint a Japán Űrügynökség (J-spacesystems) közös projektje. "</string>
+    <string name="srtm_plugin_description">"Ez a bővítmény egy szintvonal borítást és egy domborzatárnyékolás réteget biztosít, amelyek az OsmAnd normál térképein jelennek meg. Ezt a funkcionalitást nagyon fogják értékelni a sportolók, túrázók, nyomvonalrögzítők és mindenki, akiket a táj domborzati szerkezete érdekel.
+
+
+A globális adatok (az északi 70° és déli 70° szélesség között) az SRTM (Shuttle Radar Topography Mission) és az ASTER (Advanced Spaceborne Thermal Emission and Reflection Radiometer) mérésein alapulnak, amely a NASA Earsh Observing System zászlóshajójának, a Terra műholdnak a képalkotó berendezése. Az ASTER a NASA, a Japán Gazdasági, Kereskedelmi és Ipari Minisztérium (METI), valamint a Japán Űrügynökség (J-spacesystems) közös projektje.
+ "</string>
 
 
     <string name="recording_is_recorded">Hang/videofelvétel elindult. Leállításhoz nyomd meg az A/V vezérlő stop gombját.</string>
@@ -1005,7 +1065,11 @@
     <string name="recording_error">A felvétel közben hiba történt </string>
     <string name="recording_camera_not_available">A kamera nem elérhető</string>
     <string name="shared_string_control_stop">Leállítás</string>
-    <string name="osmand_srtm_long_description_1000_chars">"Ez a bővítmény egy szintvonal borítást és egy (domborzati) árnyékolás réteget biztosít, amelyek az OsmAnd normál térképein jelennek meg. Ezt a funkcionalitást nagyon fogják értékelni a sportolók, túrázók, nyomvonalrögzítők és mindenki, akiket a táj domborzati szerkezete érdekel.\n\nA globális adatok (az északi 70° és déli 70° szélesség között) az SRTM (Shuttle Radar Topography Mission) és az ASTER (Advanced Spaceborne Thermal Emission and Reflection Radiometer) mérésein alapulnak, amely a NASA Earsh Observing System zászlóshajójának, a Terra műholdnak a képalkotó berendezése. Az ASTER a NASA, a Japán Gazdasági, Kereskedelmi és Ipari Minisztérium (METI), valamint a Japán Űrügynökség (J-spacesystems) közös projektje. "</string>
+    <string name="osmand_srtm_long_description_1000_chars">"Ez a bővítmény egy szintvonal borítást és egy (domborzati) árnyékolás réteget biztosít, amelyek az OsmAnd normál térképein jelennek meg. Ezt a funkcionalitást nagyon fogják értékelni a sportolók, túrázók, nyomvonalrögzítők és mindenki, akiket a táj domborzati szerkezete érdekel.
+
+
+A globális adatok (az északi 70° és déli 70° szélesség között) az SRTM (Shuttle Radar Topography Mission) és az ASTER (Advanced Spaceborne Thermal Emission and Reflection Radiometer) mérésein alapulnak, amely a NASA Earsh Observing System zászlóshajójának, a Terra műholdnak a képalkotó berendezése. Az ASTER a NASA, a Japán Gazdasági, Kereskedelmi és Ipari Minisztérium (METI), valamint a Japán Űrügynökség (J-spacesystems) közös projektje.
+ "</string>
     <string name="av_widget_action_descr">Válaszd ki a vezérlőgomb alapértelmezett működési módját</string>
     <string name="av_widget_action">Alapértelmezett mód</string>
     <string name="recording_description">Felvétel %1$s %3$s %2$s</string>
@@ -1086,7 +1150,13 @@
     <string name="gpx_saved_sucessfully">GPX fájl sikeresen elmentve ide: {0}</string>
     <string name="osmand_distance_planning_plugin_description">Ez a bővítmény lehetővé teszi útvonalak létrehozását a térképen való koppintással, vagy meglévő GPX fájlok használatát, módosítását egy út megtervezéséhez és a pontok közötti távolság méréséhez. Az eszközt a térkép képernyőn elhelyezett gombbal lehet indítani. Az eredmény elmenthető GPX fájlként, amely később használható a vezetéshez.</string>
     <string name="osmand_distance_planning_plugin_name">Távolságszámító és tervezőeszköz</string>
-    <string name="use_distance_measurement_help">* Pont lerakásához koppints.\n * Nyomd meg hosszan a térképet az előző pont törléséhez.\n * Nyomd meg hosszan a pontot leírás csatolásához és megtekintéséhez.\n * További műveletekért kattints a vezérlőgombra.</string>
+    <string name="use_distance_measurement_help">* Pont lerakásához koppints.
+
+* Nyomd meg hosszan a térképet az előző pont törléséhez.
+
+* Nyomd meg hosszan a pontot leírás csatolásához és megtekintéséhez.
+
+* További műveletekért kattints a vezérlőgombra.</string>
     <string name="shared_string_do_not_show_again">Ne jelenjen meg újra</string>
     <string name="distance_measurement_start_editing">Szerkesztés indítása</string>
     <string name="distance_measurement_finish_editing">Szerkesztés befejezése</string>
@@ -1210,8 +1280,8 @@
     <string name="route_info">Útvonal információ</string>
     <string name="routing_attr_prefer_motorway_name">Autópályák preferálása</string>
     <string name="routing_attr_prefer_motorway_description">Autópályák preferálása</string>
-    <string name="routing_attr_short_way_name">Legrövidebb útvonal</string>
-    <string name="routing_attr_short_way_description">Legrövidebb útvonal tervezése</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Fizetős utak elkerülése</string>
     <string name="routing_attr_avoid_toll_description">Fizetős utak elkerülése</string>
     <string name="routing_attr_avoid_unpaved_name">Burkolatlan utak elkerülése</string>
@@ -1289,11 +1359,14 @@
     <string name="gpx_option_calculate_first_last_segment">OsmAnd útvonal számítása az első és utolsó útszakaszra</string>
     <string name="osmo_settings_uuid">Egyedi eszközazonosító</string>
     <string name="osmo_settings_descr">Monitorozási beállítások és személyes monitorozási csatorna</string>
-    <string name="osmo_plugin_description">"Ez a bővítmény biztosítja az úgynevezett OsMo speciális valós idejű megfigyelésének lehetőségét. Bővebben: http://osmo.mobi.
+    <string name="osmo_plugin_description">"Ez a bővítmény biztosítja az úgynevezett OsMo speciális valós idejű megfigyelésének lehetőségét. Bővebben: http://osmo.mobi
 
-Valós időben követheti egy résztvevő csoport összes eszközét. Láthatja a csoportnak feltöltött megosztott pontokat és nyomvonalakat.
 
-A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon létrehozott csoportokra vonatkozó szabályozásnak megfelelően. "</string>
+Valós időben követheted egy résztvevő csoport összes eszközét. Láthatod a csoportnak feltöltött megosztott pontokat és nyomvonalakat.
+
+
+A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon létrehozott csoportokra vonatkozó szabályozásnak megfelelően
+ "</string>
     <string name="osmo_plugin_name">OpenStreetMap Monitoring</string>
     <string name="osmo_settings">OsMo</string>
     <string name="always_center_position_on_map">Pozíció megjelenítése mindig középen</string>
@@ -1490,9 +1563,27 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
 
     <string name="osmo_leave_confirmation_msg">Szeretnéd elhagyni a(z) %1$s csoportot?</string>
     <string name="osmo_specify_tracker_id">Kérlek adj meg azonosítót</string>
-    <string name="osmo_auth_error">Az OsMo engedélyezési hiba történt: %1$s.\n Ez lehet egy átmeneti szolgáltatás kimaradás, vagy a regisztrációd járt le.\n Szeretnéd új regisztrációval folytatni?</string>
+    <string name="osmo_auth_error">Az OsMo engedélyezési hiba történt: %1$s.
+
+ Ez lehet egy átmeneti szolgáltatáskimaradás, vagy a regisztrációd járt le.
+
+ Szeretnéd új regisztrációval folytatni?</string>
     <string name="osmo_group_by_invite">Belépés meghívásra</string>
-    <string name="osmo_group_information_desc">" - Csoport létrehozásához add meg a csoport nevét és töltsd ki a leírását.\n - A programmal létrehozott csoport egyszerű csoport lesz, további információ a weboldalon: https://osmo.mobi/g/new\n - Weboldalon keresztül kezelhetsz egy csoportot, nyomvonalakat és útpontokat tehetsz elérhetővé bárkinek a csoportban.\n - Nem engedélyezzük a csoport használatát egy fővel, ha ez nem a POI csoport.\n - A személyes csoportok 8 személyre vannak korlátozva.\n - Részletes felhasználási feltételek mindig elérhetőek az OsMo.mobi weboldalon.\n - Ha más feltételekkel kéne csoportot létrehoznod, lépj kapcsolatba velünk: http://osmo.mobi "</string>
+    <string name="osmo_group_information_desc">"
+ - Csoport létrehozásához add meg a csoport nevét és töltsd ki a leírását
+
+ - A programmal létrehozott csoport Egyszerű csoport lesz, további információ a weboldalon: https://osmo.mobi/g/new
+
+ - Weboldalon keresztül kezelhetsz egy csoportot, nyomvonalakat és útpontokat tehetsz elérhetővé bárkinek a csoportban
+
+ - Nem engedélyezzük a csoport használatát egy fővel, ha ez nem a POI csoport
+
+ - A személyes csoportok 8 személyre vannak korlátozva
+
+ - Részletes felhasználási feltételek mindig elérhetőek az OsMo.mobi weboldalon
+
+ - Ha más feltételekkel kéne csoportot létrehoznod, lépj kapcsolatba velünk: http://osmo.mobi
+ "</string>
     <string name="osmo_group_information">Csoport létrehozása előtt kérlek olvasd el!</string>
     <string name="osmo_not_signed_in">OsMo bejelentkezés sikertelen</string>
     <string name="osmo_gpx_points_downloaded">OsMo pont %1$s letöltve.</string>
@@ -1525,7 +1616,11 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="rendering_value_car_name">Autó</string>
     <string name="rendering_value_bicycle_name">Kerékpár</string>
     <string name="rendering_value_pedestrian_name">Gyalogos</string>
-    <string name="record_plugin_description">"Ez a bővítmény aktiválja a nyomvonalak rögzítésének és mentésének lehetőségét, ha kézzel megérinti a GPX naplózó felületi elemet a térkép képernyőn, valamint minden navigációs útvonalat automatikusan egy GPX fájlba naplóz.\n\nA rögzített nyomvonalak megoszthatók az ismerősökkel, vagy használhatók az OSM hozzájárulásoknál. A sportolók a rögzített nyomvonalakat az edzéseik megfigyeléséhez használhatják. Néhány alapvető nyomvonalelemzés közvetlenül az OsmAnd programon belül is végrehajtható, mint például köridők, átlagsebesség, stb., és természetesen a nyomvonalak később speciális harmadik féltől származó elemzőeszközökkel is elemezhetők. "</string>
+    <string name="record_plugin_description">"Ez a bővítmény aktiválja a nyomvonalak rögzítésének és mentésének lehetőségét, ha kézzel megérinti a GPX naplózó felületi elemet a térkép képernyőn, valamint minden navigációs útvonalat automatikusan egy GPX fájlba naplóz.
+
+
+A rögzített nyomvonalak megoszthatók az ismerősökkel, vagy használhatók az OSM hozzájárulásoknál. A sportolók a rögzített nyomvonalakat az edzéseik megfigyeléséhez használhatják. Néhány alapvető nyomvonalelemzés közvetlenül az OsmAnd programon belül is végrehajtható, mint például köridők, átlagsebesség, stb., és természetesen a nyomvonalak később speciális harmadik féltől származó elemzőeszközökkel is elemezhetők.
+ "</string>
     <string name="record_plugin_name">Útvonal rögzítése</string>
     <string name="int_hour">ó</string>
     <string name="duration">Időtartam</string>
@@ -1585,8 +1680,150 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="rendering_category_hide">Elrejtés</string>
     <string name="wake_on_voice">Képernyő bekapcsolása</string>
     <string name="wake_on_voice_descr">Az eszköz képernyőjének bekapcsolása (ha ki van kapcsolva) egy kanyarodáshoz közeledve</string>
-    <string name="osmand_extended_description_4000_chars">" Az OsmAnd (OSM Automated Navigation Directions) egy térkép és navigációs alkalmazás, ingyenes, világméretű és jó minőségű OpenStreetMap (OSM) térképpel. Az összes térképadat offline tárolható az eszköz memóriakártyáján. GPS használatával az OsmAnd képes útvonaltervezésre, vizuális és hangnavigációra, mindezt autós, kerékpáros és gyalogos módban. Az összes főbb funkció működik online és offline (internetkapcsolat nélkül) is.\n\nNéhány főbb funkció:\n\nNavigáció\n- Működik online (gyorsabb) vagy offline (nincs internet roaming díj külföldön)\n- Turn-by-turn hangnavigáció felvett, vagy gépi hanggal (utóbbihoz TTS felolvasó szükséges)\n- Sávkijelzés, utcanévkijelzés, várható érkezési idő\n- Köztes célpontok megadásának lehetősége\n- Automatikus újratervezés, ha letértél az útról\n- Keresés helyekre cím alapján, típus szerint (étterem, hotel, benzinkút, múzeum), vagy koordináta alapján\n\nTérkép nézet\n- A pozíciód és irányod megjelenítése a térképen\n- A térkép forgatása választható iránytű, vagy mozgásirány alapján\n- Fontos helyek mentése Kedvencként\n- POI-k (érdekes helyek) megjelenítése a környékeden\n- Online (csempés) térképek megjelenítése\n- Műhold nézet (Bing)\n- Különféle rátét térképek állítható átlátszósággal, felvett GPX nyomvonalak\n- Helynevek megjelenítése saját nyelven, angolul, vagy fonetikus átírásban\n\nOpenStreetMap és Wikipédia adatok\n- Minőségi információk az egész világról a legjobb közösségi projektektől\n- OpenStreetMap térképek az egész földről országonkénti vagy régió szerinti bontásban\n- Wikipédia POI-k városnézéshez (nem elérhető az ingyenes verzióban)\n- Korlátlan ingyenes letöltés közvetlenül az alkalmazásból (az ingyenes verzióban 16 térképfájlra korlátozva)\n- Folyamatosan frissülő térképek (legalább havonta egyszer)\n- Kompakt offline vektoros térképek\n- Választható teljes térkép vagy csak úthálózat (például teljes Japán 700 MB, de az úthálózat csak 200 MB)\n- Támogatja az online vagy előre letárolt csempés térképeket\n\nBiztonsági funkciók\n- Választható automata nappal/éjjel nézet váltás\n- Választható sebességhatár kijelzés, túllépés esetén figyelmeztetéssel\n- Választható sebességfüggő nagyítás\n- Pozíciód megosztása, hogy a barátaid megtaláljanak\n\nKerékpáros és gyalogos funkciók\n- Szabadtéri tevékenységekhez a térképek tartalmazzák a gyalogos, túra, és kerékpáros ösvényeket\n- Külön gyalogos és kerékpáros tervezés és megjelenítés\n- Tömegközlekedési megállók vonalnevekkel\n- Utazás felvétele GPX fájlba vagy online szolgáltatásra\n- Sebesség és tengerszint feletti magasság megjelenítés\n- Szintvonalak és domborzatárnyékolás megjelenítése (plugin telepítése szükséges)\n\nKözvetlen OpenStreetMap közreműködés\n- Térképhibák jelentése\n- GPX nyomvonalak feltöltése OSM-re közvetlenül az alkalmazásból\n- POI-k felvétele és feltöltése közvetlenül OSM-be (vagy később offline)\n\nAz OsmAnd nyílt forráskódú és aktív fejlesztés alatt áll. Bárki közreműködhet hibák jelentésével, fordításokkal, vagy új funkciók fejlesztésével. A projekt haladása függ az anyagi hozzájárulásoktól is, megalapozva a fejlesztést, kódolást, és az új funkciók tesztelését. Az OsmAnd+ megvásárlásával segítheted, hogy az alkalmazás még szuperebb legyen! Az osmand.net-en lehetőség van konkrét funkció támogatására és általános adományozásra is.\n\nHozzávetőleges térképi lefedettség és minőség:\n- Nyugat-Európa: ****\n- Kelet-Európa: ***\n- Oroszország: ***\n- Észak-Amerika: ***\n- Dél-Amerika: **\n- Ázsia: **\n- Japán &amp; Korea: ***\n- Közel-Kelet: **\n- Afrika: **\n- Antarktisz: *\n\nTámogatott országok listája (alapvetően az egész világ!):\nAfganisztán, Albánia, Algéria, Amerikai Egyesült Államok, Andorra, Anglia, Angola, Anguilla, Antigua és Barbuda, Argentína, Aruba, Ausztrália, Ausztria, Azerbajdzsán, Bahamák, Bahrein, Banglades, Barbados, Belgium, Belize, Benin, Bhután, Bissau-Guinea, Bolívia, Bonaire, Bosznia és Hercegovina, Botswana, Brazília, Brit Virgin-szigetek, Brunei, Bulgária, Burkina Faso, Burundi, Chile, Ciprus, Comore-szigetek, Costa Rica, Curaçao, Csád, Csehország, Dánia, Dél-afrikai Köztársaság, Déli-Georgia, Dél-Szudán, Dominika, Dominikai Köztársaság, Dzsibuti, Ecuador, Egyesült Arab Emírségek, Egyesült Királyság, Egyiptom, El Salvador, Elefántcsontpart, Egyenlítői-Guinea, Eritrea, Észtország, Etiópia, Fehéroroszország, Fiji-szigetek, Finnország, Franciaország, Francia Polinézia, Fülöp-szigetek, Gabon, Gambia, Ghána, Gibraltár, Görögország, Grenada, Grönland, Grúzia, Guadeloupe, Guam, Guatemala, Guernsey, Guinea, Guyana, Haiti, Hollandia, Holland Antillák, Honduras, Horvátország, Hongkong, India, Indonézia, Irak, Irán, Írország, Izland, Izrael, Jamaica, Japán, Jemen, Jersey, Jordánia, Kambodzsa, Kamerun, Kanada, Katar, Kazahsztán, Kelet-Timor, Kenya, Kína, Kiribati, Kirgizisztán, Észak Korea és Dél Korea,  Kolumbia, Kongó, Koszovó, Közép-afrikai Köztársaság, Kuba, Kuvait, Laosz, Lengyelország, Lesotho, Lettország, Libanon, Libéria, Líbia, Lichtenstein, Litvánia, Luxemburg, Macedónia, Madagaszkár, Makaó, Magyarország, Malajzia, Malawi, Maldív-szigetek, Mali, Málta, Man-szigetek, Marokkó, Martinique, Mauritánia, Mauritius, Mayotte, Mexikó, Mianmar, Mikronézia, Moldova, Monaco, Mongólia, Montenegró, Monserrat, Mozambik, Namíbia, Nauru, Németország, Nepál, Nicaragua, Niger, Nigéria, Norvégia, Nyugat-Szahara, Olaszország, Omán, Oroszország, Örményország, Pakisztán, Palau, Palesztina, Panama, Pápua Új-Guinea, Paraguay, Peru, Portugália, Puerto Rico, Románia, Ruanda, Saint-Barthélemy, Szent Ilona, Saint Kitts és Nevis, Saint Lucia, Saint-Martin, Saint-Pierre és Miquelon, Saint Vincent és a Grenadine-szigetek, San Marino, Seychelle-szigetek, Sierra Leone, Spanyolország, Srí Lanka, Suriname, Svájc, Svédország, Szamoa, Szaúd-Arábia, Szenegál, Szerbia, Szingapúr, Szíria, Szlovákia, Szlovénia, Szomália, Szudán, Szváziföld, Tajvan, Tádzsikisztán, Tanzánia, Thaiföld, Tokelau-szigetek, Togo, Tonga, Törökország, Trinidad és Tobago, Tunézia, Tuvalu, Türkmenisztán, Uganda, Új-Kaledónia, Új-Zéland, Ukrajna, Uruguay, Üzbegisztán, Vanuatu, Vatikán, Venezuela, Vietnam, Wallis és Fortuna, Zambia, Zimbabwe, Zöld-foki Köztársaság "</string>
-    <string name="osmand_plus_extended_description_4000_chars">" Az OsmAnd (OSM Automated Navigation Directions) egy térkép és navigációs alkalmazás, ingyenes, világméretű és jó minőségű OpenStreetMap (OSM) térképpel. Az összes térképadat offline tárolható az eszköz memóriakártyáján. GPS használatával az OsmAnd képes útvonaltervezésre, vizuális és hangnavigációra, mindezt autós, kerékpáros és gyalogos módban. Az összes főbb funkció működik online és offline (Internetkapcsolat nélkül) is.\n\nAz OsmAnd+ az alkalmazás fizetős változata. A megvételével támogatod a projektet, megalapozod új funkciók fejlesztését, és megkapod a legújabb frissítéseket. Ha vásárlás előtt kipróbálnád az alkalmazást, telepítsd az OsmAndot.\n\nNéhány főbb funkció:\n\nNavigáció\n- Működik online (gyorsabb) vagy offline (nincs internet roaming díj külföldön)\n- Turn-by-turn hangnavigáció felvett, vagy gépi hanggal (utóbbihoz TTS felolvasó szükséges)\n- Sávkijelzés, utcanévkijelzés, várható érkezési idő\n- Köztes célpontok megadásának lehetősége\n- Automatikus újratervezés, ha letértél az útról\n- Keresés helyekre cím alapján, típus szerint (étterem, hotel, benzinkút, múzeum), vagy koordináta alapján\n\nTérkép nézet\n- A pozíciód és irányod megjelenítése a térképen\n- A térkép forgatása választható iránytű, vagy mozgásirány alapján\n- Fontos helyek mentése Kedvencként\n- POI-k (érdekes helyek) megjelenítése a környékeden\n- Online (csempés) térképek megjelenítése\n- Műhold nézet (Bing)\n- Különféle rátét térképek állítható átlátszósággal, felvett GPX nyomvonalak\n- Helynevek megjelenítése saját nyelven, angolul, vagy fonetikus átírásban\n\nOpenStreetMap és Wikipédia adatok\n- Minőségi információk az egész világról a legjobb közösségi projektektől\n- OpenStreetMap térképek az egész földről országonkénti vagy régió szerinti bontásban\n- Wikipédia POI-k városnézéshez (nem elérhető az ingyenes verzióban)\n- Korlátlan ingyenes letöltés közvetlenül az alkalmazásból (az ingyenes verzióban 16 térképfájlra korlátozva)\n- Folyamatosan frissülő térképek (legalább havonta egyszer)\n- Kompakt offline vektoros térképek\n- Választható teljes térkép vagy csak úthálózat (például teljes Japán 700 MB, de az úthálózat csak 200 MB)\n- Támogatja az online vagy előre letárolt csempés térképeket\n\nBiztonsági funkciók\n- Választható automata nappal/éjjel nézet váltás\n- Választható sebességhatár kijelzés, túllépés esetén figyelmeztetéssel\n- Választható sebességfüggő nagyítás\n- Pozíciód megosztása, hogy a barátaid megtaláljanak\n\nKerékpáros és gyalogos funkciók\n- Szabadtéri tevékenységekhez a térképek tartalmazzák a gyalogos, túra, és kerékpáros ösvényeket\n- Külön gyalogos és kerékpáros tervezés és megjelenítés\n- Tömegközlekedési megállók vonalnevekkel\n- Utazás felvétele GPX fájlba vagy online szolgáltatásra\n- Sebesség és tengerszint feletti magasság megjelenítés\n- Szintvonalak és domborzatárnyékolás megjelenítése (bővítmény telepítése szükséges)\n\nKözvetlen OpenStreetMap közreműködés\n- Térképhibák jelentése\n- GPX nyomvonalak feltöltése OSM-re közvetlenül az alkalmazásból\n- POI-k felvétele és feltöltése közvetlenül OSM-be (vagy később offline)\n\nAz OsmAnd nyílt forráskódú és aktív fejlesztés alatt áll. Bárki közreműködhet hibák jelentésével, fordításokkal, vagy új funkciók fejlesztésével. A projekt haladása függ az anyagi hozzájárulásoktól is, megalapozva a fejlesztést, kódolást, és az új funkciók tesztelését. Az OsmAnd+ megvásárlásával segítheted, hogy az alkalmazás még szuperebb legyen! Az osmand.net-en lehetőség van konkrét funkció támogatására és általános adományozásra is.\n\nHozzávetőleges térképi lefedettség és minőség:\n- Nyugat-Európa: ****\n- Kelet-Európa: ***\n- Oroszország: ***\n- Észak-Amerika: ***\n- Dél-Amerika: **\n- Ázsia: **\n- Japán &amp; Korea: ***\n- Közel-Kelet: **\n- Afrika: **\n- Antarktisz: *\n\nTámogatott országok listája (alapvetően az egész világ!):\nAfganisztán, Albánia, Algéria, Amerikai Egyesült Államok, Andorra, Anglia, Angola, Anguilla, Antigua és Barbuda, Argentína, Aruba, Ausztrália, Ausztria, Azerbajdzsán, Bahamák, Bahrein, Banglades, Barbados, Belgium, Belize, Benin, Bhután, Bissau-Guinea, Bolívia, Bonaire, Bosznia és Hercegovina, Botswana, Brazília, Brit Virgin-szigetek, Brunei, Bulgária, Burkina Faso, Burundi, Chile, Ciprus, Comore-szigetek, Costa Rica, Curaçao, Csád, Csehország, Dánia, Dél-afrikai Köztársaság, Déli-Georgia, Dél-Szudán, Dominika, Dominikai Köztársaság, Dzsibuti, Ecuador, Egyesült Arab Emírségek, Egyesült Királyság, Egyiptom, El Salvador, Elefántcsontpart, Egyenlítői-Guinea, Eritrea, Észtország, Etiópia, Fehéroroszország, Fiji-szigetek, Finnország, Franciaország, Francia Polinézia, Fülöp-szigetek, Gabon, Gambia, Ghána, Gibraltár, Görögország, Grenada, Grönland, Grúzia, Guadeloupe, Guam, Guatemala, Guernsey, Guinea, Guyana, Haiti, Hollandia, Holland Antillák, Honduras, Horvátország, Hongkong, India, Indonézia, Irak, Irán, Írország, Izland, Izrael, Jamaica, Japán, Jemen, Jersey, Jordánia, Kambodzsa, Kamerun, Kanada, Katar, Kazahsztán, Kelet-Timor, Kenya, Kína, Kiribati, Kirgizisztán, Észak Korea és Dél Korea,  Kolumbia, Kongó, Koszovó, Közép-afrikai Köztársaság, Kuba, Kuvait, Laosz, Lengyelország, Lesotho, Lettország, Libanon, Libéria, Líbia, Lichtenstein, Litvánia, Luxemburg, Macedónia, Madagaszkár, Makaó, Magyarország, Malajzia, Malawi, Maldív-szigetek, Mali, Málta, Man-szigetek, Marokkó, Martinique, Mauritánia, Mauritius, Mayotte, Mexikó, Mianmar, Mikronézia, Moldova, Monaco, Mongólia, Montenegró, Monserrat, Mozambik, Namíbia, Nauru, Németország, Nepál, Nicaragua, Niger, Nigéria, Norvégia, Nyugat-Szahara, Olaszország, Omán, Oroszország, Örményország, Pakisztán, Palau, Palesztina, Panama, Pápua Új-Guinea, Paraguay, Peru, Portugália, Puerto Rico, Románia, Ruanda, Saint-Barthélemy, Szent Ilona, Saint Kitts és Nevis, Saint Lucia, Saint-Martin, Saint-Pierre és Miquelon, Saint Vincent és a Grenadine-szigetek, San Marino, Seychelle-szigetek, Sierra Leone, Spanyolország, Srí Lanka, Suriname, Svájc, Svédország, Szamoa, Szaúd-Arábia, Szenegál, Szerbia, Szingapúr, Szíria, Szlovákia, Szlovénia, Szomália, Szudán, Szváziföld, Tajvan, Tádzsikisztán, Tanzánia, Thaiföld, Tokelau-szigetek, Togo, Tonga, Törökország, Trinidad és Tobago, Tunézia, Tuvalu, Türkmenisztán, Uganda, Új-Kaledónia, Új-Zéland, Ukrajna, Uruguay, Üzbegisztán, Vanuatu, Vatikán, Venezuela, Vietnam, Wallis és Fortuna, Zambia, Zimbabwe, Zöld-foki Köztársaság "</string>
+    <string name="osmand_extended_description_4000_chars">"
+Az OsmAnd (OSM Automated Navigation Directions) egy térkép és navigációs alkalmazás, ingyenes, világméretű és jó minőségű OpenStreetMap (OSM) térképpel. Az összes térképadat offline tárolható az eszköz memóriakártyáján. GPS használatával az OsmAnd képes útvonaltervezésre, vizuális és hangnavigációra, mindezt autós, kerékpáros és gyalogos módban. Az összes főbb funkció működik online és offline (internetkapcsolat nélkül) is.
+
+Néhány főbb funkció:
+
+Navigáció
+- Működik online (gyorsabb) vagy offline (nincs internet roaming díj külföldön)
+- Turn-by-turn hangnavigáció felvett, vagy gépi hanggal (utóbbihoz TTS felolvasó szükséges)
+- Sávkijelzés, utcanévkijelzés, várható érkezési idő
+- Köztes célpontok megadásának lehetősége
+- Automatikus újratervezés, ha letértél az útról
+- Keresés helyekre cím alapján, típus szerint (étterem, hotel, benzinkút, múzeum), vagy koordináta alapján
+
+Térkép nézet
+- A pozíciód és irányod megjelenítése a térképen
+- A térkép forgatása választható iránytű, vagy mozgásirány alapján
+- Fontos helyek mentése Kedvencként
+- POI-k (érdekes helyek) megjelenítése a környékeden
+- Online (csempés) térképek megjelenítése
+- Műhold nézet (Bing)
+- Különféle rátét térképek állítható átlátszósággal, felvett GPX nyomvonalak
+- Helynevek megjelenítése saját nyelven, angolul, vagy fonetikus átírásban
+
+OpenStreetMap és Wikipédia adatok
+- Minőségi információk az egész világról a legjobb közösségi projektektől
+- OpenStreetMap térképek az egész földről országonkénti vagy régió szerinti bontásban
+- Wikipédia POI-k városnézéshez (nem elérhető az ingyenes verzióban)
+- Korlátlan ingyenes letöltés közvetlenül az alkalmazásból (az ingyenes verzióban 16 térképfájlra korlátozva)
+- Folyamatosan frissülő térképek (legalább havonta egyszer)
+- Kompakt offline vektoros térképek
+- Választható teljes térkép vagy csak úthálózat (például teljes Japán 700 MB, de az úthálózat csak 200 MB)
+- Támogatja az online vagy előre letárolt csempés térképeket
+
+Biztonsági funkciók
+- Választható automata nappal/éjjel nézet váltás
+- Választható sebességhatár kijelzés, túllépés esetén figyelmeztetéssel
+- Választható sebességfüggő nagyítás
+- Pozíciód megosztása, hogy a barátaid megtaláljanak
+
+Kerékpáros és gyalogos funkciók
+- Szabadtéri tevékenységekhez a térképek tartalmazzák a gyalogos, túra, és kerékpáros ösvényeket
+- Külön gyalogos és kerékpáros tervezés és megjelenítés
+- Tömegközlekedési megállók vonalnevekkel
+- Utazás felvétele GPX fájlba vagy online szolgáltatásra
+- Sebesség és tengerszint feletti magasság megjelenítés
+- Szintvonalak és domborzatárnyékolás megjelenítése (bővítmény telepítése szükséges)
+
+Közvetlen OpenStreetMap közreműködés
+- Térképhibák jelentése
+- GPX nyomvonalak feltöltése OSM-re közvetlenül az alkalmazásból
+- POI-k felvétele és feltöltése közvetlenül OSM-be (vagy később offline)
+- Opcionális útvonalrögzítés akár a háttérben is (kikapcsolt képernyővel)
+
+Az OsmAnd nyílt forráskódú és aktív fejlesztés alatt áll. Bárki közreműködhet hibák jelentésével, fordításokkal, vagy új funkciók fejlesztésével. A projekt haladása függ az anyagi hozzájárulásoktól is, megalapozva a fejlesztést, kódolást, és az új funkciók tesztelését. Az OsmAnd+ megvásárlásával segítheted, hogy az alkalmazás még szuperebb legyen! Az osmand.net-en lehetőség van konkrét funkció támogatására és általános adományozásra is.
+
+
+Hozzávetőleges térképi lefedettség és minőség:
+- Nyugat-Európa: ****
+- Kelet-Európa: ***
+- Oroszország: ***
+- Észak-Amerika: ***
+- Dél-Amerika: **
+- Ázsia: **
+- Japán &amp; Korea: ***
+- Közel-Kelet: **
+- Afrika: **
+- Antarktisz: *
+
+Támogatott országok listája (alapvetően az egész világ!):
+Afganisztán, Albánia, Algéria, Amerikai Egyesült Államok, Andorra, Anglia, Angola, Anguilla, Antigua és Barbuda, Argentína, Aruba, Ausztrália, Ausztria, Azerbajdzsán, Bahamák, Bahrein, Banglades, Barbados, Belgium, Belize, Benin, Bhután, Bissau-Guinea, Bolívia, Bonaire, Bosznia és Hercegovina, Botswana, Brazília, Brit Virgin-szigetek, Brunei, Bulgária, Burkina Faso, Burundi, Chile, Ciprus, Comore-szigetek, Costa Rica, Curaçao, Csád, Csehország, Dánia, Dél-afrikai Köztársaság, Déli-Georgia, Dél-Szudán, Dominika, Dominikai Köztársaság, Dzsibuti, Ecuador, Egyesült Arab Emírségek, Egyesült Királyság, Egyiptom, El Salvador, Elefántcsontpart, Egyenlítői-Guinea, Eritrea, Észtország, Etiópia, Fehéroroszország, Fiji-szigetek, Finnország, Franciaország, Francia Polinézia, Fülöp-szigetek, Gabon, Gambia, Ghána, Gibraltár, Görögország, Grenada, Grönland, Grúzia, Guadeloupe, Guam, Guatemala, Guernsey, Guinea, Guyana, Haiti, Hollandia, Holland Antillák, Honduras, Horvátország, Hongkong, India, Indonézia, Irak, Irán, Írország, Izland, Izrael, Jamaica, Japán, Jemen, Jersey, Jordánia, Kambodzsa, Kamerun, Kanada, Katar, Kazahsztán, Kelet-Timor, Kenya, Kína, Kiribati, Kirgizisztán, Észak Korea és Dél Korea,  Kolumbia, Kongó, Koszovó, Közép-afrikai Köztársaság, Kuba, Kuvait, Laosz, Lengyelország, Lesotho, Lettország, Libanon, Libéria, Líbia, Lichtenstein, Litvánia, Luxemburg, Macedónia, Madagaszkár, Makaó, Magyarország, Malajzia, Malawi, Maldív-szigetek, Mali, Málta, Man-szigetek, Marokkó, Martinique, Mauritánia, Mauritius, Mayotte, Mexikó, Mianmar, Mikronézia, Moldova, Monaco, Mongólia, Montenegró, Monserrat, Mozambik, Namíbia, Nauru, Németország, Nepál, Nicaragua, Niger, Nigéria, Norvégia, Nyugat-Szahara, Olaszország, Omán, Oroszország, Örményország, Pakisztán, Palau, Palesztina, Panama, Pápua Új-Guinea, Paraguay, Peru, Portugália, Puerto Rico, Románia, Ruanda, Saint-Barthélemy, Szent Ilona, Saint Kitts és Nevis, Saint Lucia, Saint-Martin, Saint-Pierre és Miquelon, Saint Vincent és a Grenadine-szigetek, San Marino, Seychelle-szigetek, Sierra Leone, Spanyolország, Srí Lanka, Suriname, Svájc, Svédország, Szamoa, Szaúd-Arábia, Szenegál, Szerbia, Szingapúr, Szíria, Szlovákia, Szlovénia, Szomália, Szudán, Szváziföld, Tajvan, Tádzsikisztán, Tanzánia, Thaiföld, Tokelau-szigetek, Togo, Tonga, Törökország, Trinidad és Tobago, Tunézia, Tuvalu, Türkmenisztán, Uganda, Új-Kaledónia, Új-Zéland, Ukrajna, Uruguay, Üzbegisztán, Vanuatu, Vatikán, Venezuela, Vietnam, Wallis és Fortuna, Zambia, Zimbabwe, Zöld-foki Köztársaság
+ "</string>
+    <string name="osmand_plus_extended_description_4000_chars">"
+Az OsmAnd (OSM Automated Navigation Directions) egy térkép és navigációs alkalmazás, ingyenes, világméretű és jó minőségű OpenStreetMap (OSM) térképpel. Az összes térképadat offline tárolható az eszköz memóriakártyáján. GPS használatával az OsmAnd képes útvonaltervezésre, vizuális és hangnavigációra, mindezt autós, kerékpáros és gyalogos módban. Az összes főbb funkció működik online és offline (Internetkapcsolat nélkül) is.
+
+Az OsmAnd+ az alkalmazás fizetős változata. A megvételével támogatod a projektet, megalapozod új funkciók fejlesztését, és megkapod a legújabb frissítéseket. Ha vásárlás előtt kipróbálnád az alkalmazást, telepítsd az OsmAndot.
+
+Néhány főbb funkció:
+
+Navigáció
+- Működik online (gyorsabb) vagy offline (nincs internet roaming díj külföldön)
+- Turn-by-turn hangnavigáció felvett, vagy gépi hanggal (utóbbihoz TTS felolvasó szükséges)
+- Sávkijelzés, utcanévkijelzés, várható érkezési idő
+- Köztes célpontok megadásának lehetősége
+- Automatikus újratervezés, ha letértél az útról
+- Keresés helyekre cím alapján, típus szerint (étterem, hotel, benzinkút, múzeum), vagy koordináta alapján
+
+Térkép nézet
+- A pozíciód és irányod megjelenítése a térképen
+- A térkép forgatása választható iránytű, vagy mozgásirány alapján
+- Fontos helyek mentése Kedvencként
+- POI-k (érdekes helyek) megjelenítése a környékeden
+- Online (csempés) térképek megjelenítése
+- Műhold nézet (Bing)
+- Különféle rátét térképek állítható átlátszósággal, felvett GPX nyomvonalak
+- Helynevek megjelenítése saját nyelven, angolul, vagy fonetikus átírásban
+
+OpenStreetMap és Wikipédia adatok
+- Minőségi információk az egész világról a legjobb közösségi projektektől
+- OpenStreetMap térképek az egész földről országonkénti vagy régió szerinti bontásban
+- Wikipédia POI-k városnézéshez (nem elérhető az ingyenes verzióban)
+- Korlátlan ingyenes letöltés közvetlenül az alkalmazásból (az ingyenes verzióban 16 térképfájlra korlátozva)
+- Folyamatosan frissülő térképek (legalább havonta egyszer)
+- Kompakt offline vektoros térképek
+- Választható teljes térkép vagy csak úthálózat (például teljes Japán 700 MB, de az úthálózat csak 200 MB)
+- Támogatja az online vagy előre letárolt csempés térképeket
+
+Biztonsági funkciók
+- Választható automata nappal/éjjel nézet váltás
+- Választható sebességhatár kijelzés, túllépés esetén figyelmeztetéssel
+- Választható sebességfüggő nagyítás
+- Pozíciód megosztása, hogy a barátaid megtaláljanak
+
+Kerékpáros és gyalogos funkciók
+- Szabadtéri tevékenységekhez a térképek tartalmazzák a gyalogos, túra, és kerékpáros ösvényeket
+- Külön gyalogos és kerékpáros tervezés és megjelenítés
+- Tömegközlekedési megállók vonalnevekkel
+- Utazás felvétele GPX fájlba vagy online szolgáltatásra
+- Sebesség és tengerszint feletti magasság megjelenítés
+- Szintvonalak és domborzatárnyékolás megjelenítése (bővítmény telepítése szükséges)
+
+Közvetlen OpenStreetMap közreműködés
+- Térképhibák jelentése
+- GPX nyomvonalak feltöltése OSM-re közvetlenül az alkalmazásból
+- POI-k felvétele és feltöltése közvetlenül OSM-be (vagy később offline)
+- Opcionális útvonalrögzítés akár a háttérben is (kikapcsolt képernyővel)
+
+Az OsmAnd nyílt forráskódú és aktív fejlesztés alatt áll. Bárki közreműködhet hibák jelentésével, fordításokkal, vagy új funkciók fejlesztésével. A projekt haladása függ az anyagi hozzájárulásoktól is, megalapozva a fejlesztést, kódolást, és az új funkciók tesztelését. Az OsmAnd+ megvásárlásával segítheted, hogy az alkalmazás még szuperebb legyen! Az osmand.net-en lehetőség van konkrét funkció támogatására és általános adományozásra is.
+
+
+Hozzávetőleges térképi lefedettség és minőség:
+- Nyugat-Európa: ****
+- Kelet-Európa: ***
+- Oroszország: ***
+- Észak-Amerika: ***
+- Dél-Amerika: **
+- Ázsia: **
+- Japán &amp; Korea: ***
+- Közel-Kelet: **
+- Afrika: **
+- Antarktisz: *
+
+Támogatott országok listája (alapvetően az egész világ!):
+Afganisztán, Albánia, Algéria, Amerikai Egyesült Államok, Andorra, Anglia, Angola, Anguilla, Antigua és Barbuda, Argentína, Aruba, Ausztrália, Ausztria, Azerbajdzsán, Bahamák, Bahrein, Banglades, Barbados, Belgium, Belize, Benin, Bhután, Bissau-Guinea, Bolívia, Bonaire, Bosznia és Hercegovina, Botswana, Brazília, Brit Virgin-szigetek, Brunei, Bulgária, Burkina Faso, Burundi, Chile, Ciprus, Comore-szigetek, Costa Rica, Curaçao, Csád, Csehország, Dánia, Dél-afrikai Köztársaság, Déli-Georgia, Dél-Szudán, Dominika, Dominikai Köztársaság, Dzsibuti, Ecuador, Egyesült Arab Emírségek, Egyesült Királyság, Egyiptom, El Salvador, Elefántcsontpart, Egyenlítői-Guinea, Eritrea, Észtország, Etiópia, Fehéroroszország, Fiji-szigetek, Finnország, Franciaország, Francia Polinézia, Fülöp-szigetek, Gabon, Gambia, Ghána, Gibraltár, Görögország, Grenada, Grönland, Grúzia, Guadeloupe, Guam, Guatemala, Guernsey, Guinea, Guyana, Haiti, Hollandia, Holland Antillák, Honduras, Horvátország, Hongkong, India, Indonézia, Irak, Irán, Írország, Izland, Izrael, Jamaica, Japán, Jemen, Jersey, Jordánia, Kambodzsa, Kamerun, Kanada, Katar, Kazahsztán, Kelet-Timor, Kenya, Kína, Kiribati, Kirgizisztán, Észak Korea és Dél Korea,  Kolumbia, Kongó, Koszovó, Közép-afrikai Köztársaság, Kuba, Kuvait, Laosz, Lengyelország, Lesotho, Lettország, Libanon, Libéria, Líbia, Lichtenstein, Litvánia, Luxemburg, Macedónia, Madagaszkár, Makaó, Magyarország, Malajzia, Malawi, Maldív-szigetek, Mali, Málta, Man-szigetek, Marokkó, Martinique, Mauritánia, Mauritius, Mayotte, Mexikó, Mianmar, Mikronézia, Moldova, Monaco, Mongólia, Montenegró, Monserrat, Mozambik, Namíbia, Nauru, Németország, Nepál, Nicaragua, Niger, Nigéria, Norvégia, Nyugat-Szahara, Olaszország, Omán, Oroszország, Örményország, Pakisztán, Palau, Palesztina, Panama, Pápua Új-Guinea, Paraguay, Peru, Portugália, Puerto Rico, Románia, Ruanda, Saint-Barthélemy, Szent Ilona, Saint Kitts és Nevis, Saint Lucia, Saint-Martin, Saint-Pierre és Miquelon, Saint Vincent és a Grenadine-szigetek, San Marino, Seychelle-szigetek, Sierra Leone, Spanyolország, Srí Lanka, Suriname, Svájc, Svédország, Szamoa, Szaúd-Arábia, Szenegál, Szerbia, Szingapúr, Szíria, Szlovákia, Szlovénia, Szomália, Szudán, Szváziföld, Tajvan, Tádzsikisztán, Tanzánia, Thaiföld, Tokelau-szigetek, Togo, Tonga, Törökország, Trinidad és Tobago, Tunézia, Tuvalu, Türkmenisztán, Uganda, Új-Kaledónia, Új-Zéland, Ukrajna, Uruguay, Üzbegisztán, Vanuatu, Vatikán, Venezuela, Vietnam, Wallis és Fortuna, Zambia, Zimbabwe, Zöld-foki Köztársaság
+ "</string>
     <string name="lock_screen_request_explanation">Az %1$s számára engedély szükséges a képernyő kikapcsolásához energiatakarékossági célból.</string>
     <string name="shared_string_never">Soha</string>
     <string name="error_avoid_specific_road">Nem található kerülőút</string>
@@ -1748,9 +1985,36 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="shared_string_is_open">Nyitva van</string>
     <string name="shared_string_manage">Kezelés</string>
     <string name="shared_string_edit">Szerkesztés</string>
-    <string name="plugin_touringview_descr">"A nézet aktiválása megváltoztatja az OsmAnd térképstílusát „Túranézetre”, amely egy speciális nagy részletezettségű nézet az utazóknak és a hivatásos sofőröknek.\n\nEz a nézet bármely megadott térképnagyításon a térképadatokban elérhető utazási részletek legnagyobb mennyiségét biztosítja (főként utak, ösvények, csapások és tájolási jelek).\n\nÉrthetően ábrázolja az utak minden típusát is egyértelmű színkódolásokkal, amely annak hasznos, aki például nagy járműveket vezet.\n\nTovábbá speciális túralehetőségeket is biztosít, úgymint kerékpárutak vagy az Alpok hegyi útjainak megjelenítése.\n\nNem szükséges speciális térképet letölteni, a nézet a szabványos térképeinkből kerül előállításra.\n\nEz a nézet visszaállítható, ha újra kikapcsolja az aktiválást itt, vagy a „Térképstílus” megváltoztatásával a „Térkép beállítása” alatt igény szerint. "</string>
-    <string name="plugin_nautical_descr">"Ez a bővítmény az OsmAnd térképet és a navigációs alkalmazást gazdagítja hajózási térképek készítésével csónakázáshoz, vitorlázáshoz és a vízi sportok egyéb típusaihoz.\n\nEgy speciális térkép-kiegészítő az OsmAnd alkalmazáshoz biztosítani fogja az összes hajózási navigációs jelzést és szimbólumot a belvízi, valamint a partközeli navigációhoz. Minden egyes navigációs jelzés leírása olyan részleteket biztosít, amely azok azonosításához és a jelentésükhöz szükségesek (kategória, alak, szín, sorozat, hivatkozás, stb.).\n\nAz OsmAnd hagyományos térképstílusainak egyikéhez való visszatéréshez egyszerűen kapcsolja ki ezen bővítmény aktiválást újra, vagy változtassa meg a „Térképstílust” a „Térkép beállítása” alatt igény szerint. "</string>
-    <string name="plugin_ski_descr">"Az OsmAnd ezen bővítménye a kezedbe adja a globális lesikló pályák, a sífutópályák, az alpesi síutak, kabinok és sífelvonók minden részletét. Az utak és a pályák nehézség szerinti színkódokkal vannak megjelenítve, és egy speciális „Téli” térképstílussal vannak ábrázolva hószínű alapon.\n\nA nézet aktiválása megváltoztatja a térképstílust „Tél és síelésre”, megjelenítve a táj minden elemét a téli körülmények szerint. Ez a nézet visszaállítható, ha újra kikapcsolja az aktiválást itt, vagy a „Térképstílus” megváltoztatásával a „Térkép beállítása” alatt igény szerint. "</string>
+    <string name="plugin_touringview_descr">"A nézet aktiválása megváltoztatja az OsmAnd térképstílusát „Túra nézet”-re, amely egy speciális, nagy részletezettségű nézet az utazóknak és a hivatásos sofőröknek.
+
+
+Ez a nézet bármely megadott térképnagyításon a térképadatokban elérhető utazási részletek legnagyobb mennyiségét biztosítja (főként utak, ösvények, csapások és tájékozódási pontok).
+
+
+Érthetően ábrázolja az utak minden típusát is egyértelmű színkódolásokkal, amely annak hasznos, aki például nagy járműveket vezet.
+
+
+Továbbá speciális túralehetőségeket is biztosít, úgymint kerékpárutak vagy az Alpok hegyi útjainak megjelenítése.
+
+
+Nem szükséges speciális térképet letölteni, a nézet a szabványos térképeinkből kerül előállításra.
+
+
+Ez a nézet visszaállítható, ha újra kikapcsolja az aktiválást itt, vagy a „Térképstílus” megváltoztatásával a „Térkép beállítása” alatt igény szerint.
+ "</string>
+    <string name="plugin_nautical_descr">"Ez a bővítmény az OsmAnd térképet és a navigációs alkalmazást gazdagítja hajózási térképek készítésével csónakázáshoz, vitorlázáshoz és a vízi sportok egyéb típusaihoz.
+
+
+Egy speciális térkép-kiegészítő az OsmAnd alkalmazáshoz biztosítani fogja az összes hajózási navigációs jelzést és szimbólumot a belvízi, valamint a partközeli navigációhoz. Minden egyes navigációs jelzés leírása olyan részleteket biztosít, amely azok azonosításához és a jelentésükhöz szükségesek (kategória, alak, szín, sorozat, hivatkozás, stb.).
+
+
+Az OsmAnd hagyományos térképstílusainak egyikéhez való visszatéréshez egyszerűen kapcsolja ki ezen bővítmény aktiválást újra, vagy változtassa meg a „Térképstílust” a „Térkép beállítása” alatt igény szerint.
+ "</string>
+    <string name="plugin_ski_descr">"Az OsmAnd ezen bővítménye a kezedbe adja a globális lesikló pályák, a sífutópályák, az alpesi síutak, kabinok és sífelvonók minden részletét. Az utak és a pályák nehézség szerinti színkódokkal vannak megjelenítve, és egy speciális „Téli” térképstílussal vannak ábrázolva hószínű alapon.
+
+
+A nézet aktiválása megváltoztatja a térképstílust „Tél és síelésre”, megjelenítve a táj minden elemét a téli körülmények szerint. Ez a nézet visszaállítható, ha újra kikapcsolja az aktiválást itt, vagy a „Térképstílus” megváltoztatásával a „Térkép beállítása” alatt igény szerint.
+ "</string>
     <string name="filter_poi_hint">Szűrés név szerint</string>
     <string name="search_poi_category_hint">Gépelj az összes kereséséhez</string>
     <string name="specified_directiory_not_writeable">A térképeket nem sikerült létrehozni a megadott könyvtárban</string>
@@ -1950,7 +2214,7 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="share_geo">geo:</string>
     <string name="share_menu_location">Pozíció megosztása</string>
     <string name="shared_string_send">Küldés</string>
-    <string name="world_map_download_descr">A Föld alaptérképed (az egész Földet lefedi alacsony felbontással) hiányzik vagy elavult. A teljes funkcionalitáshoz javasoljuk a Föld alaptérkép letöltését.</string>
+    <string name="world_map_download_descr">A Föld alaptérképed (az egész Földet lefedi alacsony felbontással) hiányzik vagy elavult. A globális áttekinthetőséghez javasoljuk a letöltését.</string>
     <string name="shared_string_qr_code">QR-kód</string>
     <string name="map_downloaded">Térkép letöltve</string>
     <string name="map_downloaded_descr">%1$s térképe letöltődött. A használatához menj vissza a térképre.</string>
@@ -2022,7 +2286,33 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="poi_dialog_reopen">Újranyitás</string>
 	<string name="save_poi_without_poi_type_message">Biztosan elmented a POI-t típus nélkül?</string>
     <string name="poi_context_menu_modify_osm_change">OSM szerkesztés módosítása</string>
-    <string name="release_2_2">" • Új, környezetérzékeny menü térképre tapintáskor\n\n • Az alkalmazás már közvetlenül a térkép képernyővel indul a műszerfal helyett\n\n • A műszerfal kártyái elrejthetőek, testre szabhatóak\n\n • Kiválasztható, hogy a térkép menü gombja a műszerfalat, vagy az oldalsávot hozza be\n\n • Térkép letöltéséhez elég a világtérkép régióira tapintani\n\n • A POI kereső már sokkal speciálisabb kérdéseket is megért\n\n • Továbbfejlesztett POI és OSM szerkesztési lehetőségek\n\n • A térképletöltő felület felépítése és kezelőfelülete át lett dolgozva\n\n és sok egyéb fejlesztés… "</string>
+    <string name="release_2_2">"
+ • Új, környezetérzékeny menü térképre tapintáskor
+
+
+ • Az alkalmazás már közvetlenül a térkép képernyővel indul a műszerfal helyett
+
+
+ • A műszerfal kártyái elrejthetőek, testre szabhatóak
+
+
+ • Kiválasztható, hogy a térkép menü gombja a műszerfalat, vagy az oldalsávot hozza be
+
+
+ • Térkép letöltéséhez elég a világtérkép régióira tapintani
+
+
+ • A POI kereső már sokkal speciálisabb kérdéseket is megért
+
+
+ • Továbbfejlesztett POI és OSM szerkesztési lehetőségek
+
+
+ • A térképletöltő felület felépítése és kezelőfelülete át lett dolgozva
+
+
+ és sok egyéb fejlesztés…
+ "</string>
     <string name="shared_string_card_was_hidden">Kártya el lett rejtve</string>
 	<string name="please_specify_poi_type_only_from_list">Kérlek add meg a helyes POI típust, vagy hagyd ki</string>
     <string name="access_from_map_description">A menü gomb a menü helyett a műszerfalat indítja</string>
@@ -2100,14 +2390,20 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="osm_live_subscription_settings">Előfizetési beállítások</string>
     <string name="osm_live_ask_for_purchase">Előbb kérlek vásárolj OSM Live előfizetést</string>
 
-    <string name="osm_live_header">Ez az előfizetés a világ bármely térképének óránkénti frissítését teszi lehetővé. A bevételek nagy része az OSM közösségnek jut vissza, és OSM szerkesztésenként kerül kifizetésre. Ha szereted az OsmAndot és az OSM-et, és szeretnéd támogatni a fejlődésüket, ez ennek egy tökéletes módja.</string>
+    <string name="osm_live_header">Ez az előfizetés a világ bármely térképének óránkénti frissítését teszi lehetővé.
+A bevételek nagy része az OSM közösségnek jut vissza, és OSM szerkesztésenként kerül kifizetésre.
+Ha szereted az OsmAndot és az OSM-et, és szeretnéd támogatni a fejlődésüket, ez ennek a tökéletes módja.</string>
     
     <string name="select_map_marker">Térképjelölő kiválasztása</string>
     <string name="map_markers_other">Egyéb jelölők</string>
     <string name="upload_anonymously">Feltöltés névtelenül</string>
     <string name="show_transparency_seekbar">Átlátszóság csúszka megjelenítése</string>
-    <string name="download_files_error_not_enough_space">Nincs elég hely! A művelethez {3} MB ideiglenes és {1} MB végleges hely szükséges. Jelenleg csak {2} MB érhető el.</string>
-    <string name="download_files_question_space_with_temp">Biztosan letöltesz {0} fájlt? Ehhez átmenetileg {3} MB, véglegesen {1} MB szükséges. Jelenleg csak {2} MB érhető el.</string>
+    <string name="download_files_error_not_enough_space">Nincs elég hely!
+A művelethez {3} MB ideiglenes és {1} MB végleges hely szükséges.
+Jelenleg csak {2} MB érhető el.</string>
+    <string name="download_files_question_space_with_temp">Biztosan letöltesz {0} fájlt?
+Ehhez átmenetileg {3} MB, véglegesen {1} MB szükséges.
+Jelenleg csak {2} MB érhető el.</string>
     <string name="upload_osm_note_description">Az OSM Jegyzeteket névtelenül is feltöltheted, ha az openstreetmap.org profilodat használod.</string>
     <string name="upload_osm_note">OSM Jegyzet feltöltése</string>
     <string name="map_marker_1st">Első térképjelölő</string>
@@ -2151,7 +2447,21 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="number_of_edits">Szerkesztések száma</string>
     <string name="reports_for">Jelentés erről</string>
 <string name="report">Jelentés</string>
-    <string name="release_2_3">" • OSM Live. Támogasd a térkép szerkesztőit és fejlesztőket, és óránkénti térképfrissítést kapsz.\n\n • Térkép jelölők. Egy új mód arra, hogy a gyorsan tudj helyeket kiválasztani a térképen.\n\n • Még részletesebb OSM térképek, országspecifikus útszám ikonokkal és sok új térképelemmel.\n\n • Továbbfejlesztett útvonal előkészítő felület.\n\n • Számos fejlesztés a térkép környezeti menüjében, mint például a cím azonnali keresése. "</string>
+    <string name="release_2_3">"
+ • OSM Live. Támogasd a térkép szerkesztőit és fejlesztőket, és óránkénti térképfrissítést kapsz.
+
+
+ • Térkép jelölők. Egy új mód arra, hogy a gyorsan tudj helyeket kiválasztani a térképen.
+
+
+ • Még részletesebb OSM térképek, országspecifikus útszám ikonokkal és sok új térképelemmel.
+
+
+ • Továbbfejlesztett útvonal előkészítő felület.
+
+
+ • Számos fejlesztés a térkép környezeti menüjében, mint például a cím azonnali keresése.
+ "</string>
     <string name="shared_string_move_up">Mozgatás fel</string>
     <string name="shared_string_move_down">Mozgatás le</string>
     <string name="finish_navigation">Navigáció befejezése</string>
@@ -2226,7 +2536,19 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="back_to_search">Vissza a kereséshez</string>
     <string name="confirmation_to_delete_history_items">Törölni akarod a kiválasztott előzményeket?</string>
     <string name="show_something_on_map">%1$s megjelenítése a térképen</string>
-    <string name="release_2_4">" • Új, hatékony szabadszavas kereső\n\n • Javított hanglejátszás Bluetoothon keresztül\n\n • Továbbfejlesztett navigáció, hangutasítások, és kanyarodósáv kijelzés\n\n • Új nyelvek, valamint már nyelvjárások is elérhetőek\n\n • Sok más fejlesztés és hibajavítás "</string>
+    <string name="release_2_4">"
+ • Új, hatékony szabad szavas kereső
+
+ • Autó hangrendszer integráció Bluetoothon keresztül
+
+ • Továbbfejlesztett navigáció, hangutasítások, és kanyarodósáv kijelzés
+
+ • Továbbfejlesztett tömegközlekedési réteg útvonalak megjelenítésével
+
+ • Új nyelvek, valamint már nyelvjárások is elérhetőek
+
+ • Sok más fejlesztés és hibajavítás
+ "</string>
     <string name="dist_away_from_my_location">Keresés %1$s távolságban</string>
     <string name="show_on_map">Megjelenítés a térképen</string>
     <string name="share_history_subject">" megosztva OsmAnd segítségével"</string>
@@ -2237,4 +2559,59 @@ A csoport nem lesz törölve néhány hónap múlva, az OsMo.mobi weboldalon lé
     <string name="shared_string_from">innen</string>
     <string name="coords_search">Koordináta keresés</string>
     <string name="city_type_neighbourhood">Városrész</string>
+    <string name="route_stops_before">%1$s megállóval előtte</string>
+    <string name="advanced_coords_search">Haladó koordináta keresés</string>
+    <string name="osmand_plus_extended_description_4000_chars_v2">"
+OsmAnd Térképek &amp; Navigáció - keress helyszíneket a térképen, tervezz útvonalat internetkapcsolat nélkül. Utazás előtt töltsd le az ország térképét, hogy ismeretlen helyeken is bárhova odatalálj.
+
+Alap lehetőségek:
+• 200 ország részletes térképe
+• Offline navigáció hangutasításokkal
+• Címkeresés offline módban
+• Információ a térképen különféle helyszínekről: látnivalók, kávézók, parkolók, boltok
+• Kedvenc helyek elmentése
+• Autós, kerékpáros és gyalogos navigáció
+
+További lehetőségek: 
+• GPX nyomvonalak felvétele és megtekintése
+• Látnivalók Wikipédia cikke
+• Fotó-, hang- és videojegyzet készítése
+• Nappali és éjszakai üzemmódok a kényelmes vezetés érdekében
+• Információ tömegközlekedési útvonalakról, megállókról
+• Kerékpárutak, járdák, ösvények
+• Turistajelzések az egész világról
+• Online térképek számos forrásból
+• Információ az útburkolatról, minőségről és közvilágításról
+• Helyek hozzáadása, szerkesztése, törlése (OpenStreetMap.org felhasználók számára)
+• OsMo - más eszközök élő követése
+
+Szerezz egy megbízható navigátort az országodba – legyen az Magyarország, Németország, Franciaország, Anglia, USA, Oroszország, Brazília, Mexikó, vagy bármely más ország.
+
+Bővítmények:
+• Szintvonalak és domborzatárnyékolás https://goo.gl/7mojP8
+ Az alap OsmAnd térképre szintvonalakat és a domborzatot ábrázolós árnyékolást tesz.
+
+• Sítérképek https://goo.gl/pX6DxJ
+ Információ sípályákról, sífutóutakról, felvonókról, síliftekről.
+
+• Hajózási térkép https://goo.gl/0hEdxm
+ Speciális térképstílus, ami folyami és partközeli navigációhoz jelenít meg hajózási jelzéseket.
+
+• Parkolási helyek https://goo.gl/6JxQXF
+ Segít megjelölni a leparkolt jármű helyét és mutatja, mennyi idő van hátra a parkolásból.
+
+
+Twitter: https://twitter.com/osmandapp
+Facebook: https://www.facebook.com/osmandapp
+Weboldal: http://osmand.net
+
+Ha segítségre van szükséged az OsmAnd alkalmazással kapcsolatban, keresd a támogatói csoportunkat: support@osmand.net. 
+ "</string>
+    <string name="rendering_attr_hideOverground_name">Felszíni objektumok</string>
+    <string name="shared_string_change">Módosítás</string>
+    <string name="get_started">Kezdj hozzá</string>
+    <string name="skip_map_downloading">Térképletöltés kihagyása</string>
+    <string name="first_usage_greeting">Navigálj és fedezz fel új helyeket internetkapcsolat nélkül</string>
+    <string name="search_another_country">Válassz másik régiót</string>
+    <string name="skip_map_downloading_desc">"Nincs offline térkép telepítve. Választhatsz egy térképet a listából, vagy tölts le később innen: Menü  - %1$s."</string>
     </resources>

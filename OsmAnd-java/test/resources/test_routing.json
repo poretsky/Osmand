@@ -24,7 +24,7 @@
   {
     "testName": "5.Route depends on the distance to a junction, if routing engine takes the longer way https://github.com/osmandapp/Osmand/issues/1200",
     "description": "Подтверждается только неверный маршрут. От дистанции не зависит, но зависит от planRoadDirection. При -1 маршрут верный, при 0 - нет",
-    "ignore" : "true",
+    "ignore" : "false",
     "params": {
       "vehicle": "car",
       "short_way": "true",
@@ -64,8 +64,6 @@
   },
   {
     "testName": "6.Intermediate destination is not routed on residential ways https://github.com/osmandapp/Osmand/issues/2362",
-    "description": "Не воспроизводится",
-    
     "params": {
       "vehicle": "car",
       "short_way": "true",
@@ -88,13 +86,36 @@
     }
   },
   {
-    "testName": "10.Longer route preferred? https://github.com/osmandapp/Osmand/issues/1941",
-    "description": "short_way строит не самый короткий путь. Транзит через MEX 261 короче.",
-    "ignore" : "true",
+    "testName": "9.Routing problem: bypassing destination then backtracking to get there https://github.com/osmandapp/Osmand/issues/2182",
     "params": {
       "vehicle": "car",
       "short_way": "true",
       "planRoadDirection": "-1"
+    },
+    "startPoint": {
+      "latitude": 45.89801665781154,
+      "longitude": 35.43031065901761
+    },
+    "transitPoint": {
+      "latitude": 45.892986,
+      "longitude": 35.449814
+    },
+    "endPoint": {
+      "latitude": 45.88814493393098,
+      "longitude": 35.451634220686
+    },
+    "expectedResults": {
+      "368643371": "false"
+    }
+  },
+  {
+    "testName": "10.Longer route preferred? https://github.com/osmandapp/Osmand/issues/1941",
+    "description": "short_way строит не самый короткий путь. Транзит через MEX 261 короче.",
+    "ignore" : "false",
+    "params": {
+      "vehicle": "car",
+      "short_way": "true",
+      "planRoadDirection": "0"
     },
     "startPoint": {
       "latitude": 45.9011493841283,
@@ -110,7 +131,7 @@
   },
   {
     "testName": "12.Bizarre navigation at Sundance dr & Sentinel dr in Fremont, CA, USA https://github.com/osmandapp/Osmand/issues/1743",
-    "ignore" : "true",
+    "ignore" : "false",
     "params": {
       "vehicle": "car",
       "short_way": "true",
@@ -130,32 +151,8 @@
     }
   },
   {
-    "testName": "12.1.Bizarre navigation at Sundance dr & Sentinel dr in Fremont, CA, USA (transit2 point) https://github.com/osmandapp/Osmand/issues/1743",
-    "ignore" : "true",
-    "params": {
-      "vehicle": "car",
-      "short_way": "true",
-      "planRoadDirection": "-1"
-    },
-    "startPoint": {
-      "latitude": 45.84882743070033,
-      "longitude": 35.2621882259846
-    },
-    "transitPoint1": {
-      "latitude": 45.84813,
-      "longitude": 35.275932
-    },
-    "endPoint": {
-      "latitude": 45.847528944857174,
-      "longitude": 35.27665740251544
-    },
-    "expectedResults": {
-      "6335573": "false"
-    }
-  },
-  {
-    "testName": "12.2.Bizarre navigation at Sundance dr & Sentinel dr in Fremont, CA, USA (reverse) https://github.com/osmandapp/Osmand/issues/1743",
-    "ignore" : "true",
+    "testName": "12.1.Bizarre navigation at Sundance dr & Sentinel dr in Fremont, CA, USA (reverse) https://github.com/osmandapp/Osmand/issues/1743",
+    "ignore" : "false",
     "params": {
       "vehicle": "car",
       "short_way": "true",
@@ -190,6 +187,62 @@
     },
     "expectedResults": {
       "7423385": "false"
+    }
+  },
+  {
+    "testName": "17.Offline Routing: mysterious wrong routing in Leipzig, Germany https://github.com/osmandapp/Osmand/issues/2748",
+    "params": {
+      "vehicle": "car",
+      "planRoadDirection": "-1"
+    },
+    "startPoint": {
+      "latitude": 45.85080675366101,
+      "longitude": 35.42325108489041
+    },
+    "endPoint": {
+      "latitude": 45.85135974896413,
+      "longitude": 35.419131211843535
+    },
+    "expectedResults": {
+      "28869574": "false"
+    }
+  },
+  {
+    "testName": "18.navi-problem by 'shortes' way https://github.com/osmandapp/Osmand/issues/1778",
+    "params": {
+      "vehicle": "car",
+      "short_way": "true",
+      "planRoadDirection": "-1"
+    },
+    "startPoint": {
+      "latitude": 45.84411619580555,
+      "longitude": 35.45498698195462
+    },
+    "endPoint": {
+      "latitude": 45.830605,
+      "longitude": 35.441395
+    },
+    "expectedResults": {
+      "181495": "false"
+    }
+  },
+  {
+    "testName": "19.Routing prblem: OsmAnd fails to use the nearest link between two halves of a highway https://github.com/osmandapp/Osmand/issues/1970#issuecomment-209651749",
+    "params": {
+      "vehicle": "car",
+      "short_way": "true",
+      "planRoadDirection": "-1"
+    },
+    "startPoint": {
+      "latitude": 45.84915380671208,
+      "longitude": 35.496067695226714
+    },
+    "endPoint": {
+      "latitude": 45.849069733500244,
+      "longitude": 35.49558221539502
+    },
+    "expectedResults": {
+      "30783342": "false"
     }
   }
 ]

@@ -9,6 +9,8 @@ import net.osmand.binary.BinaryMapRouteReaderAdapter.RouteRegion;
 import net.osmand.binary.BinaryMapRouteReaderAdapter.RouteTypeRule;
 import net.osmand.util.Algorithms;
 import net.osmand.util.MapUtils;
+import net.osmand.Location;
+
 
 public class RouteDataObject {
 	/*private */static final int RESTRICTION_SHIFT = 3;
@@ -107,20 +109,21 @@ public class RouteDataObject {
 		return null;
 	}
 
-	public String getDestinationName(String lang){
+	public String getDestinationName(String lang, boolean direction){
 		if(names != null) {
-			if(Algorithms.isEmpty(lang)) {
-				return names.get(region.destinationTypeRule);
-			}
 			int[] kt = names.keys();
+			String destinationTag = (direction == true) ? "destination:forward" : "destination:backward";
+			if(!Algorithms.isEmpty(lang)) {
+				destinationTag = "destination:" + lang;
+			}
+
 			for(int i = 0 ; i < kt.length; i++) {
 				int k = kt[i];
 				if(region.routeEncodingRules.size() > k) {
-					if(("destination:"+lang).equals(region.routeEncodingRules.get(k).getTag())) {
+					if(destinationTag.equals(region.routeEncodingRules.get(k).getTag())) {
 						return names.get(k);
 					}
 				}
- 				
 			}
 			return names.get(region.destinationTypeRule);
 		}
@@ -218,10 +221,10 @@ public class RouteDataObject {
 	public int[] getTypes() {
 		return types;
 	}
-	
+
 	public float getMaximumSpeed(boolean direction){
 		int sz = types.length;
-        float maxSpeed = 0;
+		float maxSpeed = 0;
 		for (int i = 0; i < sz; i++) {
 			RouteTypeRule r = region.quickGetEncodingRule(types[i]);
 			if(r.isForward() != 0) {
@@ -229,19 +232,18 @@ public class RouteDataObject {
 					continue;
 				}
 			}
-            float mx = r.maxSpeed();
-            if (mx > 0) {
-                maxSpeed = mx;
-                // conditional has priority
-                if(r.conditional()) {
-                    break;
-                }
-            }
+			float mx = r.maxSpeed();
+			if (mx > 0) {
+				maxSpeed = mx;
+				// conditional has priority
+				if(r.conditional()) {
+					break;
+				}
+			}
 		}
 		return maxSpeed ;
 	}
-	
-	
+
 	public static float parseSpeed(String v, float def) {
 		if(v.equals("none")) {
 			return RouteDataObject.NONE_MAX_SPEED;
@@ -409,7 +411,16 @@ public class RouteDataObject {
 		// So it should be fix in both places
 		return directionRoute(startPoint, plus, 5);
 	}
-	
+
+	public boolean bearingVsRouteDirection(Location loc) {
+		boolean direction = true;
+		if(loc != null && loc.hasBearing()) {
+			double diff = MapUtils.alignAngleDifference(directionRoute(0, true) - loc.getBearing() / 180f * Math.PI);
+			direction = Math.abs(diff) < Math.PI / 2f;
+		}
+		return direction;
+	}
+
 	public double distance(int startPoint, int endPoint) {
 		if(startPoint > endPoint) {
 			int k = endPoint;

@@ -416,8 +416,8 @@
     <string name="route_info">Información de la ruta</string>
     <string name="routing_attr_prefer_motorway_name">Preferir autopistas</string>
     <string name="routing_attr_prefer_motorway_description">Preferir autopistas en la navegación</string>
-    <string name="routing_attr_short_way_name">Carretera más corta</string>
-    <string name="routing_attr_short_way_description">Usa la carretera corta en lugar de la rápida</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Evitar peajes</string>
     <string name="routing_attr_avoid_toll_description">Evita las carreteras con peajes</string>
     <string name="routing_attr_avoid_unpaved_name">Evitar carreteras sin pavimentar</string>
@@ -856,7 +856,7 @@
     <string name="interrupt_music_descr">Pausa totalmente cualquier sonido al realizar anuncios (no sólo reduce el volumen)</string>
     <string name="interrupt_music">Pausar música</string>
     <string name="osmand_play_title_30_chars">Navegación y Mapas OsmAnd</string>
-    <string name="osmand_short_description_80_chars">Visor y navegador de mapas móvil global para mapas OSM con y sin conexión</string>
+    <string name="osmand_short_description_80_chars">Visor y navegador móvil global de mapas OSM con y sin conexión</string>
     <string name="osmand_long_description_1000_chars">"
  OsmAnd (OSM Automated Navigation Directions, Guía de Navegación Automatizada)
 
@@ -954,7 +954,7 @@ La lista de países incluidos (¡prácticamente todo el mundo!):
 Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Antillas Holandesas, Arabia Saudita, Argelia, Argentina, Armenia, Aruba, Australia, Austria, Azerbaiyán, Bahamas, Bahrein, Bangladesh, Barbados, Bélgica, Belice, Benín, Bermuda, Bielorrusia, Bolivia, Bonaire, Bosnia y Herzegovina, Botsuana, Brasil, Brunei, Bulgaria, Burkina Faso, Burundi, Bután, Cabo Verde, Camboya, Camerún, Canadá, Chad, Chile, China, Chipre, Colombia, Comoras, Congo, Corea del Norte, Corea del Sur, Costa de Marfil, Costa Rica, Croacia, Cuba, Curazao, Dinamarca, Djibouti, Dominica, Ecuador, Egipto, El Salvador, El Vaticano, Emiratos Árabes Unidos, Eritrea, Eslovaquia, Eslovenia, España, Estados Unidos de América, Estonia, Etiopía, Fiji, Filipinas, Finlandia, Francia, Gabón, Gambia, Georgia, Georgia del Sur, Ghana, Gibraltar, Granada, Grecia, Groenlandia, Guadalupe, Guam, Guatemala, Guayana Francesa, Guernsey, Guinea, Guinea-Bissau, Guinea Ecuatorial, Guyana, Haití, Honduras, Hong Kong, Hungría, India, Indonesia, Irán, Iraq, Irlanda, Isla de Man, Islandia, Islas Vírgenes Británicas, Israel, Italia, Jamaica, Japón, Jersey, Jordania, Kazajistán, Kenya, Kirguistán, Kiribati, Kuwait, Laos, Lesotho, Letonia, Líbano, Liberia, Libia, Liechtenstein, Lituania, Luxemburgo, Macao, Macedonia, Madagascar, Malasia, Malawi, Maldivas, Malí, Malta, Marruecos, Martinica, Mauricio, Mauritania, Mayotte, México, Micronesia, Moldavia, Mónaco, Mongolia, Montenegro, Montserrat, Mozambique, Myanmar, Namibia, Nauru, Nepal, Nicaragua, Níger, Nigeria, Noruega, Nueva Caledonia, Nueva Zelanda, Omán, Países Bajos, Pakistán, Palau, Panamá, Papúa Nueva Guinea, Paraguay, Perú, Polinesia Francesa, Polonia, Portugal, Puerto Rico, Qatar, Reino Unido, República Centroafricana, República Checa, República Dominicana, Ruanda, Rumanía, Rusia, Sahara Occidental, San Bartolomé, Santa Helena, San Cristóbal y Nieves, Samoa, San Marino, San Martín, San Pedro y Miquelón, Santa Lucía, San Vicente y las Granadinas, Senegal, Serbia, Seychelles, Sierra Leona, Singapur, Siria, Somalia, Sri Lanka, Sudáfrica, Sudán, Sudán del Sur, Suecia, Suiza, Suriname, Swazilandia, Tailandia, Taiwán, Tanzania, Tayikistán, Territorio Palestino, Timor Oriental, Togo, Tokelau, Tonga, Trinidad y Tobago, Túnez, Turkmenistán, Turquía, Tuvalu, Ucrania, Uganda, Uruguay, Uzbekistán, Vanuatu, Venezuela, Vietnam, Wallis y Futuna, Yemen, Zambia, Zimbabwe.
  "</string>
     <string name="osmand_plus_play_title_30_chars">Navegación y Mapas OsmAnd+</string>
-    <string name="osmand_plus_short_description_80_chars">Visor y navegador móvil global para mapas de OSM con y sin conexión</string>
+    <string name="osmand_plus_short_description_80_chars">Visor y navegador móvil global de mapas OSM con y sin conexión</string>
     <string name="osmand_plus_long_description_1000_chars">"
  OsmAnd+ (OSM Automated Navigation Directions)
 
@@ -962,18 +962,18 @@ Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Ant
 
  OsmAnd+ es la versión de pago de la aplicación, comprándola das soporte al proyecto, financias el desarrollo de nuevas funciones, y recibes las últimas actualizaciones.
 
- Algunas de las funciones fundamentales:
- - Completa funcionalidad sin conexión (guardar los mapas vectoriales o teselas descargados en el almacenamiento del dispositivo)
+  Algunas de las funciones fundamentales:
+ - Completa funcionalidad sin conexión (guarda los mapas vectoriales o teselas descargados en el almacenamiento del dispositivo)
  - Mapas mundiales vectoriales compactos disponibles
- - Descarga del mapa de país o región directamente desde la aplicación
+ - Descarga ilimitada de mapas de países o regiones directamente desde la aplicación
  - Posibilidad de superponer varias capas de mapa, como GPX o rutas de navegación, Puntos de Interés, favoritos, curvas de nivel, paradas de transporte público, mapas adicionales con transparencia personalizable
- - Búsqueda sin conexión de direcciones y lugares (PDI)
+ - Búsqueda sin conexión de direcciones y lugares (PDIs)
  - Rutas sin conexión para distancias de rango medio
- - Modos de automóvil, bicicleta, y peatón con:
- - Cambio automático opcional de vista día/noche
- - Ampliación opcional según la velocidad
- - Alineación opcional del mapa, según brújula o dirección de movimiento
- - Indicación de carriles, mostrar límites de velocidad, voces grabadas y sintetizadas opcionales
+ - Modos de automóvil, bicicleta y peatón con:
+  - (Opcional) Cambio automático de vista día/noche
+  - (Opcional) Ampliación del mapa según la velocidad
+  - (Opcional) Alineación del mapa, según brújula o dirección del movimiento
+  - (Opcional) Indicación de carriles, mostrar límites de velocidad, voces grabadas y sintetizadas
  "</string>
     <string name="osmand_plus_extended_description_4000_chars">"
 OsmAnd (OSM Automated Navigation Directions, o traducido al español, Guía de navegación automatizada OSM) es un mapa y una aplicación de navegación con acceso a datos de todo el mundo, de alta calidad y gratuitos de OpenStreetMap (OSM). Todos los datos de los mapas se pueden almacenar en la tarjeta de memoria del dispositivo para su uso sin conexión. A través del GPS de tu dispositivo, OsmAnd ofrece indicaciones de navegación, visuales y por voz, para automóvil, bicicleta y peatones. Todas las funciones principales funcionan tanto conectado como sin conexión (no necesita Internet).
@@ -1502,7 +1502,7 @@ Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Ant
     <string name="items_were_selected">{0} elemento(s) seleccionado(s)</string>
     <string name="filter_existing_indexes">Descargados</string>
     <string name="fast_route_mode">Ruta más rápida</string>
-    <string name="fast_route_mode_descr">"Activa, para calcular la ruta más rápida o desactiva, para la más corta "</string>
+    <string name="fast_route_mode_descr">"Activar para calcular la ruta más rápida o desactivar para la más eficiente en combustible "</string>
     <string name="tiles_to_download_estimated_size">En la ampliación {0}, descarga {1} teselas ({2} MB)</string>
     <string name="shared_string_download_map">Descargar mapa</string>
     <string name="select_max_zoom_preload_area">Elige la ampliación máxima para precargar</string>
@@ -1650,7 +1650,7 @@ Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Ant
     <string name="search_online_address">Búsqueda en línea</string>
     <string name="max_level_download_tile">Máxima ampliación en línea</string>
     <string name="max_level_download_tile_descr">Elige el nivel de ampliación máxima para descargar teselas de mapas en línea</string>
-    <string name="route_general_information">Distancia total %1$s, tiempo de viaje %2$d h %3$d m.</string>
+    <string name="route_general_information">Distancia total %1$s, tiempo de viaje %2$d h %3$d min.</string>
     <string name="router_service_descr">Elige un servicio de navegación con o sin conexión</string>
     <string name="router_service">Servicio de navegación</string>
     <string name="sd_dir_not_accessible">¡No se puede acceder a la carpeta de almacenamiento en la tarjeta SD!</string>
@@ -1969,8 +1969,8 @@ Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Ant
     <string name="favorite_category_add_new">Añadir nuevo</string>
     <string name="favorite_category_select">Elegir categoría</string>
     <string name="srtm_plugin_disabled">Curvas de nivel desactivadas</string>
-    <string name="show_free_version_banner">Mostrar banner de versión gratuita</string>
-    <string name="show_free_version_banner_description">Aunque tengas la versión paga, podrás ver el banner de la versión gratuita</string>
+    <string name="show_free_version_banner">Mostrar anuncio de la versión gratuita</string>
+    <string name="show_free_version_banner_description">Aunque tengas la versión de pago, verás el anuncio de la versión gratuita</string>
     <string name="downloading_number_of_files">Descargando - %1$d archivo/s</string>
     <string name="hillshade_layer_disabled">Capa de sombreado desactivada</string>
     <string name="buy">COMPRAR</string>
@@ -1996,7 +1996,7 @@ Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Ant
     <string name="share_geo">geo:</string>
     <string name="share_menu_location">Compartir ubicación</string>
     <string name="shared_string_send">Enviar</string>
-    <string name="application_dir_description">Elige donde guardar los archivos de los mapas.</string>
+    <string name="application_dir_description">Elige dónde guardar los mapas y otros archivos de datos.</string>
     <string name="show_on_start_description">Al desactivarlo, inicia directo en la pantalla del mapa</string>
     <string name="map_downloaded">Mapa descargado</string>
     <string name="map_downloaded_descr">Se descargó el mapa de %1$s. Vuelve al mapa para empezar a usarlo.</string>
@@ -2104,7 +2104,7 @@ Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Ant
     <string name="av_video_quality">Calidad del video</string>
     <string name="av_video_quality_descr">Elige la calidad de salida del video</string>
     <string name="av_audio_format">Formato de audio</string>
-    <string name="av_audio_format_descr">Elige el formato del video</string>
+    <string name="av_audio_format_descr">Elige el formato del audio</string>
     <string name="av_audio_bitrate">Tasa de bits del audio</string>
     <string name="av_audio_bitrate_descr">Elige la tasa de bits del audio</string>
     <string name="no_address_found">Dirección indeterminada</string>
@@ -2132,11 +2132,11 @@ Afganistán, Albania, Alemania, Andorra, Angola, Anguila, Antigua y Barbuda, Ant
     
 <string name="rec_split">División de grabación</string>
     <string name="rec_split_title">Usar la división de grabación</string>
-    <string name="rec_split_desc">Reescribir clips al exceder el espacio de almacenamiento utilizado</string>
-    <string name="rec_split_clip_length">Duración del clip</string>
-    <string name="rec_split_clip_length_desc">La duración de cada clip grabado, no excederá el lapso de tiempo determinado</string>
+    <string name="rec_split_desc">Reescribir videoclips al exceder el espacio de almacenamiento utilizado</string>
+    <string name="rec_split_clip_length">Duración del videoclip</string>
+    <string name="rec_split_clip_length_desc">La duración de cada videoclip grabado, no excederá el lapso de tiempo determinado</string>
     <string name="rec_split_storage_size">Tamaño de almacenamiento</string>
-    <string name="rec_split_storage_size_desc">La cantidad de espacio que pueden ocupar todos los clips grabados</string>
+    <string name="rec_split_storage_size_desc">La cantidad de espacio que pueden ocupar todos los videoclips grabados</string>
     <string name="updates_size">Tamaño de actualización</string>
     <string name="last_map_change">Último cambio de mapa: %s</string>
     <string name="hourly">Cada hora</string>
@@ -2330,9 +2330,9 @@ Si amas a OsmAnd, OSM y quieres apoyarlos, esta es una perfecta manera de hacerl
 	<string name="use_osm_live_routing">Navegación OSM Live</string>
     <string name="follow_us">Síguenos</string>
     <string name="access_direction_audio_feedback">Dirección de retroalimentación auditiva</string>
-    <string name="access_direction_audio_feedback_descr">Indica el punto de dirección del destino mediante sonido</string>
-    <string name="access_direction_haptic_feedback">Dirección de retroalimentación háptica</string>
-    <string name="access_direction_haptic_feedback_descr">Indica el punto de dirección del destino mediante vibración</string>
+    <string name="access_direction_audio_feedback_descr">Indica la dirección del destino mediante sonido</string>
+    <string name="access_direction_haptic_feedback">Retroalimentación háptica de la dirección</string>
+    <string name="access_direction_haptic_feedback_descr">Indica la dirección del destino mediante vibración</string>
     <string name="move_marker_bottom_sheet_title">Mueve el mapa para cambiar la ubicación del marcador</string>
     <string name="lat_lon_pattern">Lat: %1$.6f Lon: %2$.6f</string>
     <string name="map_widget_battery">Nivel de batería</string>
@@ -2382,4 +2382,35 @@ Si amas a OsmAnd, OSM y quieres apoyarlos, esta es una perfecta manera de hacerl
     <string name="coords_search">Búsqueda de coordenadas</string>
     <string name="advanced_coords_search">Búsqueda avanzada de coordenadas</string>
     <string name="route_stops_before">%1$s parada(s) anterior(es)</string>
+    <string name="rendering_attr_hideOverground_name">Objetos en superficie</string>
+
+    <string name="routing_attr_short_way_name">Carretera más eficiente</string>
+    <string name="routing_attr_short_way_description">Usa la ruta más eficiente en combustible (usualmente la más corta)</string>
+    <string name="replace_favorite_confirmation">¿Seguro que quieres reemplazar el favorito %1$s?</string>
+    <string name="shared_string_change">Cambiar</string>
+    <string name="get_started">Empezar</string>
+    <string name="update_all_maps_now">¿Quieres actualizar ahora todos los mapas?</string>
+    <string name="clear_tile_data">Limpiar todas las teselas</string>
+    <string name="search_my_location">Buscar mi ubicación</string>
+    <string name="no_update_info_desc">No comprobar actualizaciones de nuevas versiones, relacionadas con descuentos de OsmAnd</string>
+    <string name="no_update_info">No mostrar actualizaciones</string>
+    <string name="skip_map_downloading">Omitir descargas de mapas</string>
+    <string name="skip_map_downloading_desc">Sin mapas descargados. Puedes elegir uno de la lista o descargarlos luego mediante el Menú - %1$s.</string>
+    <string name="search_another_country">Elegir otra región</string>
+    <string name="search_map">Buscando mapa…</string>
+    <string name="first_usage_wizard_desc">Deja que OsmAnd determine tu ubicación y sugiera mapas a descargar para esa región.</string>
+    <string name="location_not_found">Ubicación no encontrada</string>
+    <string name="no_inet_connection">Sin conexión a Internet</string>
+    <string name="no_inet_connection_desc_map">Requerido para descargar mapas.</string>
+    <string name="search_location">Buscando ubicación…</string>
+    <string name="storage_free_space">Espacio libre</string>
+    <string name="storage_place_description">Almacenamiento de datos OsmAnd (para mapas, trazas, etc.): %1$s.</string>
+    <string name="give_permission">Conceder permiso</string>
+    <string name="allow_access_location">Permitir acceso a la ubicación</string>
+    <string name="first_usage_greeting">Obtén direcciones y descubre lugares nuevos sin conexión a Internet</string>
+    <string name="si_mi_meters">Millas/Metros</string>
+    <string name="get_for">Obtener por %1$s</string>
+    <string name="get_for_month">Obtener por %1$s mes(es)</string>
+    <string name="osm_live_banner_desc">Obtenga descargas ilimitada de mapas y más actualizaciones por mes: cada hora, día o semana.</string>
+    <string name="osmand_plus_banner_desc">Versión OsmAnd de pago con descargas ilimitadas y actualizaciones mensuales de mapas.</string>
     </resources>

@@ -474,7 +474,7 @@ Omogoča tudi dodajanje opomb v koledar za prikaz opomnikov ob daljših časih p
     <string name="choose_auto_follow_route_descr">Časovni zamik, preden se položaj samodejno postavi v središče zemljevida</string>
     
     <string name="fast_route_mode">Najhitrejša pot</string>
-    <string name="fast_route_mode_descr">"Izbrana možnost določa izbor najhitrejše poti, neizbrana pa po razdalji najkrajše. "</string>
+    <string name="fast_route_mode_descr">"Izbrana možnost določa izbor najhitrejše poti oziroma poti z najmanjšo porabo goriva. "</string>
     <string name="search_position_undefined">Nedoločeno</string>
 
     
@@ -702,7 +702,7 @@ Na voljo je le {2} MB.</string>
     <string name="show_more_map_detail">Pokaži več podrobnosti zemljevida</string>
     <string name="show_more_map_detail_descr">Pokaži nekaj podrobnosti vektorskih zemljevidov (ceste, itd.) že pri oddaljenem pogledu</string>
     <string name="shared_string_no_thanks">Ne, hvala</string>
-    <string name="basemap_missing">Osnovni zemljevid sveta (pokriva cel svet pri majhnih povečavah) ni nameščen. Priporočljivo je prejeti datoteko world_basemap_x.obf in jo namestiti.</string>
+    <string name="basemap_missing">Osnovni zemljevid sveta (pokriva cel svet pri majhnih povečavah) ni nameščen. Priporočljivo je prejeti datoteko world_basemap_x.obf za splošni pogled sveta.</string>
     <string name="vector_data_missing">Podatkov za delo brez povezave na kartici SD ni. Priporočljivo je datoteke prejeti in omogočiti navigacijo tudi v načinu brez vzpostavljene povezave.</string>
     <string name="local_index_installed">Datum shranjene različice</string>
     <string name="map_text_size_descr">Izbor velikosti besedila za imena na zemljevidu</string>
@@ -941,7 +941,7 @@ Pomembnejše lastnosti:
     <string name="search_online_address">Iskanje v povezavi</string>
     <string name="max_level_download_tile">Največje približanje pri spletnih zemljevidih</string>
     <string name="max_level_download_tile_descr">Izbira največjega približanja za prejem spletnih zemljevidov</string>
-    <string name="route_general_information">Skupna razdalja %1$s, čas potovanja %2$d h %3$d m.</string>
+    <string name="route_general_information">Skupna razdalja %1$s, čas potovanja %2$d h %3$d min.</string>
     <string name="router_service_descr">Izbira spletne ali krajevne navigacijske storitve</string>
     <string name="sd_dir_not_accessible">Shranjevalnega imenika na kartici SD ni na voljo!</string>
     <string name="download_question">Prejmi {0} – {1}?</string>
@@ -1441,8 +1441,8 @@ Afganistan, Albanija, Alžirija, Andora, Angola, Angvila, Antigva in Barbuda, Ar
     <string name="index_name_gb">Evropa – Velika Britanija</string>
     <string name="routing_attr_prefer_motorway_name">Prednostno vodi po avtocestah</string>
     <string name="routing_attr_prefer_motorway_description">Prednostno bodo izbrane hitre ceste in avtoceste</string>
-    <string name="routing_attr_short_way_name">Izbor najkrajše poti</string>
-    <string name="routing_attr_short_way_description">Izbrana možnost določa, da bo vedno izbrana najkrajša pot do cilja</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Izogni se cestninam</string>
     <string name="routing_attr_avoid_toll_description">Izbrane so poti, ki vodijo mimo cest s plačilom cestnine</string>
     <string name="routing_attr_avoid_unpaved_name">Izogni se neasfaltiranim cestam</string>
@@ -1775,7 +1775,10 @@ Shranjene sledi je mogoče objavljati kot datoteke OSM. Z uporabo vstavka je mog
     <string name="search_radius_proximity">Znotraj</string>
     <string name="osmo_device_not_found">Naprave ni mogoče najti</string>
     <string name="osmo_no_connection_msg">Ni se mogoče povezati s strežnikom OsMo:\n- Preverite internetno povezavo\n- Preverite nastavitve\n- Spremljajte novice na Twitterju: https://twitter.com/OsMomobi</string>
-    <string name="anonymous_user_hint">Brezimni uporabnik ne more:\n- Ustvariti skupin\n- Usklajevati skupin in naprav s strežnikom\n- Zasebno upravljati skupin in naprav prek spletnega vmesnika.</string>
+    <string name="anonymous_user_hint">Brezimni uporabnik ne more:
+- ustvariti skupin,
+- usklajevati skupin in naprav s strežnikom,
+- zasebno upravljati skupin in naprav prek spletnega vmesnika.</string>
     <string name="anonymous_user">Brezimni uporabnik</string>
     <string name="logged_as">Prijava kot %1$s</string>
     <string name="speed_limit_exceed">Upoštevanje omejitve hitrosti</string>
@@ -2546,4 +2549,30 @@ V kolikor naletite na težave s programom OsmAnd, prosimo, stopite v stik s skup
     <string name="coords_search">Iskanje po koordinatah</string>
     <string name="advanced_coords_search">Napredno iskanje po koordinatah</string>
     <string name="route_stops_before">%1$s se zaustavi pred</string>
+    <string name="rendering_attr_hideOverground_name">Nadzemne zgradbe</string>
+
+    <string name="routing_attr_short_way_name">Pot z najmanjšo porabo goriva</string>
+    <string name="routing_attr_short_way_description">Prednostno izberi pot z najmanjšo porabo goriva (običajno najkrajša)</string>
+    <string name="replace_favorite_confirmation">Ali ste prepričani, da želite zamenjati priljubljeno točko %1$s?</string>
+    <string name="shared_string_change">Spremeni</string>
+    <string name="get_started">Kako začeti ...</string>
+    <string name="skip_map_downloading">Preskoči prejemanje zemljevida</string>
+    <string name="search_another_country">Poišči drugo državo</string>
+    <string name="search_map">Iskanje zemljevidov …</string>
+    <string name="location_not_found">Mesta ni mogoče najti</string>
+    <string name="no_inet_connection">Ni internetne povezave</string>
+    <string name="no_inet_connection_desc_map">Zahtevano je prejemanje zemljevida</string>
+    <string name="search_location">Iskanje mesta …</string>
+    <string name="storage_free_space">Razpoložljiv prostor</string>
+    <string name="storage_place_description">Program OsmAnd shranjuje podatke (zemljevide, sledi in drugo) v mapi %1$s.</string>
+    <string name="give_permission">Dodeli dovoljenje</string>
+    <string name="allow_access_location">Dovoli dostop do mesta</string>
+    <string name="first_usage_greeting">Pridobi mesta in razišči nove kraje brez internetne povezave</string>
+    <string name="search_my_location">Poišči moje mesto</string>
+    <string name="no_update_info">Ne pokaži posodobitev</string>
+    <string name="update_all_maps_now">Ali želite posodobiti vse zemljevide?</string>
+    <string name="clear_tile_data">Počisti vse sličice</string>
+    <string name="skip_map_downloading_desc">Nameščenega ni nobenega zemljevida za delo brez povezave. Izbrati je mogoče zemljevid iz seznama, ali pa ga prejeti preko menija %1$s.</string>
+    <string name="first_usage_wizard_desc">Za predlog prejema zemljevida trenutnega mesta, je treba določiti vaš položaj.</string>
+    <string name="no_update_info_desc">Ne preveri posodobitev in novih različic programa OsmAnd</string>
     </resources>

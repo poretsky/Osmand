@@ -263,7 +263,7 @@
     <string name="favourites_edit_dialog_name">Navn</string>
     <string name="favourites_edit_dialog_category">Kategori</string>
     <string name="shared_string_no_thanks">Nei takk</string>
-    <string name="basemap_missing">Basiskart verden (som dekker hele verden ved lav zoom) mangler. Vurder å laste ned World_basemap_x.obf for et komplett miljø.</string>
+    <string name="basemap_missing">Basiskart verden (som dekker hele verden ved lav zoom) mangler. Vurder å laste ned World_basemap_x.obf for en global oversikt.</string>
     <string name="local_index_gpx_info_show">\n\nTrykk og hold for alternativer</string>
     <string name="local_index_descr_title">Karthåndtering</string>
     <string name="local_index_mi_restore">Aktiver</string>
@@ -354,7 +354,7 @@
 
     <string name="shared_string_select_all">Velg alle</string>
     <string name="fast_route_mode">Raskeste rute</string>
-    <string name="fast_route_mode_descr">Aktiver for å beregne raskeste rute eller deaktiver for korteste rute </string>
+    <string name="fast_route_mode_descr">"Aktiver for å beregne raskeste rute eller deaktiver for drivstoffbesparende rute "</string>
     <string name="tiles_to_download_estimated_size">Ved zoom {0} last ned {1} fliser ({2} MB)</string>
     <string name="shared_string_download_map">Last ned kart</string>
     <string name="renderers">Vektor-opptegning</string>
@@ -440,8 +440,8 @@
     <string name="search_offline_address">Offline-søk</string>
     <string name="search_online_address">Nettbasert søk</string>
     <string name="max_level_download_tile">Maks. nettbasert zoom</string>
-    <string name="max_level_download_tile_descr">Velg maksimalt zoomnivå å laste ned for nettbaserte kartseksjoner</string>
-    <string name="route_general_information">Total distanse %1$s, reisetid %2$d t %3$d m.</string>
+    <string name="max_level_download_tile_descr">Velg maksimalt zoomnivå å laste ned for nettbaserte kartdeler</string>
+    <string name="route_general_information">Total distanse %1$s, reisetid %2$d t %3$d min.</string>
     <string name="router_service_descr">Velg en nettbasert eller offline navigeringstjeneste</string>
     <string name="router_service">Navigeringstjeneste</string>
     <string name="sd_dir_not_accessible">Datalagringsmappen på SD-kortet er ikke tilgjengelig!</string>
@@ -799,8 +799,8 @@
     <string name="route_descr_select_destination">Velg reisemål</string>
     <string name="routing_attr_prefer_motorway_name">Foretrekk motorveier</string>
     <string name="routing_attr_prefer_motorway_description">Foretrekk motorveier</string>
-    <string name="routing_attr_short_way_name">Korteste vei</string>
-    <string name="routing_attr_short_way_description">Bruk korteste vei</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Unngå bomveier</string>
     <string name="routing_attr_avoid_toll_description">Unngå bomveier</string>
     <string name="routing_attr_avoid_unpaved_name">Unngå uasfalterte veier</string>
@@ -1383,7 +1383,7 @@
     <string name="show_gpx">Vis GPX</string>
     <string name="roads">Veier</string>
     <string name="favourites_context_menu_add">Legg til favoritt</string>
-    <string name="favorite_category_dublicate_message">Spesifisert kategorinavn finnes allerede. Gi et annet navn.</string>
+    <string name="favorite_category_dublicate_message">Spesifisert kategorinavn finnes allerede. Bruk et annet navn.</string>
     <string name="favorite_category_name">Kategorinavn</string>
     <string name="favorite_category_add_new_title">Legg til ny kategori</string>
     <string name="regions">Regioner</string>
@@ -1400,9 +1400,9 @@
     <string name="file_size_in_mb">%.1f MB</string>
     <string name="update_all">Oppdater alle (%1$s MB)</string>
     <string name="free_downloads_used">Gratis nedlastinger brukt</string>
-    <string name="application_dir_description">Velg hvor du vil lagre kartfiler.</string>
+    <string name="application_dir_description">Velg hvor du vil lagre kart og andre datafiler.</string>
     <string name="enter_country_name">Oppgi navn på land</string>
-    <string name="world_map_download_descr">Basiskart verden (som dekker hele verden ved lav zoom) mangler eller er utdatert. Vurder å laste ned Basiskart verden for et komplett miljø.</string>
+    <string name="world_map_download_descr">Basiskart verden (som dekker hele verden ved lav zoom) mangler eller er utdatert. Vurder å laste det ned for en global oversikt.</string>
     <string name="shared_string_qr_code">QR-kode</string>
     <string name="basemap_was_selected_to_download">Basiskart er nødvendig for at programmet skal fungere riktig og ble valgt for å laste ned.</string>
     <string name="get_full_version">Fullversjon</string>
@@ -1699,4 +1699,15 @@
     <string name="route_stops_before">%1$s stopp før</string>
     <string name="coords_search">Koordinatsøk</string>
     <string name="advanced_coords_search">Avansert koordinatsøk</string>
+    <string name="rendering_attr_hideOverground_name">Objekter over bakken</string>
+
+    <string name="skip_map_downloading">Hopp over nedlasting av kart</string>
+    <string name="skip_map_downloading_desc">Du har ingen offline-kart installert. Du kan velge et kart fra listen eller laste ned kart senere via Meny - %1$s.</string>
+    <string name="search_another_country">Velg en annen region</string>
+    <string name="no_inet_connection">Ingen internettforbindelse</string>
+    <string name="no_inet_connection_desc_map">Kreves for å laste ned kart.</string>
+    <string name="storage_free_space">Ledig lagerplass</string>
+    <string name="clear_tile_data">Slett alle kartfliser</string>
+    <string name="replace_favorite_confirmation">Er du sikker på at du vil erstatte favoritt %1$s?</string>
+    <string name="get_started">Kom i gang</string>
     </resources>

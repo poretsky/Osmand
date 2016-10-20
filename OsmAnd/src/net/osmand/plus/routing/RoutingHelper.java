@@ -710,14 +710,8 @@ public class RoutingHelper {
 	
 		
 	public static String formatStreetName(String name, String ref, String destination, String towards) {
-	//Original version returned:
-	// 1. ref + " " + dest
-	// 2. dest
-	// 3. ref + " " + name
-	// 4. name
-	// 5. ref
-	// 6. ""
-	//Now returns: (ref)+((" ")+name)+((" ")+"toward "+dest)
+	//Hardy, 2016-08-05:
+	//Now returns: (ref) + ((" ")+name) + ((" ")+"toward "+dest) or ""
 
 		String formattedStreetName = "";
 		if (ref != null && ref.length() > 0) {
@@ -735,24 +729,8 @@ public class RoutingHelper {
 			}
 			formattedStreetName = formattedStreetName + towards + " " + destination;
 		}
-		return formattedStreetName;
+		return formattedStreetName.replace(";", ", ");
 
-//		if(destination != null && destination.length() > 0){
-//			if(ref != null && ref.length() > 0) {
-//				destination = ref + " " + destination;
-//			}
-//			return destination;
-//		} else if(name != null && name.length() > 0){
-//			if(ref != null && ref.length() > 0) {
-//				name = ref + " " + name;
-//			}
-//			return name;
-//		} else {
-//			if(ref == null) {
-//				return "";
-//			}
-//			return ref;
-//		}
 	}
 	
 //	protected boolean isDistanceLess(float currentSpeed, double dist, double etalon, float defSpeed){
@@ -777,14 +755,14 @@ public class RoutingHelper {
 			if(next != null) {
 				next[0] = n.directionInfo.getTurnType();
 			}
-			return formatStreetName(nm, rf, dn, app.getString(R.string.towards));
+			return formatStreetName(nm, rf, dn, "»");
 		}
 		RouteSegmentResult rs = getCurrentSegmentResult();
 		if(rs != null) {
 			String nm = rs.getObject().getName(settings.MAP_PREFERRED_LOCALE.get());
 			String rf = rs.getObject().getRef();
-			String dn = rs.getObject().getDestinationName(settings.MAP_PREFERRED_LOCALE.get());
-			return formatStreetName(nm, rf, dn, app.getString(R.string.towards));
+			String dn = rs.getObject().getDestinationName(settings.MAP_PREFERRED_LOCALE.get(), rs.isForwardDirection());
+			return formatStreetName(nm, rf, dn, "»");
 		}
 		return null;
 	}

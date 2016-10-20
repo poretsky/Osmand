@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
     <string name="number_of_gpx_files_selected_pattern">%s GPX трека(ов) выбрано</string>
     <string name="change_markers_position">Переместить курсор</string>
     <string name="current_track">Текущий путь</string>
@@ -1101,8 +1102,8 @@
     <string name="routing_attr_avoid_motorway_name">Избегать автомагистралей</string>
     <string name="routing_attr_prefer_motorway_name">Предпочитать автомагистрали</string>
     <string name="routing_attr_prefer_motorway_description">Предпочитать автомагистрали</string>
-    <string name="routing_attr_short_way_name">Кратчайший путь</string>
-    <string name="routing_attr_short_way_description">Использовать кратчайший путь</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Избегать платных дорог</string>
     <string name="routing_attr_avoid_toll_description">Избегать платных дорог</string>
     <string name="routing_attr_avoid_unpaved_name">Избегать грунтовых дорог</string>
@@ -1828,7 +1829,7 @@
     <string name="share_geo">гео:</string>
     <string name="share_menu_location">Поделиться местоположением</string>
     <string name="shared_string_send">Отправить</string>
-    <string name="application_dir_description">Выберите, где вы хотите сохранить файлы карт.</string>
+    <string name="application_dir_description">Выберите где вы хотите хранить файлы карт и другие данные</string>
     <string name="show_on_start_description">\"Отключено\" непосредственно запускает экран карты</string>
     <string name="map_downloaded">Карта загружена</string>
     <string name="shared_string_qr_code">QR-код</string>
@@ -1985,7 +1986,7 @@
     <string name="osm_live_support_region">Поддерживаемый регион</string>
     <string name="osm_live_enter_user_name">Пожалуйста введите имя</string>
     <string name="dashboard_or_drawer_description">Вместо статического меню можно использовать новый интерфейс в виде домашней страницы. Ваш выбор всегда может быть изменен в настройках домашней страницы.</string>
-    <string name="watch">Просмотреть</string>
+    <string name="watch">Просмотр</string>
     <string name="no_map_markers_found">Пожалуйста, добавьте маркеры на карте</string>
     <string name="no_waypoints_found">Путевых точек не найдено</string>
     <string name="add_points_to_map_markers_q">Вы хотите добавить маркеры для всех точек?</string>
@@ -2055,4 +2056,42 @@
 	\u2022 Множество улучшений и исправлений ошибок\n\n
 	и многое другое…
     </string>
-</resources>
+    <string name="rendering_attr_hideOverground_name">Надземные объекты</string>
+
+    <string name="no_update_info_desc">Не проверять информацию о новых версиях и скидках от OsmAnd</string>
+    <string name="no_update_info">Не показывать обновления</string>
+    <string name="update_all_maps_now">Вы хотите обновить все карты сейчас?</string>
+    <string name="clear_tile_data">Очистить всю плитку</string>
+    <string name="routing_attr_short_way_name">Экономичный путь</string>
+    <string name="routing_attr_short_way_description">Использование экономичного пути (обычно короче)</string>
+    <string name="replace_favorite_confirmation">Вы уверены, что хотите заменить любимые %1$s?</string>
+    <string name="shared_string_change">Изменить</string>
+    <string name="get_started">Начать</string>
+    <string name="shared_string_from">от</string>
+    <string name="follow_us">Подписывайтесь на нас</string>
+    <string name="osm_live_email_desc">Она нужна нам, чтобы предоставить вам информацию о взносах</string>
+    <string name="download_files_question_space_with_temp">Действительно загрузить {0} файл (ов)? Для этого необходимо {3} Мб временно и {1} Мб на постоянной основе. В настоящее время существует {2} Мб свободного места.</string>
+    <string name="search_my_location">Определить моё местоположение</string>
+    <string name="first_usage_greeting">Прокладывайте маршруты и открывайте новые для себя места без подключения к интернету</string>
+    <string name="allow_access_location">Разрешить доступ к местоположению</string>
+    <string name="give_permission">Дать разрешение</string>
+    <string name="storage_place_description">OsmAnd будет хранить ваши данные в %1$s</string>
+    <string name="storage_free_space">Свободное место</string>
+    <string name="search_location">Определение местоположения…</string>
+    <string name="no_inet_connection_desc_map">Требуется загрузить карты</string>
+    <string name="no_inet_connection">Соединение с интернетом отсутствует</string>
+    <string name="location_not_found">Не удалось определить местоположение</string>
+    <string name="first_usage_wizard_desc">OsmAnd определит ваше местоположение и предложит загрузить карты для этой области</string>
+    <string name="search_map">Поиск карты…</string>
+    <string name="search_another_country">Выберите другой регион</string>
+    <string name="skip_map_downloading">Пропустить загрузку карт</string>
+    <string name="skip_map_downloading_desc">У вас нет загруженных карт. Вы можете выбрать карту из списка или загрузить её позже с помощью меню - %1$s.</string>
+
+    <string name="si_mi_meters">Мили/метры</string>
+    <string name="get_for">Получить за %1$s</string>
+    <string name="get_for_month">Получить за %1$s в месяц</string>
+    <string name="get_it">Получить</string>
+    <string name="osm_live_banner_desc">Получите неограниченные загрузки карт и обновления более чем один раз в месяц: ежечасно, ежедневно или еженедельно</string>
+    <string name="osmand_plus_banner_desc">Полная версия OsmAnd с неограниченной загрузкой карт и ежемесячных обновлений карты</string>
+    <string name="select_voice_provider">Выберите голосовое сопровождение</string>
+    </resources>

@@ -12,10 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import net.osmand.Location;
 import net.osmand.ValueHolder;
 import net.osmand.binary.RouteDataObject;
+import net.osmand.plus.CurrentPositionHelper;
 import net.osmand.plus.NavigationService;
 import net.osmand.plus.OsmAndFormatter;
 import net.osmand.plus.OsmAndLocationProvider;
@@ -36,14 +36,19 @@ import net.osmand.plus.monitoring.OsmandMonitoringPlugin;
 import net.osmand.plus.routing.RouteDirectionInfo;
 import net.osmand.plus.routing.RoutingHelper;
 import net.osmand.plus.views.OsmandMapLayer.DrawSettings;
-import net.osmand.plus.views.mapwidgets.MapInfoWidgetsFactory.TopToolbarController.TopToolbarControllerType;
 import net.osmand.plus.views.mapwidgets.NextTurnInfoWidget.TurnDrawable;
 import net.osmand.router.TurnType;
+import net.osmand.util.Algorithms;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class MapInfoWidgetsFactory {
+	public enum TopToolbarControllerType {
+		QUICK_SEARCH,
+		CONTEXT_MENU,
+		DISCOUNT,
+	}
 
 	public TextInfoWidget createAltitudeControl(final MapActivity map) {
 		final TextInfoWidget altitudeControl = new TextInfoWidget(map) {
@@ -200,11 +205,6 @@ public class MapInfoWidgetsFactory {
 		OnClickListener onTitleClickListener;
 		OnClickListener onCloseButtonClickListener;
 
-		public enum TopToolbarControllerType {
-			QUICK_SEARCH,
-			CONTEXT_MENU,
-			DISCOUNT,
-		}
 
 		public TopToolbarController(TopToolbarControllerType type) {
 			this.type = type;
@@ -549,6 +549,13 @@ public class MapInfoWidgetsFactory {
 						text = routingHelper.getCurrentName(type);
 						if (text == null) {
 							text = "";
+						} else {
+							if(type[0] == null){
+								type[0] = TurnType.valueOf(TurnType.C, false);
+								turnDrawable.setColor(R.color.color_myloc_distance);
+							} else {
+								turnDrawable.setColor(R.color.nav_arrow);
+							}
 						}
 					}
 				} else {
@@ -558,7 +565,8 @@ public class MapInfoWidgetsFactory {
 						showNextTurn = true;
 						RouteDirectionInfo next = routingHelper.getRouteDirections().get(di);
 						type[0] = next.getTurnType();
-						text = RoutingHelper.formatStreetName(next.getStreetName(), next.getRef(), next.getDestinationName(), map.getMyApplication().getString(R.string.towards));
+						turnDrawable.setColor(R.color.nav_arrow_distant);
+						text = RoutingHelper.formatStreetName(next.getStreetName(), next.getRef(), next.getDestinationName(), "»");
 //						if (next.distance > 0) {
 //							text += " " + OsmAndFormatter.getFormattedDistance(next.distance, map.getMyApplication());
 //						}
@@ -572,11 +580,22 @@ public class MapInfoWidgetsFactory {
 					settings.SHOW_STREET_NAME.get()) {
 				RouteDataObject rt = locationProvider.getLastKnownRouteSegment();
 				if (rt != null) {
-					text = RoutingHelper.formatStreetName(rt.getName(settings.MAP_PREFERRED_LOCALE.get()),
-							rt.getRef(), rt.getDestinationName(settings.MAP_PREFERRED_LOCALE.get()), map.getMyApplication().getString(R.string.towards));
-				}
+					text = RoutingHelper.formatStreetName(rt.getName(settings.MAP_PREFERRED_LOCALE.get()), 
+							rt.getRef(), rt.getDestinationName(settings.MAP_PREFERRED_LOCALE.get(), rt.bearingVsRouteDirection(locationProvider.getLastKnownLocation())), "»");
+				} 
 				if (text == null) {
 					text = "";
+				} else {
+					if(!Algorithms.isEmpty(text) && locationProvider.getLastKnownLocation() != null) {
+						double dist = 
+								CurrentPositionHelper.getOrthogonalDistance(rt, locationProvider.getLastKnownLocation());
+						if(dist < 50) {
+							type[0] = TurnType.valueOf(TurnType.C, false);
+							turnDrawable.setColor(R.color.color_myloc_distance);
+						} else {
+							text = map.getResources().getString(R.string.shared_string_near) + " " + text;
+						}
+					}
 				}
 			}
 			if (map.isTopToolbarActive()) {
@@ -593,6 +612,7 @@ public class MapInfoWidgetsFactory {
 				updateVisibility(addressText, true);
 				updateVisibility(addressTextShadow, shadowRad > 0);
 				boolean update = turnDrawable.setTurnType(type[0]);
+						
 
 				int h = addressText.getHeight() / 4 * 3;
 				if (h != turnDrawable.getBounds().bottom) {

@@ -411,7 +411,7 @@ Dlaždicové mapy môžete získať priamo zo zdrojov na Internete, alebo ich m�
     <string name="osmand_service">Režim na pozadí</string>
     <string name="osmand_service_descr">OsmAnd bude bežať v systéme aj počas vypnutej obrazovky</string>
     <string name="fast_route_mode">Najrýchlejšia trasa</string>
-    <string name="fast_route_mode_descr">Zapnite na výpočet najrýchlejšej trasy alebo vypnite pre najkratšiu trasu </string>
+    <string name="fast_route_mode_descr">"Zapnite na výpočet najrýchlejšej trasy alebo vypnite ekonomickú trasu "</string>
     <string name="tiles_to_download_estimated_size">Pri priblížení {0} sa stiahne {1} dlaždíc ({2} Mb )</string>
     <string name="shared_string_download_map">Stiahnuť mapu</string>
     <string name="select_max_zoom_preload_area">Vybrať max. priblíženie viditeľnej oblasti na načítanie</string>
@@ -564,7 +564,7 @@ Dlaždicové mapy môžete získať priamo zo zdrojov na Internete, alebo ich m�
     <string name="search_online_address">Online hľadanie</string>
     <string name="max_level_download_tile">Max. online úroveň priblíženia</string>
     <string name="max_level_download_tile_descr">Výber maximálnej úrovne priblíženia na stiahnutie online dlaždíc</string>
-    <string name="route_general_information">Celková vzdialenosť %1$s, čas cestovania %2$d h %3$d m.</string>
+    <string name="route_general_information">Celková vzdialenosť %1$s, čas cestovania %2$d hod. %3$d min.</string>
     <string name="router_service_descr">Výber online alebo offline navigačnej služby</string>
     <string name="router_service">Navigačná služba</string>
     <string name="sd_dir_not_accessible">Priečinok pre uloženie na SD karte nie je prístupný!</string>
@@ -1242,8 +1242,8 @@ Afganistan, Albánsko, Alžírsko, Andora, Angola, Anguilla, Antigua a Barbuda, 
 \n Poznámka 1: pôvodné súbory zostanú nedotknuté (môžete ich neskôr vymazať ručne).\n Poznámka 2: v novom úložisku nebude možné zdieľať súbory medzi OsmAnd a OsmAnd+.</string>
     <string name="routing_attr_prefer_motorway_name">Uprednostniť diaľnice</string>
     <string name="routing_attr_prefer_motorway_description">Uprednostniť diaľnice</string>
-    <string name="routing_attr_short_way_name">Najkratšia cesta</string>
-    <string name="routing_attr_short_way_description">Použiť najkratšiu cestu</string>
+    
+    
     <string name="routing_attr_avoid_toll_name">Vyhnúť sa spoplatneným cestám</string>
     <string name="routing_attr_avoid_toll_description">Vyhnúť sa spoplatneným cestám</string>
     <string name="routing_attr_avoid_unpaved_name">Vyhnúť sa nespevneným cestám</string>
@@ -2000,7 +2000,7 @@ Aktivovanie tohto pohľadu zmení štýl mapy na \"Zima a lyžovanie\", ktorý z
     <string name="share_geo">geo:</string>
     <string name="share_menu_location">Zdieľať polohu</string>
     <string name="shared_string_send">Odoslať</string>
-    <string name="application_dir_description">Zvoľte kam chcete uložiť súbory máp.</string>
+    <string name="application_dir_description">Zvoľte kam chcete uložiť súbory máp a iných údajov.</string>
     <string name="osm_edit_created_poi">Vytvorený OSM POI</string>
     
     <string name="world_map_download_descr">Svetová základná mapa (pokrývajúca celý svet pri malom priblížení) chýba alebo je zastaralá. Prosím zvážte jej stiahnutie pre celkový prehľad.</string>
@@ -2392,4 +2392,30 @@ Ak potrebuje pomoc s aplikáciou OsmAnd, kontaktuje podporu: support@osmand.net.
     <string name="coords_search">Hľadanie súradníc</string>
     <string name="advanced_coords_search">Pokročilé hľadanie súradníc</string>
     <string name="route_stops_before">%1$s zastávok pred</string>
+    <string name="rendering_attr_hideOverground_name">Podzemné objekty</string>
+
+    <string name="shared_string_change">Zmeniť</string>
+    <string name="get_started">Začať</string>
+    <string name="routing_attr_short_way_name">Ekonomická trasa</string>
+    <string name="routing_attr_short_way_description">Použiť ekonomickú trasu (obyčajne kratšia)</string>
+    <string name="replace_favorite_confirmation">Naozaj chcete nahradiť obľúbený bod %1$s?</string>
+    <string name="skip_map_downloading">Preskočiť sťahovanie máp</string>
+    <string name="skip_map_downloading_desc">Nemáte nainštalovanú žiadnu offline mapu. Môžete vybrať mapu zo zoznamu alebo stiahnuť mapy neskôr cez Menu - %1$s.</string>
+    <string name="search_another_country">Vybrať iný región</string>
+    <string name="search_map">Hľadá sa mapa…</string>
+    <string name="first_usage_wizard_desc">Povoliť aby OsmAnd mohol určiť Vašu polohu a navrhnúť mapy, ktoré sa dajú stiahnuť pre daný región.</string>
+    <string name="location_not_found">Poloha sa nenašla</string>
+    <string name="no_inet_connection">Nie je pripojenie na internet</string>
+    <string name="no_inet_connection_desc_map">Potrebné pre stiahnutie máp.</string>
+    <string name="search_location">Hľadá sa poloha…</string>
+    <string name="storage_free_space">Voľné miesto</string>
+    <string name="storage_place_description">Úložisko údajov pre OsmAnd (mapy, stopy, atď.): %1$s.</string>
+    <string name="give_permission">Udeliť povolenie</string>
+    <string name="allow_access_location">Povoliť prístup k polohe</string>
+    <string name="first_usage_greeting">Získajte pokyny, objavte nové miesta, bez pripojenia na internet</string>
+    <string name="search_my_location">Hľadať moju polohu</string>
+    <string name="no_update_info_desc">Nekontrolovať aktualizácie nových verzií a zľavy súvisiace s OsmAnd</string>
+    <string name="no_update_info">Nezobrazovať aktualizácie</string>
+    <string name="update_all_maps_now">Chcete teraz aktualizovať všetky mapy?</string>
+    <string name="clear_tile_data">Vymazať všetky dlaždice</string>
     </resources>

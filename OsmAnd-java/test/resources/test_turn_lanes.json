@@ -2,8 +2,8 @@
   {
     "testName": "1.Preston road TR Lorimar drive",
     "startPoint": {
-      "latitude": 45.69539,
-      "longitude": 35.43936
+      "latitude": 45.695213,
+      "longitude": 35.438503
     },
     "endPoint": {
       "latitude": 45.69567,
@@ -401,8 +401,8 @@
   {
     "testName": "21.Äußere Nürnberger Straße C",
     "startPoint": {
-      "latitude": 45.66868152082188,
-      "longitude": 35.614286057558104
+      "latitude": 45.66869323547558,
+      "longitude": 35.61432629069333
     },
     "endPoint": {
       "latitude": 45.668853960276834,
@@ -498,7 +498,7 @@
     }
   },
   {
-    "testName": "28.1.Link +TSLL, С",
+    "testName": "28.1.Link +TSLL,C",
     "startPoint": {
       "latitude": 45.64069524601371,
       "longitude": 35.541367523279234
@@ -508,11 +508,11 @@
       "longitude": 35.54365276535992
     },
     "expectedResults": {
-      "118669516": "TSLL:+TSLL,С"
+      "118669516": "TSLL:+TSLL,C"
     }
   },
   {
-    "testName": "28.2.TSLR Großer Stern (Berlin)",
+    "testName": "28.2.Link +TSLR,С",
     "startPoint": {
       "latitude": 45.64211106582103,
       "longitude": 35.54128705700879
@@ -522,7 +522,7 @@
       "longitude": 35.53820788105969
     },
     "expectedResults": {
-      "118669511": "TSLR:+TSLR,С"
+      "118669511": "TSLR:+TSLR,C"
     }
   }
 

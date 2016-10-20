@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.osmand.FloatMath;
 import net.osmand.Location;
 import net.osmand.binary.BinaryMapRouteReaderAdapter.RouteRegion;
 import net.osmand.binary.BinaryMapRouteReaderAdapter.RouteTypeRule;
@@ -262,13 +261,7 @@ public class WaypointHelper {
 	}
 
 	public AlarmInfo calculateMostImportantAlarm(RouteDataObject ro, Location loc, MetricsConstants mc, boolean showCameras) {
-		boolean direction = true;
-		if (loc.hasBearing()) {
-			double diff = MapUtils.alignAngleDifference(ro.directionRoute(0, true) -
-					loc.getBearing() / 180f * Math.PI);
-			direction = Math.abs(diff) < Math.PI / 2f;
-		}
-		float mxspeed = ro.getMaximumSpeed(direction);
+		float mxspeed = ro.getMaximumSpeed(ro.bearingVsRouteDirection(loc));
 		float delta = app.getSettings().SPEED_LIMIT_EXCEED.get() / 3.6f;
 		AlarmInfo speedAlarm = createSpeedAlarm(mc, mxspeed, loc, delta);
 		if (speedAlarm != null) {
@@ -286,9 +279,7 @@ public class WaypointHelper {
 					// Issue #2873 may indicate we need some sort of check here if Alarm is in forward direction
 					// But cannot reproduce the issue for now
 					//if (loc.hasBearing()) {
-					//TODO: Check would be needed using bearingTo("actual alarm location"), not alignment with routeDataObject
-					//	if (Math.abs(MapUtils.alignAngleDifference(ro.directionRoute(0, true) -
-					//			loc.getBearing() / 180f * Math.PI)) >= Math.PI / 2f) {
+					//	if (Math.abs(MapUtils.alignAngleDifference(bearingTo("actual alarm location") - loc.getBearing() / 180f * Math.PI)) >= Math.PI / 2f) {
 					//		info = null;
 					//	}
 					//Toast.makeText(app.getApplicationContext(), Double.toString(ro.directionRoute(0, true)) + ",\n" + Double.toString(loc.getBearing()) + ",\n" + Double.toString(MapUtils.alignAngleDifference(ro.directionRoute(0, true) - loc.getBearing() / 180f * Math.PI))), Toast.LENGTH_LONG).show();

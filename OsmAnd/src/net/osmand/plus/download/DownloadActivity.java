@@ -12,17 +12,19 @@ import android.os.StatFs;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
-import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.Space;
+import android.support.v7.widget.AppCompatButton;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -38,12 +40,9 @@ import net.osmand.access.AccessibilityAssistant;
 import net.osmand.data.LatLon;
 import net.osmand.data.PointDescription;
 import net.osmand.map.WorldRegion;
-import net.osmand.map.WorldRegion.RegionParams;
 import net.osmand.plus.OsmandApplication;
 import net.osmand.plus.OsmandPlugin;
 import net.osmand.plus.OsmandSettings;
-import net.osmand.plus.OsmandSettings.DrivingRegion;
-import net.osmand.plus.OsmandSettings.MetricsConstants;
 import net.osmand.plus.R;
 import net.osmand.plus.Version;
 import net.osmand.plus.activities.LocalIndexInfo;
@@ -53,10 +52,13 @@ import net.osmand.plus.base.BasicProgressAsyncTask;
 import net.osmand.plus.base.BottomSheetDialogFragment;
 import net.osmand.plus.download.DownloadIndexesThread.DownloadEvents;
 import net.osmand.plus.download.ui.ActiveDownloadsDialogFragment;
-import net.osmand.plus.download.ui.DataStoragePlaceDialogFragment;
 import net.osmand.plus.download.ui.DownloadResourceGroupFragment;
+import net.osmand.plus.download.ui.FreeVersionDialogFragment;
 import net.osmand.plus.download.ui.LocalIndexesFragment;
 import net.osmand.plus.download.ui.UpdatesIndexFragment;
+import net.osmand.plus.inapp.InAppHelper;
+import net.osmand.plus.inapp.InAppHelper.InAppListener;
+import net.osmand.plus.liveupdates.OsmLiveActivity;
 import net.osmand.plus.openseamapsplugin.NauticalMapsPlugin;
 import net.osmand.plus.srtmplugin.SRTMPlugin;
 import net.osmand.plus.views.controls.PagerSlidingTabStrip;
@@ -72,11 +74,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class DownloadActivity extends AbstractDownloadActivity implements DownloadEvents,
-		ActivityCompat.OnRequestPermissionsResultCallback {
+		OnRequestPermissionsResultCallback, InAppListener {
 	private static final Log LOG = PlatformUtil.getLog(DownloadActivity.class);
 
 	public static final int UPDATES_TAB_NUMBER = 2;
@@ -110,6 +110,7 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 	private DownloadIndexesThread downloadThread;
 	protected WorldRegion downloadItem;
 	protected String downloadTargetFileName;
+	private InAppHelper inAppHelper;
 
 	private boolean srtmDisabled;
 	private boolean srtmNeedsInstallation;
@@ -158,10 +159,33 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 
 		viewPager.setAdapter(new TabActivity.OsmandFragmentPagerAdapter(getSupportFragmentManager(), mTabs));
 		mSlidingTabLayout.setViewPager(viewPager);
-		mSlidingTabLayout.setOnPageChangeListener(accessibilityAssistant);
-
+		mSlidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+				accessibilityAssistant.onPageSelected(position);
+				visibleBanner.updateBannerInProgress();
+			}
+			
+			@Override
+			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+				accessibilityAssistant.onPageScrolled(position, positionOffset, positionOffsetPixels);
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int state) {
+				accessibilityAssistant.onPageScrollStateChanged(state);				
+			}
+		});
 		viewPager.setCurrentItem(currentTab);
 		visibleBanner = new BannerAndDownloadFreeVersion(findViewById(R.id.mainLayout), this, true);
+
+		if (shouldShowFreeVersionBanner(getMyApplication())) {
+			inAppHelper = new InAppHelper(getMyApplication(), true);
+			inAppHelper.addListener(this);
+			visibleBanner.setUpdatingPrices(true);
+			inAppHelper.start(true);
+		}
 
 		final Intent intent = getIntent();
 		if (intent != null && intent.getExtras() != null) {
@@ -169,7 +193,14 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 			filterCat = intent.getExtras().getString(FILTER_CAT);
 			filterGroup = intent.getExtras().getString(FILTER_GROUP);
 		}
-		showFirstTimeExternalStorage();
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		if (inAppHelper != null) {
+			inAppHelper.removeListener(this);
+		}
 	}
 
 	public DownloadIndexesThread getDownloadThread() {
@@ -232,10 +263,7 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 			if (!Algorithms.isEmpty(downloadTargetFileName)) {
 				File f = new File(downloadTargetFileName);
 				if (f.exists() && f.lastModified() > System.currentTimeMillis() - 10000) {
-					boolean firstMap = !getMyApplication().getSettings().FIRST_MAP_IS_DOWNLOADED.get();
-					if (firstMap) {
-						initSettingsFirstMap(downloadItem);
-					}
+					getMyApplication().getDownloadThread().initSettingsFirstMap(downloadItem);
 					showGoToMap(downloadItem);
 				}
 			}
@@ -250,6 +278,27 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 		}
 	}
 
+	@Override
+	public void onError(String error) {
+		visibleBanner.setUpdatingPrices(false);
+	}
+
+	@Override
+	public void onGetItems() {
+		visibleBanner.setUpdatingPrices(false);
+	}
+
+	@Override
+	public void onItemPurchased(String sku) {
+	}
+
+	@Override
+	public void showProgress() {
+	}
+
+	@Override
+	public void dismissProgress() {
+	}
 
 	@Override
 	@UiThread
@@ -290,135 +339,92 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 		fragment.show(activity.getSupportFragmentManager(), "dialog");
 	}
 
-	private static class ToggleCollapseFreeVersionBanner implements View.OnClickListener {
-		private final View freeVersionDescriptionTextView;
-		private final View buttonsLinearLayout;
-		private final View freeVersionTitle;
-		private final OsmandSettings settings;
-
-		private ToggleCollapseFreeVersionBanner(View freeVersionDescriptionTextView,
-												View buttonsLinearLayout, View freeVersionTitle,
-												OsmandSettings settings) {
-			this.freeVersionDescriptionTextView = freeVersionDescriptionTextView;
-			this.buttonsLinearLayout = buttonsLinearLayout;
-			this.freeVersionTitle = freeVersionTitle;
-			this.settings = settings;
-		}
-
-		@Override
-		public void onClick(View v) {
-
-			if (freeVersionDescriptionTextView.getVisibility() == View.VISIBLE
-					&& isDownlodingPermitted(settings)) {
-				freeVersionDescriptionTextView.setVisibility(View.GONE);
-				buttonsLinearLayout.setVisibility(View.GONE);
-			} else {
-				freeVersionDescriptionTextView.setVisibility(View.VISIBLE);
-				buttonsLinearLayout.setVisibility(View.VISIBLE);
-				freeVersionTitle.setVisibility(View.VISIBLE);
-			}
-		}
-	}
-
 	public static boolean isDownlodingPermitted(OsmandSettings settings) {
 		final Integer mapsDownloaded = settings.NUMBER_OF_FREE_DOWNLOADS.get();
 		int downloadsLeft = DownloadValidationManager.MAXIMUM_AVAILABLE_FREE_DOWNLOADS - mapsDownloaded;
 		return Math.max(downloadsLeft, 0) > 0;
 	}
 
-	public static class BannerAndDownloadFreeVersion {
+	private static boolean shouldShowFreeVersionBanner(OsmandApplication application) {
+		return (Version.isFreeVersion(application) && !application.getSettings().LIVE_UPDATES_PURCHASED.get())
+				|| application.getSettings().SHOULD_SHOW_FREE_VERSION_BANNER.get();
+	}
+	
+	
+	public static class FreeVersionDialog {
 		private final View freeVersionBanner;
-		private final View downloadProgressLayout;
-		private final ProgressBar progressBar;
-		private final TextView leftTextView;
-		private final TextView rightTextView;
-		private final ProgressBar downloadsLeftProgressBar;
-		private final View buttonsLinearLayout;
+		private final View freeVersionBannerTitle;
+		private boolean updatingPrices;
+		private final View priceInfoLayout;
 		private final TextView freeVersionDescriptionTextView;
 		private final TextView downloadsLeftTextView;
-		private final View laterButton;
+		private final ProgressBar downloadsLeftProgressBar;
+		
+//		private final View laterButton;
+//		private final View buttonsLinearLayout;
+		
+		private final View fullVersionProgress;
+		private final AppCompatButton fullVersionButton;
+		private final View osmLiveProgress;
+		private final AppCompatButton osmLiveButton;
+		private DownloadActivity ctx;
+		private boolean dialog;
 
-		private final DownloadActivity ctx;
-		private final OsmandApplication application;
-		private final boolean shouldShowFreeVersionBanner;
-		private final View freeVersionBannerTitle;
-		private boolean showSpace;
-
-		public BannerAndDownloadFreeVersion(View view, final DownloadActivity ctx, boolean showSpace) {
-			this.ctx = ctx;
-			this.showSpace = showSpace;
-			application = (OsmandApplication) ctx.getApplicationContext();
-			freeVersionBanner = view.findViewById(R.id.freeVersionBanner);
-			downloadProgressLayout = view.findViewById(R.id.downloadProgressLayout);
-			progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
-			leftTextView = (TextView) view.findViewById(R.id.leftTextView);
-			rightTextView = (TextView) view.findViewById(R.id.rightTextView);
-			downloadsLeftTextView = (TextView) freeVersionBanner.findViewById(R.id.downloadsLeftTextView);
-			downloadsLeftProgressBar = (ProgressBar) freeVersionBanner.findViewById(R.id.downloadsLeftProgressBar);
-			buttonsLinearLayout = freeVersionBanner.findViewById(R.id.buttonsLinearLayout);
-			freeVersionDescriptionTextView = (TextView) freeVersionBanner
-					.findViewById(R.id.freeVersionDescriptionTextView);
-			laterButton = freeVersionBanner.findViewById(R.id.laterButton);
-			freeVersionBannerTitle = freeVersionBanner.findViewById(R.id.freeVersionBannerTitle);
-
-			shouldShowFreeVersionBanner =
-					(Version.isFreeVersion(application) && !application.getSettings().LIVE_UPDATES_PURCHASED.get())
-					|| application.getSettings().SHOULD_SHOW_FREE_VERSION_BANNER.get();
-
-			initFreeVersionBanner();
-			updateBannerInProgress();
-		}
-
-		public void updateBannerInProgress() {
-			BasicProgressAsyncTask<?, ?, ?, ?> basicProgressAsyncTask = ctx.getDownloadThread().getCurrentRunningTask();
-			final boolean isFinished = basicProgressAsyncTask == null
-					|| basicProgressAsyncTask.getStatus() == AsyncTask.Status.FINISHED;
-			if (isFinished) {
-				downloadProgressLayout.setOnClickListener(null);
-				updateDescriptionTextWithSize(ctx, downloadProgressLayout);
-				if (ctx.getCurrentTab() == UPDATES_TAB_NUMBER || !showSpace) {
-					downloadProgressLayout.setVisibility(View.GONE);
+		
+		private OnClickListener onCollapseListener = new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (freeVersionDescriptionTextView.getVisibility() == View.VISIBLE
+						&& isDownlodingPermitted(ctx.getMyApplication().getSettings())) {
+					collapseBanner();
 				} else {
-					downloadProgressLayout.setVisibility(View.VISIBLE);
-				}
-				updateFreeVersionBanner();
-			} else {
-				boolean indeterminate = basicProgressAsyncTask.isIndeterminate();
-				String message = basicProgressAsyncTask.getDescription();
-				int percent = basicProgressAsyncTask.getProgressPercentage();
-				setMinimizedFreeVersionBanner(true);
-
-				updateAvailableDownloads();
-				downloadProgressLayout.setVisibility(View.VISIBLE);
-				downloadProgressLayout.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						new ActiveDownloadsDialogFragment().show(ctx.getSupportFragmentManager(), "dialog");
-					}
-				});
-				progressBar.setIndeterminate(indeterminate);
-				if (indeterminate) {
-					leftTextView.setText(message);
-					rightTextView.setText(null);
-				} else {
-					progressBar.setProgress(percent);
-//					final String format = ctx.getString(R.string.downloading_number_of_files);
-					leftTextView.setText(message);
-					rightTextView.setText(percent + "%");
+					new FreeVersionDialogFragment().show(ctx.getSupportFragmentManager(), "dialog");
+					// expandBanner();
 				}
 			}
+		};
+		
+		public FreeVersionDialog(View view, final DownloadActivity ctx, boolean dialog) {
+			this.ctx = ctx;
+			this.dialog = dialog;
+			freeVersionBanner = view.findViewById(R.id.freeVersionBanner);
+			downloadsLeftTextView = (TextView) freeVersionBanner.findViewById(R.id.downloadsLeftTextView);
+			downloadsLeftProgressBar = (ProgressBar) freeVersionBanner.findViewById(R.id.downloadsLeftProgressBar);
+			priceInfoLayout = freeVersionBanner.findViewById(R.id.priceInfoLayout);
+			freeVersionDescriptionTextView = (TextView) freeVersionBanner
+					.findViewById(R.id.freeVersionDescriptionTextView);
+			freeVersionBannerTitle = freeVersionBanner.findViewById(R.id.freeVersionBannerTitle);
+			// laterButton = freeVersionBanner.findViewById(R.id.laterButton);
+			// buttonsLinearLayout = freeVersionBanner.findViewById(R.id.buttonsLinearLayout);
+			
+			fullVersionProgress = freeVersionBanner.findViewById(R.id.fullVersionProgress);
+			fullVersionButton = (AppCompatButton) freeVersionBanner.findViewById(R.id.fullVersionButton);
+			osmLiveProgress = freeVersionBanner.findViewById(R.id.osmLiveProgress);
+			osmLiveButton = (AppCompatButton) freeVersionBanner.findViewById(R.id.osmLiveButton);
 		}
 
-		public void hideDownloadProgressLayout() {
-			downloadProgressLayout.setVisibility(View.GONE);
+		public void setUpdatingPrices(boolean updatingPrices) {
+			this.updatingPrices = updatingPrices;
+			updateFreeVersionBanner();
 		}
 
-		public void showDownloadProgressLayout() {
-			downloadProgressLayout.setVisibility(View.VISIBLE);
+		private void collapseBanner() {
+			freeVersionDescriptionTextView.setVisibility(View.GONE);
+			// buttonsLinearLayout.setVisibility(View.GONE);
+			priceInfoLayout.setVisibility(View.GONE);
+			freeVersionBannerTitle.setVisibility(View.VISIBLE);
 		}
 
-		private void initFreeVersionBanner() {
-			if (!shouldShowFreeVersionBanner) {
+		public void expandBanner() {
+			freeVersionDescriptionTextView.setVisibility(View.VISIBLE);
+			// buttonsLinearLayout.setVisibility(View.VISIBLE);
+			priceInfoLayout.setVisibility(View.VISIBLE);
+			freeVersionBannerTitle.setVisibility(View.VISIBLE);
+		}
+
+
+		public void initFreeVersionBanner() {
+			if (!shouldShowFreeVersionBanner(ctx.getMyApplication())) {
 				freeVersionBanner.setVisibility(View.GONE);
 				return;
 			}
@@ -426,7 +432,7 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 			downloadsLeftProgressBar.setMax(DownloadValidationManager.MAXIMUM_AVAILABLE_FREE_DOWNLOADS);
 			freeVersionDescriptionTextView.setText(ctx.getString(R.string.free_version_message,
 					DownloadValidationManager.MAXIMUM_AVAILABLE_FREE_DOWNLOADS));
-			freeVersionBanner.findViewById(R.id.getFullVersionButton).setOnClickListener(new View.OnClickListener() {
+			fullVersionButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Version.marketPrefix(
@@ -438,10 +444,15 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 					}
 				}
 			});
-			ToggleCollapseFreeVersionBanner clickListener =
-					new ToggleCollapseFreeVersionBanner(freeVersionDescriptionTextView,
-							buttonsLinearLayout, freeVersionBannerTitle, application.getSettings());
-			laterButton.setOnClickListener(clickListener);
+			osmLiveButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(ctx, OsmLiveActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+					intent.putExtra(OsmLiveActivity.OPEN_SUBSCRIPTION_INTENT_PARAM, true);
+					ctx.startActivity(intent);
+				}
+			});
 
 			LinearLayout marksLinearLayout = (LinearLayout) freeVersionBanner.findViewById(R.id.marksLinearLayout);
 			Space spaceView = new Space(ctx);
@@ -464,46 +475,149 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 				marksLinearLayout.addView(spaceView);
 			}
 
-
 			updateFreeVersionBanner();
+			if(dialog) {
+				expandBanner();
+			} else {
+				collapseBanner();
+			}
 		}
 
-		private void updateFreeVersionBanner() {
-			if (!shouldShowFreeVersionBanner) {
+		public void updateFreeVersionBanner() {
+			if (!shouldShowFreeVersionBanner(ctx.getMyApplication())) {
 				return;
 			}
 			setMinimizedFreeVersionBanner(false);
-			OsmandSettings settings = application.getSettings();
+			OsmandSettings settings = ctx.getMyApplication().getSettings();
 			final Integer mapsDownloaded = settings.NUMBER_OF_FREE_DOWNLOADS.get();
 			downloadsLeftProgressBar.setProgress(mapsDownloaded);
 			int downloadsLeft = DownloadValidationManager.MAXIMUM_AVAILABLE_FREE_DOWNLOADS - mapsDownloaded;
 			downloadsLeft = Math.max(downloadsLeft, 0);
-			if (downloadsLeft <= 0) {
-				laterButton.setVisibility(View.GONE);
-			}
 			downloadsLeftTextView.setText(ctx.getString(R.string.downloads_left_template, downloadsLeft));
-			freeVersionBanner.setOnClickListener(new ToggleCollapseFreeVersionBanner(freeVersionDescriptionTextView,
-					buttonsLinearLayout, freeVersionBannerTitle, settings));
-		}
+			if(!dialog) {
+				freeVersionBanner.findViewById(R.id.bannerTopLayout).setOnClickListener(onCollapseListener);
+			}
 
+			if (InAppHelper.hasPrices() || !updatingPrices) {
+				if (!InAppHelper.hasPrices()) {
+					fullVersionButton.setText(ctx.getString(R.string.get_for, ctx.getString(R.string.full_version_price)));
+					osmLiveButton.setText(ctx.getString(R.string.get_for_month, ctx.getString(R.string.osm_live_default_price)));
+				} else {
+					fullVersionButton.setText(ctx.getString(R.string.get_for, InAppHelper.getFullVersionPrice()));
+					osmLiveButton.setText(ctx.getString(R.string.get_for_month, InAppHelper.getLiveUpdatesPrice()));
+				}
+				fullVersionProgress.setVisibility(View.GONE);
+				fullVersionButton.setVisibility(View.VISIBLE);
+				osmLiveProgress.setVisibility(View.GONE);
+				osmLiveButton.setVisibility(View.VISIBLE);
+			} else {
+				fullVersionProgress.setVisibility(View.VISIBLE);
+				fullVersionButton.setVisibility(View.GONE);
+				osmLiveProgress.setVisibility(View.VISIBLE);
+				osmLiveButton.setVisibility(View.GONE);
+			}
+		}
+		
+		private void setMinimizedFreeVersionBanner(boolean minimize) {
+			if (minimize && isDownlodingPermitted(ctx.getMyApplication().getSettings())) {
+				collapseBanner();
+				freeVersionBannerTitle.setVisibility(View.GONE);
+			} else {
+				freeVersionBannerTitle.setVisibility(View.VISIBLE);
+			}
+		}
 		private void updateAvailableDownloads() {
 			int activeTasks = ctx.getDownloadThread().getCountedDownloads();
-			OsmandSettings settings = application.getSettings();
+			OsmandSettings settings = ctx.getMyApplication().getSettings();
 			final Integer mapsDownloaded = settings.NUMBER_OF_FREE_DOWNLOADS.get() + activeTasks;
 			downloadsLeftProgressBar.setProgress(mapsDownloaded);
 		}
 
-		private void setMinimizedFreeVersionBanner(boolean minimize) {
-			if (minimize && isDownlodingPermitted(application.getSettings())) {
-				freeVersionDescriptionTextView.setVisibility(View.GONE);
-				buttonsLinearLayout.setVisibility(View.GONE);
-				freeVersionBannerTitle.setVisibility(View.GONE);
+	}
+
+	public static class BannerAndDownloadFreeVersion {
+		
+		private final View downloadProgressLayout;
+		private final ProgressBar progressBar;
+		private final TextView leftTextView;
+		private final TextView rightTextView;
+
+		private final DownloadActivity ctx;
+		
+		private boolean showSpace;
+		private FreeVersionDialog freeVersionDialog;
+
+		public BannerAndDownloadFreeVersion(View view, final DownloadActivity ctx, boolean showSpace) {
+			this.ctx = ctx;
+			this.showSpace = showSpace;
+			freeVersionDialog = new FreeVersionDialog(view, ctx, false);
+			
+			downloadProgressLayout = view.findViewById(R.id.downloadProgressLayout);
+			progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+			leftTextView = (TextView) view.findViewById(R.id.leftTextView);
+			rightTextView = (TextView) view.findViewById(R.id.rightTextView);
+			
+
+
+			freeVersionDialog.initFreeVersionBanner();
+			updateBannerInProgress();
+		}
+
+		public void setUpdatingPrices(boolean updatingPrices) {
+			freeVersionDialog.setUpdatingPrices(updatingPrices);
+		}
+
+		public void updateBannerInProgress() {
+			BasicProgressAsyncTask<?, ?, ?, ?> basicProgressAsyncTask = ctx.getDownloadThread().getCurrentRunningTask();
+			final boolean isFinished = basicProgressAsyncTask == null
+					|| basicProgressAsyncTask.getStatus() == AsyncTask.Status.FINISHED;
+			if (isFinished) {
+				downloadProgressLayout.setOnClickListener(null);
+				updateDescriptionTextWithSize(ctx, downloadProgressLayout);
+				if (ctx.getCurrentTab() == UPDATES_TAB_NUMBER || !showSpace) {
+					downloadProgressLayout.setVisibility(View.GONE);
+				} else {
+					downloadProgressLayout.setVisibility(View.VISIBLE);
+				}
+				freeVersionDialog.updateFreeVersionBanner();
 			} else {
-				freeVersionDescriptionTextView.setVisibility(View.VISIBLE);
-				buttonsLinearLayout.setVisibility(View.VISIBLE);
-				freeVersionBannerTitle.setVisibility(View.VISIBLE);
+				boolean indeterminate = basicProgressAsyncTask.isIndeterminate();
+				String message = basicProgressAsyncTask.getDescription();
+				int percent = basicProgressAsyncTask.getProgressPercentage();
+				freeVersionDialog.setMinimizedFreeVersionBanner(true);
+				freeVersionDialog.updateAvailableDownloads();
+				downloadProgressLayout.setVisibility(View.VISIBLE);
+				downloadProgressLayout.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						new ActiveDownloadsDialogFragment().show(ctx.getSupportFragmentManager(), "dialog");
+					}
+				});
+				progressBar.setIndeterminate(indeterminate);
+				if (indeterminate) {
+					leftTextView.setText(message);
+					rightTextView.setText(null);
+				} else {
+					progressBar.setProgress(percent);
+//					final String format = ctx.getString(R.string.downloading_number_of_files);
+					leftTextView.setText(message);
+					rightTextView.setText(percent + "%");
+				}
 			}
 		}
+
+
+		public void hideDownloadProgressLayout() {
+			downloadProgressLayout.setVisibility(View.GONE);
+		}
+
+		public void showDownloadProgressLayout() {
+			downloadProgressLayout.setVisibility(View.VISIBLE);
+		}
+
+		
+
+		
 	}
 
 	public void reloadLocalIndexes() {
@@ -543,41 +657,7 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 		task.execute();
 	}
 
-	private void initSettingsFirstMap(WorldRegion reg) {
-		getMyApplication().getSettings().FIRST_MAP_IS_DOWNLOADED.set(true);
-		DrivingRegion drg = null;
-		RegionParams params = reg.getParams();
-		boolean americanSigns = "american".equals(params.getRegionRoadSigns());
-		boolean leftHand = "yes".equals(params.getRegionLeftHandDriving());
-		MetricsConstants mc = "miles".equals(params.getRegionMetric()) ?
-				MetricsConstants.MILES_AND_FOOTS : MetricsConstants.KILOMETERS_AND_METERS;
-		for (DrivingRegion r : DrivingRegion.values()) {
-			if (r.americanSigns == americanSigns && r.leftHandDriving == leftHand &&
-					r.defMetrics == mc) {
-				drg = r;
-				break;
-			}
-		}
-		if (drg != null) {
-			getMyApplication().getSettings().DRIVING_REGION.set(drg);
-		}
-		String lang = params.getRegionLang();
-		if (lang != null) {
-			String lng = lang.split(",")[0];
-			String setTts = null;
-			for (String s : OsmandSettings.TTS_AVAILABLE_VOICES) {
-				if (lng.startsWith(s)) {
-					setTts = s + "-tts";
-					break;
-				} else if (lng.contains("," + s)) {
-					setTts = s + "-tts";
-				}
-			}
-			if (setTts != null) {
-				getMyApplication().getSettings().VOICE_PROVIDER.set(setTts);
-			}
-		}
-	}
+	
 
 	public void setDownloadItem(WorldRegion region, String targetFileName) {
 		if (downloadItem == null) {
@@ -610,49 +690,10 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 		}
 	}
 
-	private void showFirstTimeExternalStorage() {
-		final boolean firstTime = getMyApplication().getAppInitializer().isFirstTime();
-		if (firstTime && DataStoragePlaceDialogFragment.isInterestedInFirstTime) {
-			if (!hasPermissionToWriteExternalStorage(this)) {
-				ActivityCompat.requestPermissions(this,
-						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-						PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
-
-			} else {
-				chooseDataStorage();
-			}
-		}
-	}
-
-	private void chooseDataStorage() {
-		DataStoragePlaceDialogFragment.showInstance(getSupportFragmentManager(), false);
-	}
-
 	public static boolean hasPermissionToWriteExternalStorage(Context ctx) {
 		return ContextCompat.checkSelfPermission(ctx, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 				== PackageManager.PERMISSION_GRANTED;
 	}
-
-	@Override
-	public void onRequestPermissionsResult(int requestCode,
-										   String permissions[], int[] grantResults) {
-		if (requestCode == PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE
-				&& grantResults.length > 0
-				&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-			new Timer().schedule(new TimerTask() {
-				@Override
-				public void run() {
-					chooseDataStorage();
-				}
-			}, 1);
-		} else {
-			Toast.makeText(this,
-					R.string.missing_write_external_storage_permission,
-					Toast.LENGTH_LONG).show();
-		}
-		return;
-	}
-
 
 	public String getFilterAndClear() {
 		String res = filter;
@@ -764,14 +805,14 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 
 			final ImageButton closeImageButton = (ImageButton) view.findViewById(R.id.closeImageButton);
 			closeImageButton.setImageDrawable(getContentIcon(R.drawable.ic_action_remove_dark));
-			closeImageButton.setOnClickListener(new View.OnClickListener() {
+			closeImageButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					dismiss();
 				}
 			});
 
-			actionButtonOk.setOnClickListener(new View.OnClickListener() {
+			actionButtonOk.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					if (indexItem != null) {
@@ -782,7 +823,7 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 			});
 
 			view.findViewById(R.id.actionButtonCancel)
-					.setOnClickListener(new View.OnClickListener() {
+					.setOnClickListener(new OnClickListener() {
 						@Override
 						public void onClick(View v) {
 							dismiss();
@@ -831,7 +872,7 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 
 			final ImageButton closeImageButton = (ImageButton) view.findViewById(R.id.closeImageButton);
 			closeImageButton.setImageDrawable(getContentIcon(R.drawable.ic_action_remove_dark));
-			closeImageButton.setOnClickListener(new View.OnClickListener() {
+			closeImageButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					if (getActivity() instanceof DownloadActivity) {
@@ -842,7 +883,7 @@ public class DownloadActivity extends AbstractDownloadActivity implements Downlo
 			});
 
 			view.findViewById(R.id.actionButton)
-					.setOnClickListener(new View.OnClickListener() {
+					.setOnClickListener(new OnClickListener() {
 						@Override
 						public void onClick(View v) {
 							OsmandApplication app = (OsmandApplication) getActivity().getApplication();

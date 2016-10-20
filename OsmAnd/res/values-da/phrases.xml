@@ -3008,23 +3008,23 @@
 
 	<string name="poi_observatory_type_espionage">Anvendelse: spionage</string>
 	<string name="poi_observatory_type_meteorological">Anvendelse: meteorologisk</string>
-	<string name="poi_observatory_type_gravitational">Anvendelse: gravitationel</string>
+	<string name="poi_observatory_type_gravitational">Anvendelse: tyngekraft</string>
 
 <string name="poi_greenhouse_horticulture">Drivhus havebrug</string>
 
 <string name="poi_voltage">Spænding</string>
 	<string name="poi_generator_output_electricity">Udgangseffekt</string>
-	<string name="poi_generator_output_electricity_yes">Output: elektricitet</string>
+	<string name="poi_generator_output_electricity_yes">Produktion: elektricitet</string>
 	<string name="poi_generator_output_hot_water">Udgangseffekt af varmt vand</string>
-	<string name="poi_generator_output_hot_water_yes">Output: varmt vand</string>
-	<string name="poi_generator_output_steam_yes">Output: damp</string>
-	<string name="poi_generator_output_hot_air_yes">Output: varm luft</string>
-	<string name="poi_generator_output_cold_water_yes">Output: koldt vand</string>
+	<string name="poi_generator_output_hot_water_yes">Produktion: varmt vand</string>
+	<string name="poi_generator_output_steam_yes">Produktion: damp</string>
+	<string name="poi_generator_output_hot_air_yes">Produktion: varm luft</string>
+	<string name="poi_generator_output_cold_water_yes">Produktion: koldt vand</string>
 	<string name="poi_generator_output_compressed_air">Udgangseffekt af trykluft</string>
-	<string name="poi_generator_output_compressed_air_yes">Output: trykluft</string>
-	<string name="poi_generator_output_vacuum_yes">Output: vakuum</string>
+	<string name="poi_generator_output_compressed_air_yes">Produktion: trykluft</string>
+	<string name="poi_generator_output_vacuum_yes">Produktion: vakuum</string>
 	<string name="poi_generator_output_biogas">Udgangseffekt af biogas</string>
-	<string name="poi_generator_output_biogas_yes">Output: biogas</string>
+	<string name="poi_generator_output_biogas_yes">Produktion: biogas</string>
 
 <string name="poi_pumping_station">Pumpestation</string>
 
@@ -3085,10 +3085,10 @@
 
 <string name="poi_water_tank">Vandtank</string>
 
-	<string name="poi_toilets_disposal_flush">Toiletter bortskaffelse: vandkloset</string>
-	<string name="poi_toilets_disposal_pitlatrine">Toiletter bortskaffelse: latrin</string>
-	<string name="poi_toilets_disposal_chemical">Toiletter bortskaffelse: kemisk</string>
-	<string name="poi_toilets_disposal_bucket">Toiletter bortskaffelse: spand</string>
+	<string name="poi_toilets_disposal_flush">Toilettype: vandkloset</string>
+	<string name="poi_toilets_disposal_pitlatrine">Toilettype: latrin</string>
+	<string name="poi_toilets_disposal_chemical">Toilettype: kemisk</string>
+	<string name="poi_toilets_disposal_bucket">Toilettype: spand</string>
 
 <string name="poi_length">Længde</string>
 

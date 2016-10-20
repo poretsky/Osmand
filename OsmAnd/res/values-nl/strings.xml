@@ -403,7 +403,7 @@ Er is nu {2} MB beschikbaar.</string>
   <string name="items_were_selected">{0} item(s) geselecteerd</string>
   <string name="filter_existing_indexes">Toon gedownloade</string>
   <string name="fast_route_mode">Snelle route</string>
-  <string name="fast_route_mode_descr">"Activeer voor de snelle route of deactiveer voor de korte route "</string>
+  <string name="fast_route_mode_descr">"Snelle route gebruiken (anders economische route) "</string>
   <string name="tiles_to_download_estimated_size">Op zoom {0} omvat de download {1} kaartsegmenten ({2} MB)</string>
   <string name="shared_string_download_map">Download kaart</string>
   <string name="select_max_zoom_preload_area">Kies maximum zoom om vooraf te laden</string>
@@ -562,7 +562,7 @@ Er is nu {2} MB beschikbaar.</string>
   <string name="search_online_address">Internet</string>
   <string name="max_level_download_tile">Max. online zoom</string>
   <string name="max_level_download_tile_descr">Kies maximum zoomniveau voor het downloaden van online kaartsegmenten</string>
-  <string name="route_general_information">Totale afstand %1$s, reistijd %2$d u %3$d m.</string>
+  <string name="route_general_information">Totale afstand %1$s, reistijd %2$d u %3$d min.</string>
   <string name="router_service_descr">Kies een online of offline routeberekening</string>
   <string name="router_service">Routeberekening</string>
   <string name="sd_dir_not_accessible">Opslagmap op SD kaart is niet toegankelijk</string>
@@ -1412,8 +1412,8 @@ Wil je een nieuwe map maken op de toegestane locatie en de OsmAnd-bestanden daar
     <string name="calculate_osmand_route_gpx">Bereken de route offline met OsmAnd</string>
     <string name="routing_attr_prefer_motorway_name">Bij voorkeur autowegen</string>
 	<string name="routing_attr_prefer_motorway_description">Gebruik bij voorkeur autowegen</string>
-	<string name="routing_attr_short_way_name">Korte route</string>
-	<string name="routing_attr_short_way_description">Korte route gebruiken</string>
+	
+	
 	<string name="routing_attr_avoid_toll_name">Vermijd tolwegen</string>
 	<string name="routing_attr_avoid_toll_description">Vermijd tolwegen</string>
 	<string name="routing_attr_avoid_unpaved_name">Vermijd onverharde wegen</string>
@@ -2613,4 +2613,11 @@ Als je hulp nodig hebt met OsmAnd: neem contact op met ons support team: support
     <string name="route_stops_before">nog %1$s haltes</string>
     <string name="coords_search">Zoeken met Coördinaten</string>
     <string name="advanced_coords_search">Zoeken met Coördinaten</string>
+    <string name="rendering_attr_hideOverground_name">Bovengrondse objecten</string>
+    <string name="shared_string_change">Wijzig</string>
+    <string name="get_started">Aan de slag</string>
+    <string name="routing_attr_short_way_name">Economische route</string>
+    <string name="routing_attr_short_way_description">Economische route gebruiken (meestal korter)</string>
+    <string name="replace_favorite_confirmation">Wil je favoriet %1$s inderdaad vervangen?</string>
+    <string name="update_all_maps_now">Wil u alle kaarten nu updaten?</string>
     </resources>
